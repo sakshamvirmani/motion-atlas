@@ -337,17 +337,39 @@
       color: var(--ink);
     }
 
-    .sidebar-note {
+    .sync-panel {
       position: absolute;
       right: 18px;
       bottom: 16px;
       left: 18px;
       border-top: 1px solid var(--line-soft);
       background: var(--paper);
-      padding: 24px 12px 0;
+      padding: 18px 12px 0;
       color: var(--ink-soft);
+      font-size: 11px;
+    }
+
+    .sync-panel strong {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
       font-size: 12px;
     }
+
+    .sync-panel strong::before,
+    .utility-sync-state::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint-line);
+      box-shadow: 0 0 0 3px rgba(88, 178, 138, 0.13);
+      content: "";
+    }
+
+    .sync-panel p { margin: 5px 0 7px; }
+    .sync-panel a { font-weight: 750; text-decoration: none; }
+    .sync-panel a:hover { text-decoration: underline; }
 
     .nav-overlay {
       display: none;
@@ -371,6 +393,58 @@
       margin: 0 auto;
       padding: 26px 0 8px;
     }
+
+    .utility-sync {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      margin-right: auto;
+      gap: 10px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .utility-sync-state {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .utility-sync-action { color: var(--blue-dark); font-weight: 750; }
+
+    .sync-dialog-shell { width: min(100%, 690px); }
+
+    .sync-choice-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 22px 0 26px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+    }
+
+    .sync-choice-summary > div { padding: 18px; }
+    .sync-choice-summary > div + div { border-left: 1px solid var(--line-soft); }
+    .sync-choice-summary strong { display: block; font-size: 24px; }
+    .sync-choice-summary span { color: var(--ink-soft); font-size: 12px; }
+
+    .sync-dialog-copy {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .sync-dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      gap: 10px;
+    }
+
+    .sync-dialog-actions button { min-height: 48px; }
 
     .utility-button,
     .secondary-button,
@@ -1823,11 +1897,17 @@
 
       .utility-bar {
         width: calc(100% - 36px);
+        flex-wrap: wrap;
         justify-content: stretch;
         padding: 14px 0 0;
       }
 
       .utility-button { flex: 1; }
+
+      .utility-sync {
+        width: 100%;
+        min-height: 34px;
+      }
 
       .lesson {
         width: calc(100% - 36px);
@@ -1894,6 +1974,9 @@
       .quiz-card { padding: 22px 16px; }
       .dialog-header, .dialog-content { padding-inline: 18px; }
       .choice-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sync-choice-summary { grid-template-columns: minmax(0, 1fr); }
+      .sync-choice-summary > div + div { border-top: 1px solid var(--line-soft); border-left: 0; }
+      .sync-dialog-actions button { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1920,16 +2003,20 @@
 
         <div class="course-progress">
           <div class="progress-copy">
-            <span id="sidebarProgressText">0 of 56 lessons</span>
+            <span id="sidebarProgressText">0 of 48 iOS lessons</span>
             <span id="sidebarProgressPercent">0%</span>
           </div>
-          <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="56" aria-valuenow="0">
+          <div class="progress-track" role="progressbar" aria-label="Core iOS course progress" aria-valuemin="0" aria-valuemax="48" aria-valuenow="0">
             <div class="progress-fill" id="sidebarProgressFill"></div>
           </div>
         </div>
 
         <nav class="course-nav" id="courseNav" aria-label="All lessons"></nav>
-        <p class="sidebar-note">Your progress stays on this device. No account needed.</p>
+        <div class="sync-panel">
+          <strong id="syncSidebarStatus">Saved on this device</strong>
+          <p id="syncSidebarDetail">No account is required.</p>
+          <a id="syncSidebarAction" href="/signin?return_to=%2Fmotion-atlas-course.html">Sign in to sync</a>
+        </div>
       </div>
     </aside>
 
@@ -1943,6 +2030,10 @@
       </header>
 
       <div class="utility-bar" aria-label="Course tools">
+        <a class="utility-sync" id="syncUtilityLink" href="/signin?return_to=%2Fmotion-atlas-course.html">
+          <span class="utility-sync-state" id="syncUtilityStatus">Saved on this device</span>
+          <span class="utility-sync-action" id="syncUtilityAction">Sync progress</span>
+        </a>
         <button class="utility-button" id="glossaryButton" type="button"></button>
         <button class="utility-button" id="progressButton" type="button"></button>
       </div>
@@ -2002,7 +2093,7 @@
           <div class="progress-ring" id="progressRing">
             <div class="progress-ring-copy">
               <strong id="progressRingNumber">0%</strong>
-              <span>course complete</span>
+              <span>iOS path complete</span>
             </div>
           </div>
           <div class="progress-details">
@@ -2020,6 +2111,28 @@
           <button class="secondary-button" id="startReviewButton" type="button">Review a completed lesson</button>
           <div id="reviewMount"></div>
         </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="syncDialog" aria-labelledby="syncDialogTitle">
+    <div class="dialog-shell sync-dialog-shell">
+      <header class="dialog-header">
+        <div>
+          <span class="eyebrow">Account progress</span>
+          <h2 id="syncDialogTitle">Bring this device with you?</h2>
+        </div>
+      </header>
+      <div class="dialog-content">
+        <p class="sync-dialog-copy" id="syncDialogCopy">Choose how the work saved in this browser should join your account.</p>
+        <div class="sync-choice-summary" aria-label="Progress ready to merge">
+          <div><strong id="syncLessonCount">0</strong><span>completed lessons on this device</span></div>
+          <div><strong id="syncQuizCount">0</strong><span>quiz answers on this device</span></div>
+        </div>
+        <div class="sync-dialog-actions">
+          <button class="primary-button" id="mergeDeviceProgress" type="button">Merge this device’s progress</button>
+          <button class="secondary-button" id="keepAccountProgress" type="button">Keep account progress only</button>
+        </div>
       </div>
     </div>
   </dialog>
@@ -2064,14 +2177,105 @@
 
     const raw = String.raw;
 
+    const references = {
+      swiftUI: { label: "Apple SwiftUI documentation", url: "https://developer.apple.com/documentation/swiftui" },
+      swiftUIConcepts: { label: "Apple SwiftUI concepts", url: "https://developer.apple.com/tutorials/swiftui-concepts" },
+      animation: { label: "Apple SwiftUI Animation", url: "https://developer.apple.com/documentation/swiftui/animation" },
+      animations: { label: "Apple SwiftUI Animations", url: "https://developer.apple.com/documentation/swiftui/animations" },
+      animatable: { label: "Apple SwiftUI Animatable", url: "https://developer.apple.com/documentation/swiftui/animatable" },
+      transaction: { label: "Apple SwiftUI Transaction", url: "https://developer.apple.com/documentation/swiftui/transaction" },
+      state: { label: "Apple managing SwiftUI state", url: "https://developer.apple.com/documentation/swiftui/managing-user-interface-state" },
+      app: { label: "Apple SwiftUI App", url: "https://developer.apple.com/documentation/swiftui/app" },
+      navigation: { label: "Apple SwiftUI NavigationStack", url: "https://developer.apple.com/documentation/swiftui/navigationstack" },
+      layout: { label: "Apple SwiftUI layout fundamentals", url: "https://developer.apple.com/documentation/swiftui/layout-fundamentals" },
+      gestures: { label: "Apple SwiftUI gestures", url: "https://developer.apple.com/documentation/swiftui/gestures" },
+      transitions: { label: "Apple SwiftUI transitions", url: "https://developer.apple.com/documentation/swiftui/transitions" },
+      motionHIG: { label: "Apple Human Interface Guidelines: Motion", url: "https://developer.apple.com/design/human-interface-guidelines/motion" },
+      accessibilityHIG: { label: "Apple Human Interface Guidelines: Accessibility", url: "https://developer.apple.com/design/human-interface-guidelines/accessibility" },
+      reduceMotion: { label: "Apple accessibilityReduceMotion", url: "https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion" },
+      xcode: { label: "Apple Xcode", url: "https://developer.apple.com/xcode/" },
+      urlSession: { label: "Apple Foundation URLSession", url: "https://developer.apple.com/documentation/foundation/urlsession" },
+      privacy: { label: "Apple: Protecting the user’s privacy", url: "https://developer.apple.com/documentation/uikit/protecting-the-user-s-privacy" },
+      swiftBook: { label: "The Swift Programming Language", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/" },
+      swiftBasics: { label: "The Swift Programming Language: The Basics", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics" },
+      swiftFunctions: { label: "The Swift Programming Language: Functions", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions" },
+      swiftControl: { label: "The Swift Programming Language: Control Flow", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/controlflow" },
+      swiftCollections: { label: "The Swift Programming Language: Collection Types", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/collectiontypes" },
+      swiftStructures: { label: "The Swift Programming Language: Structures and Classes", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures" },
+      swiftConcurrency: { label: "The Swift Programming Language: Concurrency", url: "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency" },
+      springWWDC: { label: "WWDC23: Animate with springs", url: "https://developer.apple.com/videos/play/wwdc2023/10158/" },
+      animationWWDC: { label: "WWDC23: Explore SwiftUI animation", url: "https://developer.apple.com/videos/play/wwdc2023/10156/" },
+      timingSample: { label: "Apple: Controlling animation timing and movement", url: "https://developer.apple.com/documentation/swiftui/controlling-the-timing-and-movements-of-your-animations" },
+      symbols: { label: "Apple SF Symbols", url: "https://developer.apple.com/sf-symbols/" },
+      canvas: { label: "Apple SwiftUI Canvas", url: "https://developer.apple.com/documentation/swiftui/canvas" },
+      lottie: { label: "Airbnb Lottie documentation", url: "https://airbnb.io/lottie/" },
+      rive: { label: "Rive Apple runtime documentation", url: "https://rive.app/docs/runtimes/apple/apple" },
+      testing: { label: "Apple XCTest user interface tests", url: "https://developer.apple.com/documentation/xctest/user-interface-tests" },
+      performance: { label: "Apple: Understanding and improving SwiftUI performance", url: "https://developer.apple.com/documentation/xcode/understanding-and-improving-swiftui-performance" },
+      testflight: { label: "Apple TestFlight overview", url: "https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview" },
+      retrieval: { label: "Karpicke & Blunt: Retrieval practice study", url: "https://www.science.org/doi/10.1126/science.1199327" }
+    };
+
+    const lessonReferences = {
+      1: [references.retrieval],
+      2: [references.animatable, references.animation],
+      3: [references.swiftUIConcepts],
+      4: [references.xcode, references.swiftUI],
+      5: [references.app, references.swiftUIConcepts],
+      6: [references.swiftUIConcepts, references.layout],
+      7: [references.state],
+      8: [references.app],
+      9: [references.navigation],
+      10: [references.swiftUI, references.symbols],
+      11: [references.urlSession, references.privacy],
+      12: [references.swiftBasics],
+      13: [references.swiftFunctions],
+      14: [references.swiftControl],
+      15: [references.swiftCollections],
+      16: [references.swiftStructures],
+      17: [references.swiftBasics],
+      18: [references.state],
+      19: [references.swiftConcurrency, references.urlSession],
+      20: [references.animatable, references.animations],
+      21: [references.animation, references.transaction],
+      22: [references.animation, references.animationWWDC],
+      23: [references.springWWDC],
+      24: [references.transitions],
+      25: [references.layout, references.animatable],
+      26: [references.gestures, references.springWWDC],
+      27: [references.animationWWDC, references.timingSample],
+      28: [references.timingSample],
+      29: [references.motionHIG, references.accessibilityHIG],
+      30: [references.animation, references.state],
+      31: [references.animations, references.transaction],
+      32: [references.transitions],
+      33: [references.animationWWDC],
+      34: [references.timingSample, references.animationWWDC],
+      35: [references.timingSample, references.animationWWDC],
+      36: [references.gestures, references.springWWDC],
+      37: [references.symbols, references.canvas, references.lottie, references.rive],
+      38: [references.swiftUIConcepts],
+      39: [references.animation, references.motionHIG],
+      40: [references.motionHIG, references.accessibilityHIG],
+      41: [references.xcode, references.swiftUI],
+      42: [references.xcode, references.transaction],
+      43: [references.motionHIG, references.animation],
+      44: [references.state, references.animation, references.reduceMotion],
+      45: [references.reduceMotion, references.accessibilityHIG],
+      46: [references.performance],
+      47: [references.testing, references.transaction],
+      48: [references.testflight, references.xcode]
+    };
+
     function lesson(config) {
+      const combinedSources = [...(lessonReferences[config.id] || []), ...(config.sources || [])];
       return {
         minutes: 12,
         level: "Beginner",
         codeTitle: "",
         code: "",
-        sources: [],
-        ...config
+        ...config,
+        sources: [...new Map(combinedSources.map(source => [source.url, source])).values()]
       };
     }
 
@@ -2974,13 +3178,28 @@ timeline
     ].map(([term, definition]) => ({ term, definition }));
 
     const TOTAL_LESSONS = lessons.length;
+    const CORE_LESSON_COUNT = 48;
     const STORAGE_KEY = 'motion-atlas-v2';
+    const ACCOUNT_STORAGE_PREFIX = 'motion-atlas-account-v1:';
+    const IMPORT_MARKER_PREFIX = 'motion-atlas-imported-v1:';
+    let activeStorageKey = STORAGE_KEY;
     let labCleanup = [];
     let toastTimer = 0;
+    let syncTimer = 0;
+    const accountSync = {
+      authenticated: false,
+      ready: false,
+      accountKey: '',
+      displayName: '',
+      revision: 0,
+      lastSignature: '',
+      cloudProgress: null,
+      suppress: false
+    };
 
-    function readSavedState() {
+    function readSavedState(storageKey = activeStorageKey) {
       try {
-        const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        const parsed = JSON.parse(localStorage.getItem(storageKey) || '{}');
         return {
           completed: Array.isArray(parsed.completed) ? parsed.completed : [],
           current: Number(parsed.current) || 1,
@@ -2991,7 +3210,7 @@ timeline
       }
     }
 
-    const savedState = readSavedState();
+    const savedState = readSavedState(STORAGE_KEY);
     const progressState = {
       completed: new Set(savedState.completed.filter(id => id >= 1 && id <= TOTAL_LESSONS)),
       quizAnswers: savedState.quizAnswers,
@@ -3037,6 +3256,18 @@ timeline
       continueButton: document.getElementById('continueButton'),
       startReviewButton: document.getElementById('startReviewButton'),
       reviewMount: document.getElementById('reviewMount'),
+      syncSidebarStatus: document.getElementById('syncSidebarStatus'),
+      syncSidebarDetail: document.getElementById('syncSidebarDetail'),
+      syncSidebarAction: document.getElementById('syncSidebarAction'),
+      syncUtilityLink: document.getElementById('syncUtilityLink'),
+      syncUtilityStatus: document.getElementById('syncUtilityStatus'),
+      syncUtilityAction: document.getElementById('syncUtilityAction'),
+      syncDialog: document.getElementById('syncDialog'),
+      syncDialogCopy: document.getElementById('syncDialogCopy'),
+      syncLessonCount: document.getElementById('syncLessonCount'),
+      syncQuizCount: document.getElementById('syncQuizCount'),
+      mergeDeviceProgress: document.getElementById('mergeDeviceProgress'),
+      keepAccountProgress: document.getElementById('keepAccountProgress'),
       toast: document.getElementById('toast')
     };
 
@@ -3046,12 +3277,206 @@ timeline
 
     function saveState() {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        localStorage.setItem(activeStorageKey, JSON.stringify({
           completed: [...progressState.completed],
           current: progressState.current,
           quizAnswers: progressState.quizAnswers
         }));
       } catch {}
+      scheduleCloudSync();
+    }
+
+    function currentProgressSnapshot() {
+      return {
+        current: progressState.current,
+        completed: [...progressState.completed].sort((a, b) => a - b),
+        quizAnswers: { ...progressState.quizAnswers }
+      };
+    }
+
+    function progressSignature(snapshot = currentProgressSnapshot()) {
+      return JSON.stringify({
+        current: snapshot.current,
+        completed: [...snapshot.completed].sort((a, b) => a - b),
+        quizAnswers: Object.fromEntries(Object.entries(snapshot.quizAnswers).sort((a, b) => Number(a[0]) - Number(b[0])))
+      });
+    }
+
+    function hasMeaningfulProgress(snapshot) {
+      return snapshot.completed.length > 0 || Object.keys(snapshot.quizAnswers).length > 0 || snapshot.current !== 1;
+    }
+
+    function applyProgressSnapshot(snapshot) {
+      accountSync.suppress = true;
+      progressState.completed = new Set((snapshot.completed || []).filter(id => Number.isInteger(id) && id >= 1 && id <= TOTAL_LESSONS));
+      progressState.quizAnswers = { ...(snapshot.quizAnswers || {}) };
+      progressState.current = Number.isInteger(snapshot.current) && snapshot.current >= 1 && snapshot.current <= TOTAL_LESSONS ? snapshot.current : 1;
+      history.replaceState({ lesson: progressState.current }, '', `#lesson-${progressState.current}`);
+      renderLesson();
+      accountSync.suppress = false;
+    }
+
+    function updateSignInReturnPath() {
+      const returnTo = `/motion-atlas-course.html${location.hash || '#lesson-1'}`;
+      const signInPath = `/signin?return_to=${encodeURIComponent(returnTo)}`;
+      if (!accountSync.authenticated) {
+        elements.syncSidebarAction.href = signInPath;
+        elements.syncUtilityLink.href = signInPath;
+      }
+    }
+
+    function setSyncState(status, detail, action) {
+      elements.syncSidebarStatus.textContent = status;
+      elements.syncSidebarDetail.textContent = detail;
+      elements.syncUtilityStatus.textContent = status;
+      if (action) elements.syncUtilityAction.textContent = action;
+    }
+
+    function setAuthenticatedSyncUI(displayName) {
+      elements.syncSidebarAction.href = '/account';
+      elements.syncSidebarAction.textContent = 'Account and data controls';
+      elements.syncUtilityLink.href = '/account';
+      elements.syncUtilityAction.textContent = displayName;
+    }
+
+    function scheduleCloudSync() {
+      if (!accountSync.authenticated || !accountSync.ready || accountSync.suppress) return;
+      const signature = progressSignature();
+      if (signature === accountSync.lastSignature) return;
+      clearTimeout(syncTimer);
+      setSyncState('Saving…', 'Keeping this change with your account.', accountSync.displayName);
+      syncTimer = window.setTimeout(() => syncCloudProgress('replace'), 420);
+    }
+
+    async function postProgress(mode, snapshot) {
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          ...snapshot,
+          baseRevision: accountSync.revision,
+          mode
+        })
+      });
+      const body = await response.json();
+      return { response, body };
+    }
+
+    async function syncCloudProgress(mode = 'replace', sourceSnapshot = currentProgressSnapshot()) {
+      if (!accountSync.authenticated) return null;
+      try {
+        let result = await postProgress(mode, sourceSnapshot);
+        if (result.response.status === 409) {
+          accountSync.revision = Number(result.body.progress?.revision) || accountSync.revision;
+          result = await postProgress('merge', sourceSnapshot);
+        }
+        if (!result.response.ok || !result.body.progress) {
+          throw new Error(result.body.error || 'Progress could not be saved.');
+        }
+
+        accountSync.revision = result.body.progress.revision;
+        accountSync.lastSignature = progressSignature(result.body.progress);
+        try {
+          localStorage.setItem(activeStorageKey, JSON.stringify({
+            completed: result.body.progress.completed,
+            current: result.body.progress.current,
+            quizAnswers: result.body.progress.quizAnswers
+          }));
+        } catch {}
+        setSyncState('Synced', 'Progress is saved with your account.', accountSync.displayName);
+        return result.body.progress;
+      } catch {
+        setSyncState('Offline, will retry', 'This change is still saved in this browser.', accountSync.displayName);
+        return null;
+      }
+    }
+
+    function finishAccountSetup(snapshot) {
+      accountSync.ready = false;
+      accountSync.revision = Number(snapshot.revision) || 0;
+      applyProgressSnapshot(snapshot);
+      accountSync.lastSignature = progressSignature();
+      accountSync.ready = true;
+      setSyncState('Synced', 'Progress is saved with your account.', accountSync.displayName);
+    }
+
+    function markGuestImportHandled() {
+      try { localStorage.setItem(`${IMPORT_MARKER_PREFIX}${accountSync.accountKey}`, '1'); } catch {}
+    }
+
+    async function chooseMergeDeviceProgress() {
+      elements.mergeDeviceProgress.disabled = true;
+      elements.keepAccountProgress.disabled = true;
+      elements.mergeDeviceProgress.textContent = 'Merging…';
+      const merged = await syncCloudProgress('merge', readSavedState(STORAGE_KEY));
+      if (!merged) {
+        elements.mergeDeviceProgress.disabled = false;
+        elements.keepAccountProgress.disabled = false;
+        elements.mergeDeviceProgress.textContent = 'Try merge again';
+        return;
+      }
+      markGuestImportHandled();
+      elements.syncDialog.close();
+      finishAccountSetup(merged);
+      showToast('Device progress merged with your account.');
+    }
+
+    function chooseKeepAccountProgress() {
+      markGuestImportHandled();
+      elements.syncDialog.close();
+      finishAccountSetup(accountSync.cloudProgress);
+      showToast('Using progress already saved with your account.');
+    }
+
+    function offerGuestImport(guestSnapshot, cloudSnapshot) {
+      elements.syncLessonCount.textContent = String(guestSnapshot.completed.length);
+      elements.syncQuizCount.textContent = String(Object.keys(guestSnapshot.quizAnswers).length);
+      const cloudCount = cloudSnapshot.completed.length;
+      elements.syncDialogCopy.textContent = cloudCount
+        ? `Your account already has ${cloudCount} completed ${cloudCount === 1 ? 'lesson' : 'lessons'}. Merging keeps completed work from both places.`
+        : 'This account has no course progress yet. Merge to carry this browser’s work into your account.';
+      elements.syncDialog.showModal();
+    }
+
+    async function initializeAccountSync() {
+      updateSignInReturnPath();
+      const guestSnapshot = currentProgressSnapshot();
+      try {
+        const meResponse = await fetch('/api/me', { cache: 'no-store' });
+        const me = await meResponse.json();
+        if (!me.authenticated) return;
+
+        const progressResponse = await fetch('/api/progress', { cache: 'no-store' });
+        const progressBody = await progressResponse.json();
+        if (!progressResponse.ok || !progressBody.progress) {
+          throw new Error(progressBody.error || 'Account progress is unavailable.');
+        }
+
+        accountSync.authenticated = true;
+        accountSync.accountKey = me.accountKey;
+        accountSync.displayName = me.displayName;
+        accountSync.cloudProgress = progressBody.progress;
+        accountSync.revision = Number(progressBody.progress.revision) || 0;
+        activeStorageKey = `${ACCOUNT_STORAGE_PREFIX}${me.accountKey}`;
+        setAuthenticatedSyncUI(me.displayName);
+
+        let importHandled = false;
+        try { importHandled = localStorage.getItem(`${IMPORT_MARKER_PREFIX}${me.accountKey}`) === '1'; } catch {}
+
+        if (hasMeaningfulProgress(guestSnapshot) && !importHandled) {
+          setSyncState('Choose progress', 'Decide whether to merge this device.', me.displayName);
+          offerGuestImport(guestSnapshot, progressBody.progress);
+          return;
+        }
+
+        finishAccountSetup(progressBody.progress);
+      } catch {
+        accountSync.authenticated = false;
+        accountSync.ready = false;
+        activeStorageKey = STORAGE_KEY;
+        setSyncState('Saved on this device', 'Account sync is temporarily unavailable.', 'Try sign in');
+        updateSignInReturnPath();
+      }
     }
 
     function moduleForLesson(lessonId) {
@@ -3102,7 +3527,7 @@ timeline
 
     function sourceLinks(lessonItem) {
       if (!lessonItem.sources.length) return '';
-      return `<div class='source-links'><strong>First-party references</strong>${lessonItem.sources.map(source => `<a href='${source.url}' target='_blank' rel='noreferrer'>${escapeHTML(source.label)}</a>`).join('')}</div>`;
+      return `<div class='source-links'><strong>Evidence &amp; further reading</strong>${lessonItem.sources.map(source => `<a href='${source.url}' target='_blank' rel='noreferrer'>${escapeHTML(source.label)}</a>`).join('')}</div>`;
     }
 
     function renderLesson() {
@@ -3130,8 +3555,11 @@ timeline
 
     function renderQuiz(item) {
       const selected = progressState.quizAnswers[item.id];
+      const answerOrders = [[0, 1, 2], [1, 2, 0], [2, 0, 1]];
+      const answerOrder = answerOrders[item.id % answerOrders.length];
       elements.quizPrompt.textContent = item.quiz.q;
-      elements.quizOptions.innerHTML = item.quiz.a.map((answer, index) => {
+      elements.quizOptions.innerHTML = answerOrder.map(index => {
+        const answer = item.quiz.a[index];
         let classes = 'answer-button';
         if (selected !== undefined) {
           if (index === item.quiz.c) classes += ' is-correct';
@@ -3175,9 +3603,9 @@ timeline
     }
 
     function updateProgressUI() {
-      const count = progressState.completed.size;
-      const percent = Math.round(count / TOTAL_LESSONS * 100);
-      elements.sidebarProgressText.textContent = `${count} of ${TOTAL_LESSONS} lessons`;
+      const count = [...progressState.completed].filter(id => id <= CORE_LESSON_COUNT).length;
+      const percent = Math.round(count / CORE_LESSON_COUNT * 100);
+      elements.sidebarProgressText.textContent = `${count} of ${CORE_LESSON_COUNT} iOS lessons`;
       elements.sidebarProgressPercent.textContent = `${percent}%`;
       elements.sidebarProgressFill.style.width = `${percent}%`;
       const track = elements.sidebarProgressFill.parentElement;
@@ -3185,8 +3613,8 @@ timeline
       elements.mobileProgress.textContent = `${progressState.current} / ${TOTAL_LESSONS}`;
       elements.progressRing.style.setProperty('--progress', `${percent * 3.6}deg`);
       elements.progressRingNumber.textContent = `${percent}%`;
-      elements.progressHeadline.textContent = count === 0 ? 'You are at the beginning.' : count === TOTAL_LESSONS ? 'You completed the atlas.' : `${TOTAL_LESSONS - count} lessons remain.`;
-      elements.progressDescription.textContent = count === 0 ? 'Start small. One experiment you understand is worth more than ten tutorials you only watched.' : count === TOTAL_LESSONS ? 'Rebuild the two capstones without looking, then design an original interaction.' : 'Keep the loop small: predict, play, explain, and build one variation.';
+      elements.progressHeadline.textContent = count === 0 ? 'You are at the beginning.' : count === CORE_LESSON_COUNT ? 'You completed the iOS path.' : `${CORE_LESSON_COUNT - count} iOS lessons remain.`;
+      elements.progressDescription.textContent = count === 0 ? 'Start small. One experiment you understand is worth more than ten tutorials you only watched.' : count === CORE_LESSON_COUNT ? 'Rebuild the iOS capstone without looking, then design an original SwiftUI interaction. The web-motion track remains optional.' : 'Keep the loop small: predict, play, explain, and build one variation.';
       elements.moduleProgressList.innerHTML = modules.map(module => {
         const moduleLessons = lessons.filter(item => item.module === module.id);
         const complete = moduleLessons.filter(item => progressState.completed.has(item.id)).length;
@@ -3199,6 +3627,7 @@ timeline
       progressState.current = id;
       history.pushState({ lesson: id }, '', `#lesson-${id}`);
       renderLesson();
+      updateSignInReturnPath();
       closeSidebar();
       window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     }
@@ -3260,6 +3689,9 @@ timeline
     elements.glossarySearch.addEventListener('input', event => renderGlossary(event.target.value));
     elements.continueButton.addEventListener('click', () => elements.progressDialog.close());
     elements.startReviewButton.addEventListener('click', renderReview);
+    elements.mergeDeviceProgress.addEventListener('click', chooseMergeDeviceProgress);
+    elements.keepAccountProgress.addEventListener('click', chooseKeepAccountProgress);
+    elements.syncDialog.addEventListener('cancel', event => event.preventDefault());
     elements.mobileMenu.addEventListener('click', () => {
       const opening = !document.body.classList.contains('nav-open');
       document.body.classList.toggle('nav-open', opening);
@@ -3282,8 +3714,10 @@ timeline
       if (match) {
         progressState.current = Math.min(TOTAL_LESSONS, Math.max(1, Number(match[1])));
         renderLesson();
+        updateSignInReturnPath();
       }
     });
+    window.addEventListener('online', scheduleCloudSync);
     document.addEventListener('keydown', event => {
       if (!event.altKey || document.querySelector('dialog[open]')) return;
       if (event.key === 'ArrowLeft') goToLesson(progressState.current - 1);
@@ -4329,6 +4763,7 @@ timeline
     if (!location.hash) history.replaceState({ lesson: progressState.current }, '', `#lesson-${progressState.current}`);
     renderGlossary();
     renderLesson();
+    initializeAccountSync();
   </script>
 </body>
 </html>

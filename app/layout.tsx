@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "Motion Atlas — SwiftUI Animation Course";
+const title = "Motion Atlas | Learn SwiftUI Animation From Zero";
 const description =
-  "A beautiful, hands-on course for learning iOS animation in SwiftUI, with interactive labs, prediction drills, and web-motion bonus lessons.";
+  "A free, hands-on path from your first iOS app to purposeful, accessible SwiftUI animation, with live labs, verified examples, and optional web-motion lessons.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "/og.png",
           width: 1536,
           height: 1024,
-          alt: "Motion Atlas — SwiftUI animation course",
+          alt: "Motion Atlas SwiftUI animation course",
         },
       ],
     },

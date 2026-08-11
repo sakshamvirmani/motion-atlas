@@ -1,100 +1,78 @@
-# vinext-starter
+# Motion Atlas
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Motion Atlas is a free, beginner-first learning product for building purposeful,
+accessible iOS animation with SwiftUI. It combines short lessons, live motion
+instruments, prediction, retrieval practice, vibe-coding workflows, and
+production checks. An optional, visibly separate track covers web scroll motion,
+Motion for React, Framer concepts, and GSAP.
 
-## Prerequisites
+The public course is hosted with OpenAI Sites. Anyone can learn as a guest.
+Optional Sign in with ChatGPT ties progress to a Sites identity and persists it
+in Cloudflare D1.
 
-- Node.js `>=22.13.0`
+## Start locally
 
-## Quick Start
+Requires Node.js `>=22.13.0`.
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+Open `http://localhost:3000`.
 
-## Included Shape
+## Verification
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm audit --omit=dev
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+`npm test` builds the production worker and checks rendered product content,
+auth states, course-script syntax, progress validation and merging, D1 schema,
+privacy, and licensing artifacts.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+After changing `db/schema.ts`, generate and inspect a migration:
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+```bash
+npm run db:generate
+```
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## Project map
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+- `app/`: landing, sign-in, account, privacy, sources, and API routes.
+- `public/motion-atlas-course.html`: current 56-lesson migration source.
+- `db/` and `drizzle/`: account-progress schema and migrations.
+- `docs/MASTER_PLAN.md`: durable execution plan.
+- `docs/STATUS.md`: current verified milestone and resume pointer.
+- `docs/CONTENT_STANDARD.md`: lesson publication gate.
+- `docs/SOURCE_POLICY.md` and `docs/SOURCE_LEDGER.md`: originality and reuse controls.
+- `docs/DATA_AUTH_ARCHITECTURE.md`: identity, import, sync, export, delete, and abuse-prevention design.
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+The standalone course remains the active learning surface while its content and
+labs move into typed native routes. It must not become a second editable source
+after that migration is complete.
 
-## Useful Commands
+## Identity and data
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+- Guest progress stays in versioned browser storage.
+- Sign in with ChatGPT is optional and handled by the Sites dispatcher.
+- Every server write derives ownership from trusted Sites identity headers.
+- Account progress uses a D1 `DB` binding.
+- Guest import merges completed work rather than replacing it.
+- Learners can export and permanently delete account progress.
+- No Motion Atlas password, advertising profile, or public learner profile exists.
 
-## Learn More
+See `docs/DOMAIN_AUTH_DECISIONS.md` for why other identity providers and a
+shorter hostname are separate future decisions.
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+## Licensing
+
+- Original software and code samples: [MIT](LICENSE).
+- Original non-code course content: [CC BY 4.0](CONTENT_LICENSE.md).
+- Third-party material remains under its own terms and is excluded from both
+  grants unless an exact ledger entry says otherwise.
+
+Copyright 2026 Saksham Virmani.
