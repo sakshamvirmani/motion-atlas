@@ -6,8 +6,10 @@ Last updated: 2026-08-11
 
 Milestone 11: publish and verify the validated compatibility release.
 
-Status: local implementation is complete; public deployment and production
-identity/D1 smoke testing are in progress.
+Status: the motion-enabled compatibility release is live. Public guest behavior
+and the real Sign in with ChatGPT entry point are verified. Completing a real
+account session, production D1 persistence, and two-context convergence remain
+open owner/session-dependent checks.
 
 This release is a strong compatibility step, not the end of the master plan.
 The standalone course remains the lesson renderer while typed content and native
@@ -60,15 +62,28 @@ lesson routes are built in Milestones 2 and 3.
 - [x] Authenticated local API and account-page verification with test identity
 - [x] Production dependency audit reported zero known production vulnerabilities
 
+## Published release record
+
+- Sites version: 3
+- Commit: `9a399cfad4fbad6d69436903d7742776183007da`
+- Deployment: `appgdep_6a7abaea77688191a2dc602c360c1c07`
+- Public URL:
+  `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
+- Deployed landing, redirected course route, privacy, sources, and guest
+  `/api/me` smoke checks passed on 2026-08-11.
+- The public SIWC action reached OpenAI's real login screen with email, Google,
+  Apple, Microsoft, and phone choices. No credentials were entered.
+
 ## Current verification gates
 
 - [x] Final lint, TypeScript, production build, and product test run after the
   evidence-map and licensing additions
-- [ ] Package and deploy the exact validated commit to the existing Sites project
-- [ ] Verify the deployed landing, course, privacy, sources, and guest API state
-- [ ] Verify real public Sign in with ChatGPT and production account persistence
-  if the platform session can complete without the owner's intervention
-- [ ] Record the deployment ID, commit, and any remaining device-only proof
+- [x] Package and deploy the exact validated commit to the existing Sites project
+- [x] Verify the deployed landing, course, privacy, sources, and guest API state
+- [x] Verify the public Sign in with ChatGPT action reaches real OpenAI authentication
+- [ ] Complete a real account session and verify production D1 persistence
+- [ ] Verify same-account convergence in two independent browser/device contexts
+- [x] Record the deployment ID, commit, and remaining device-only proof
 
 ## Known limits—not hidden as “done”
 
