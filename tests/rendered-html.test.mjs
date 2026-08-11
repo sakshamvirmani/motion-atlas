@@ -45,6 +45,8 @@ test("server-renders a meaningful guest landing page", async () => {
   assert.match(html, /Sign in to sync/);
   assert.match(html, /\/signin\?return_to=%2Flearn/);
   assert.match(html, /href="\/learn"/);
+  assert.match(html, /href="\/sources"/);
+  assert.match(html, /href="\/privacy"/);
   assert.match(html, /\$0/);
   assert.match(html, /href="https:\/\/sakshamvirmani\.com"/);
   assert.match(html, /No account is required/);
@@ -123,6 +125,8 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(css, /@keyframes scroll-lab-object/);
   assert.match(css, /\.hero-lab:hover \.stage-orb\.is-auto/);
   assert.match(css, /\.hero-lab:focus-within \.stage-orb\.is-auto/);
+  assert.doesNotMatch(css, /\.site-footer nav\s*\{\s*display:\s*none/);
+  assert.doesNotMatch(css, /\.learn-rail > nav a:last-child\s*\{\s*display:\s*none/);
   assert.doesNotMatch(css, /@keyframes curriculum-progress/);
   assert.doesNotMatch(css, /\.curriculum-list::after/);
   assert.doesNotMatch(css, /@keyframes reveal-slide[\s\S]{0,220}translateX/);

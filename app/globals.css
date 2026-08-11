@@ -3195,7 +3195,6 @@ select {
     padding: 8px;
     font-size: 10px;
   }
-  .learn-rail > nav a:last-child { display: none; }
   .learn-wordmark strong { font-size: 12px; }
   .learn-topbar { align-items: start; flex-direction: column; justify-content: center; gap: 6px; }
   .learn-topbar > div { gap: 16px; }
@@ -3555,7 +3554,10 @@ select {
   }
 
   .site-footer nav {
-    display: none;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
 }
 
@@ -3800,6 +3802,11 @@ select {
     grid-template-columns: 1fr;
     padding: 34px 20px;
     gap: 24px;
+  }
+
+  .site-footer nav {
+    grid-column: auto;
+    row-gap: 14px;
   }
 
   .site-footer > p {
