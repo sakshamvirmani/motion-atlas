@@ -113,9 +113,16 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
 
   assert.match(css, /@media \(max-width: 640px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(css, /animation-timeline: scroll\(root block\)/);
+  assert.match(css, /animation-timeline: view\(block\)/);
+  assert.match(css, /@keyframes hero-enter/);
+  assert.match(css, /@keyframes curriculum-progress/);
   assert.match(css, /--orange:\s*#ff4f00/);
   assert.match(page, /getChatGPTUser/);
   assert.match(page, /MotionLabPreview/);
+  assert.match(page, /className="scroll-progress"/);
+  assert.match(page, /Made by Saksham Virmani\./);
+  assert.doesNotMatch(page, /Made by Saksham Virmani in India/);
   assert.match(page, /Apple documentation and WWDC sources/);
   assert.doesNotMatch(page, /<iframe\b/i);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 const curves = {
   calm: {
@@ -27,6 +27,7 @@ export default function MotionLabPreview() {
   const [curve, setCurve] = useState<CurveName>("calm");
   const [duration, setDuration] = useState(650);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const manuallyControlled = useRef(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -35,6 +36,22 @@ export default function MotionLabPreview() {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const travelTimer = window.setTimeout(() => {
+      if (!manuallyControlled.current) setAtEnd(true);
+    }, 850);
+    const returnTimer = window.setTimeout(() => {
+      if (!manuallyControlled.current) setAtEnd(false);
+    }, 2350);
+
+    return () => {
+      window.clearTimeout(travelTimer);
+      window.clearTimeout(returnTimer);
+    };
+  }, [reduceMotion]);
 
   const style = {
     "--preview-duration": `${reduceMotion ? 1 : duration}ms`,
@@ -48,8 +65,9 @@ export default function MotionLabPreview() {
           <span className="lab-kicker">LIVE INSTRUMENT / 001</span>
           <h2 id="hero-lab-title">Motion anatomy</h2>
         </div>
-        <span className="lab-status">
-          <i aria-hidden="true" /> Ready
+        <span className="lab-status" aria-live="polite">
+          <i aria-hidden="true" />
+          {reduceMotion ? "Reduced" : atEnd ? "At end" : "Ready"}
         </span>
       </div>
 
@@ -105,7 +123,13 @@ export default function MotionLabPreview() {
           </select>
         </label>
 
-        <button type="button" onClick={() => setAtEnd((value) => !value)}>
+        <button
+          type="button"
+          onClick={() => {
+            manuallyControlled.current = true;
+            setAtEnd((value) => !value);
+          }}
+        >
           <span aria-hidden="true">{atEnd ? "↶" : "▶"}</span>
           {atEnd ? "Reset" : "Play"}
         </button>

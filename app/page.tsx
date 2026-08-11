@@ -44,6 +44,7 @@ export default async function Home() {
 
   return (
     <main className="landing-page" id="top">
+      <span className="scroll-progress" aria-hidden="true" />
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Motion Atlas home">
           <span className="wordmark-mark" aria-hidden="true">
@@ -92,11 +93,11 @@ export default async function Home() {
             <span>Start from zero</span>
           </p>
           <h1>
-            Make iPhone
-            <br />
-            interfaces <em>move</em>
-            <br />
-            with purpose.
+            <span className="hero-line">Make iPhone</span>
+            <span className="hero-line">
+              interfaces <em>move</em>
+            </span>
+            <span className="hero-line">with purpose.</span>
           </h1>
           <p className="hero-intro">
             Learn app building and animation together. Predict motion, tune it in
@@ -122,26 +123,26 @@ export default async function Home() {
       </section>
 
       <section className="truth-strip" aria-label="Course facts">
-        <div>
+        <div data-reveal="rise">
           <strong>48</strong>
           <span>iOS and SwiftUI lessons available now</span>
         </div>
-        <div>
+        <div data-reveal="rise">
           <strong>56</strong>
           <span>knowledge checks with explanations</span>
         </div>
-        <div>
+        <div data-reveal="rise">
           <strong>08</strong>
           <span>optional web-motion lessons, clearly separate</span>
         </div>
-        <div>
+        <div data-reveal="rise">
           <strong>£0</strong>
           <span>no paywall, trial clock, or locked chapter</span>
         </div>
       </section>
 
       <section className="outcomes section-shell" aria-labelledby="outcomes-title">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal="rise">
           <p className="section-index">01 / WHAT YOU WILL BUILD</p>
           <h2 id="outcomes-title">From a tap to a complete interaction system.</h2>
           <p>
@@ -152,7 +153,7 @@ export default async function Home() {
         </div>
 
         <div className="outcome-grid">
-          <article className="outcome-item">
+          <article className="outcome-item" data-reveal="rise">
             <div className="outcome-visual outcome-feedback" aria-hidden="true">
               <span className="feedback-ring" />
               <span className="feedback-core">
@@ -167,7 +168,7 @@ export default async function Home() {
             </p>
           </article>
 
-          <article className="outcome-item">
+          <article className="outcome-item" data-reveal="rise">
             <div className="outcome-visual outcome-continuity" aria-hidden="true">
               <span className="continuity-list" />
               <span className="continuity-detail" />
@@ -181,7 +182,7 @@ export default async function Home() {
             </p>
           </article>
 
-          <article className="outcome-item">
+          <article className="outcome-item" data-reveal="rise">
             <div className="outcome-visual outcome-gesture" aria-hidden="true">
               <span className="gesture-card" />
               <span className="gesture-path" />
@@ -198,7 +199,7 @@ export default async function Home() {
       </section>
 
       <section className="curriculum section-shell" id="curriculum" aria-labelledby="curriculum-title">
-        <div className="curriculum-intro">
+        <div className="curriculum-intro" data-reveal="rise">
           <p className="section-index">02 / THE REQUIRED PATH</p>
           <h2 id="curriculum-title">Learn the system, not isolated tricks.</h2>
           <p>
@@ -211,9 +212,9 @@ export default async function Home() {
           </a>
         </div>
 
-        <ol className="curriculum-list">
+        <ol className="curriculum-list" data-reveal="rise">
           {curriculum.map(([number, title, description]) => (
-            <li key={number}>
+            <li key={number} data-reveal="slide">
               <span className="curriculum-number">{number}</span>
               <div>
                 <h3>{title}</h3>
@@ -226,7 +227,7 @@ export default async function Home() {
       </section>
 
       <section className="method section-shell" id="method" aria-labelledby="method-title">
-        <div className="section-heading method-heading">
+        <div className="section-heading method-heading" data-reveal="rise">
           <p className="section-index">03 / HOW MEMORY BECOMES SKILL</p>
           <h2 id="method-title">Watching is not the same as knowing.</h2>
           <p>
@@ -238,7 +239,7 @@ export default async function Home() {
 
         <ol className="learning-loop">
           {learningLoop.map(([title, description], index) => (
-            <li key={title}>
+            <li key={title} data-reveal="rise">
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{title}</h3>
               <p>{description}</p>
@@ -248,7 +249,7 @@ export default async function Home() {
       </section>
 
       <section className="standards section-shell" id="standards" aria-labelledby="standards-title">
-        <div className="standards-panel">
+        <div className="standards-panel" data-reveal="rise">
           <p className="section-index">04 / A COURSE YOU CAN TRUST</p>
           <h2 id="standards-title">Current code. Primary sources. Honest proof.</h2>
           <p className="standards-intro">
@@ -277,7 +278,7 @@ export default async function Home() {
           </ul>
         </div>
 
-        <aside className="standards-ledger" aria-label="Quality ledger">
+        <aside className="standards-ledger" aria-label="Quality ledger" data-reveal="slide">
           <div className="ledger-header">
             <span>QUALITY LEDGER</span>
             <span>2026.08</span>
@@ -293,7 +294,7 @@ export default async function Home() {
             </div>
             <div>
               <dt>Account</dt>
-              <dd>Optional + synced</dd>
+              <dd>Optional sync</dd>
             </div>
             <div>
               <dt>Research map</dt>
@@ -311,7 +312,7 @@ export default async function Home() {
         </aside>
       </section>
 
-      <section className="final-cta section-shell" aria-labelledby="final-title">
+      <section className="final-cta section-shell" aria-labelledby="final-title" data-reveal="rise">
         <p className="section-index">YOUR FIRST MOVE</p>
         <h2 id="final-title">Change one value. See the system come alive.</h2>
         <p>
@@ -324,7 +325,7 @@ export default async function Home() {
         </a>
       </section>
 
-      <footer className="site-footer">
+      <footer className="site-footer" id="footer">
         <div className="footer-mark">
           <span>MOTION ATLAS</span>
           <span>SwiftUI animation from first principles</span>
@@ -337,7 +338,10 @@ export default async function Home() {
           <a href="/sources">Sources &amp; licenses</a>
           <a href="/privacy">Privacy</a>
         </nav>
-        <p>Free to learn. Made by Saksham Virmani in India.</p>
+        <p className="footer-credit">
+          <span>Free to learn.</span>
+          <span>Made by Saksham Virmani.</span>
+        </p>
       </footer>
     </main>
   );

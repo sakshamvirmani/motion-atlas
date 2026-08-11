@@ -44,6 +44,9 @@ lesson routes are built in Milestones 2 and 3.
 - [x] Evidence-backed course and documentation benchmark
 - [x] Durable master plan, curriculum map, content standard, and data design
 - [x] Premium native landing page and responsive/reduced-motion styling
+- [x] Purposeful landing motion: sequenced hero entry, one-time live-lab
+  demonstration, scroll progress, view-linked reveals, curriculum path drawing,
+  and tactile child-level hover feedback
 - [x] Real guest and authenticated landing states
 - [x] Real sign-in explanation, account, privacy, sources, not-found, and error routes
 - [x] D1 schema, generated migration, and runtime schema safety initializer
