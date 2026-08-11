@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LearningProvider } from "@/app/components/learning/learning-provider";
 import {
@@ -43,14 +42,14 @@ export default async function LessonPage({ params }: LessonPageProps) {
     <LearningProvider>
       <main className="lesson-shell" id="main-content" tabIndex={-1}>
         <header className="lesson-header">
-          <Link className="lesson-brand" href="/">
+          <a className="lesson-brand" href="/">
             <span aria-hidden="true">M</span>
             <strong>Motion Atlas</strong>
-          </Link>
+          </a>
           <nav aria-label="Lesson navigation">
-            <Link href="/learn">Course library</Link>
-            <Link href="/review">Review</Link>
-            <Link href="/account">Account</Link>
+            <a href="/learn">Course library</a>
+            <a href="/review">Review</a>
+            <a href="/account">Account</a>
           </nav>
         </header>
 
@@ -65,7 +64,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <div><dt>Reviewed</dt><dd>{lesson.lastReviewed}</dd></div>
               {lesson.minimumIOS ? <div><dt>Target</dt><dd>iOS {lesson.minimumIOS}+</dd></div> : null}
             </dl>
-            <Link href="/learn">Search all lessons</Link>
+            <a href="/learn">Search all lessons</a>
           </aside>
 
           <article className="lesson-article">
@@ -126,12 +125,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
             <nav className="lesson-sequence" aria-label="Previous and next lessons">
               {previous ? (
-                <Link href={lessonPath(previous)}><span>Previous</span><strong>{previous.title}</strong></Link>
+                <a href={lessonPath(previous)}><span>Previous</span><strong>{previous.title}</strong></a>
               ) : <span />}
               {next ? (
-                <Link href={lessonPath(next)}><span>Next</span><strong>{next.title}</strong></Link>
+                <a href={lessonPath(next)}><span>Next</span><strong>{next.title}</strong></a>
               ) : (
-                <Link href="/review"><span>Next</span><strong>Review what you learned</strong></Link>
+                <a href="/review"><span>Next</span><strong>Review what you learned</strong></a>
               )}
             </nav>
           </article>

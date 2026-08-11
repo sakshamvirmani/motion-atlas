@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { chatGPTSignInPath, getChatGPTUser } from "../chatgpt-auth";
 
 export const dynamic = "force-dynamic";
@@ -17,10 +16,10 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
 
   return (
     <main className="account-shell auth-shell" id="main-content" tabIndex={-1}>
-      <Link className="account-wordmark" href="/" aria-label="Motion Atlas home">
+      <a className="account-wordmark" href="/" aria-label="Motion Atlas home">
         <span className="wordmark-mark" aria-hidden="true">M</span>
         <span>MOTION ATLAS</span>
-      </Link>
+      </a>
 
       <section className="auth-panel" aria-labelledby="signin-title">
         <div className="auth-index">ACCOUNT / OPTIONAL</div>

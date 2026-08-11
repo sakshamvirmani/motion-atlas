@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   chatGPTSignOutPath,
   getChatGPTUser,
@@ -24,6 +23,8 @@ const learningLoop = [
   ["Retrieve", "Meet the idea again later in a different context."],
 ];
 
+const sourceRepository = "https://github.com/sakshamvirmani/motion-atlas";
+
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -48,7 +49,7 @@ export default async function Home() {
     <main className="landing-page" id="main-content" tabIndex={-1}>
       <span className="scroll-progress" aria-hidden="true" />
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="Motion Atlas home">
+        <a className="wordmark" href="/" aria-label="Motion Atlas home">
           <span className="wordmark-mark" aria-hidden="true">
             M
           </span>
@@ -57,7 +58,7 @@ export default async function Home() {
             <br />
             ATLAS
           </span>
-        </Link>
+        </a>
 
         <nav className="primary-nav" aria-label="Primary navigation">
           <a href="#curriculum">Curriculum</a>
@@ -80,6 +81,13 @@ export default async function Home() {
               Sign in to sync
             </a>
           )}
+          <a
+            className="header-source-link"
+            href={sourceRepository}
+            aria-label="View Motion Atlas source code on GitHub"
+          >
+            GitHub
+          </a>
           <a className="header-course-link" href={coursePath}>
             Open course
             <ArrowIcon />
@@ -121,7 +129,9 @@ export default async function Home() {
           </p>
         </div>
 
-        <MotionLabPreview />
+        <div className="hero-lab-frame">
+          <MotionLabPreview />
+        </div>
       </section>
 
       <section className="truth-strip" aria-label="Course facts">
@@ -140,6 +150,49 @@ export default async function Home() {
         <div data-reveal="rise">
           <strong>$0</strong>
           <span>no paywall, trial clock, or locked chapter</span>
+        </div>
+      </section>
+
+      <section className="scroll-lab section-shell" aria-labelledby="scroll-lab-title">
+        <div className="scroll-lab-copy">
+          <h2 id="scroll-lab-title">Scroll through the anatomy of one change.</h2>
+          <p>
+            The orange object keeps its identity while state, timing, and
+            geometry change. The page scroll is the input, so you can inspect
+            every part of the journey instead of watching a canned video.
+          </p>
+          <ol>
+            <li>
+              <span>State</span>
+              <strong>Choose the destination.</strong>
+            </li>
+            <li>
+              <span>Timing</span>
+              <strong>Describe the route through time.</strong>
+            </li>
+            <li>
+              <span>Identity</span>
+              <strong>Keep one object understandable.</strong>
+            </li>
+          </ol>
+        </div>
+
+        <div className="scroll-lab-stage" aria-label="Scroll-driven motion demonstration">
+          <div className="scroll-lab-grid" aria-hidden="true" />
+          <span className="scroll-lab-state scroll-lab-state-start">STATE 0</span>
+          <span className="scroll-lab-state scroll-lab-state-end">STATE 1</span>
+          <span className="scroll-lab-ghost" aria-hidden="true" />
+          <span className="scroll-lab-pulse" aria-hidden="true" />
+          <span className="scroll-lab-object" aria-hidden="true">M</span>
+          <div className="scroll-lab-readout">
+            <span>SWIFTUI STATE TRANSITION</span>
+            <code>withAnimation(.spring(duration: 0.65)) {"{"} isExpanded.toggle() {"}"}</code>
+          </div>
+          <div className="scroll-lab-measures" aria-hidden="true">
+            <span>POSITION</span>
+            <span>SCALE</span>
+            <span>SHAPE</span>
+          </div>
         </div>
       </section>
 
@@ -337,6 +390,12 @@ export default async function Home() {
           <a href="#method">Learning method</a>
           <a href="#standards">Quality standard</a>
           <a href={coursePath}>Current course</a>
+          <a
+            className="footer-source-link"
+            href={sourceRepository}
+          >
+            GitHub source
+          </a>
           <a href="/sources">Sources &amp; licenses</a>
           <a href="/privacy">Privacy</a>
         </nav>

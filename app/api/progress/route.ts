@@ -5,6 +5,7 @@ import {
   validateProgressInput,
 } from "@/lib/progress";
 import { readProgress, writeProgress } from "@/lib/progress-store";
+import { checkAccountRateLimit, rateLimitedResponse } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,14 @@ export async function POST(request: Request) {
   if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
     return Response.json({ error: "Use application/json." }, { status: 415 });
   }
+
+  const rateLimit = await checkAccountRateLimit({
+    userId: user.userId,
+    action: "progress-write",
+    limit: 180,
+    windowMs: 5 * 60 * 1_000,
+  });
+  if (!rateLimit.allowed) return rateLimitedResponse(rateLimit);
 
   const declaredLength = Number(request.headers.get("content-length") ?? 0);
   if (declaredLength > MAX_PROGRESS_BODY_BYTES) {

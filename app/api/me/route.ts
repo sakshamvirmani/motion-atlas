@@ -17,7 +17,6 @@ export async function GET() {
       authenticated: true,
       accountKey,
       displayName: user.displayName,
-      email: user.email,
     },
     { headers: { "cache-control": "no-store" } },
   );

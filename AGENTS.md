@@ -12,6 +12,16 @@ The public site is hosted with OpenAI Sites:
 - Public URL: `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
 - Access mode: public
 
+The public source repository is `https://github.com/sakshamvirmani/motion-atlas`.
+Keep a visible source link in both the landing header and footer. The social
+preview asset is `public/og.png` at 1200x630 and must remain paired with the
+Open Graph and `summary_large_image` metadata in `app/layout.tsx`. The pinned
+vinext runtime does not currently emit its Metadata API output in rendered HTML,
+so the root layout owns explicit server-rendered social tags and keeps an empty
+Metadata API hook to satisfy the runtime's metadata route slots without duplicate
+tags or browser warnings. Recheck both paths before replacing this compatibility
+layer during a vinext upgrade.
+
 Never put credentials, auth client secrets, or private user data in source files or public output.
 
 ## Resume order
@@ -43,9 +53,16 @@ Native guest progress uses `motion-atlas-native-v1` and defensively reads the
 legacy `motion-atlas-v2` state. Signed-in progress uses Sites identity, a
 per-account local cache, and D1. Current sync includes lesson position,
 completion, quiz selections, bookmarks, self-assessed mastery stages,
-server-calculated review dates, and bounded lab controls. The public production
-account and two-context convergence proof remains open until the owner signs in
-through the real Sites flow.
+server-calculated review dates, and bounded lab controls. The owner has completed
+the real Sites sign-in flow, and a write/reload/direct-account-read matrix proves
+same-context production D1 persistence. An independent two-context convergence
+check must still be recorded before cross-device sync is called proven.
+
+The current Sites/vinext production runtime has a confirmed `next/link` client
+compatibility failure: its Link chunk throws during hydration and leaves real
+routes visibly unresponsive. Use ordinary semantic `<a href>` navigation for
+this project until the runtime is upgraded and the production Link path is
+explicitly re-verified.
 
 The original copy under `/Users/sakshamvirmani/Developer/html-doc/` is outside this repository and must not be edited without explicit scope and filesystem approval.
 
@@ -103,7 +120,9 @@ The design benchmark includes the current Recent website gallery. Borrow princip
 - Support large text without clipping or hidden controls.
 - Respect `prefers-reduced-motion` on the web and teach `accessibilityReduceMotion` in SwiftUI.
 - Do not use color or motion as the only carrier of meaning.
-- Avoid mandatory autoplay. Give learners play, pause, reset, and replay controls.
+- Ambient autoplay may be used for a short landing-page demonstration when it
+  pauses on pointer hover and keyboard focus, exposes a replay control, and
+  becomes static under Reduced Motion. Lesson labs remain learner-controlled.
 - Target WCAG 2.2 AA for the website.
 - Keep primary lesson content readable before client JavaScript hydrates.
 - Avoid full-page scroll hijacking and long main-thread animation work.
@@ -125,6 +144,7 @@ Run from the repository root:
 
 ```sh
 npm run dev
+npm run typecheck
 npm run lint
 npm test
 ```

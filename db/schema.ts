@@ -65,3 +65,15 @@ export const lessonLearningState = sqliteTable(
     ),
   ],
 );
+
+export const mutationRateLimits = sqliteTable(
+  "mutation_rate_limits",
+  {
+    userId: text("user_id").notNull(),
+    action: text("action").notNull(),
+    windowStartedAt: integer("window_started_at").notNull(),
+    requestCount: integer("request_count").notNull().default(1),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.userId, table.action] })],
+);
