@@ -346,4 +346,8 @@ test("ships one typed registry with stable native lesson routes", async () => {
   const robots = await robotsResponse.text();
   assert.match(robots, /Disallow: \/api\//);
   assert.match(robots, /Sitemap: https:\/\/motion-atlas-swiftui-course\.saksham-virmani\.chatgpt\.site\/sitemap\.xml/);
+
+  const faviconResponse = await render({}, "/favicon.ico");
+  assert.equal(faviconResponse.status, 307);
+  assert.equal(faviconResponse.headers.get("location"), "http://localhost/favicon.svg");
 });
