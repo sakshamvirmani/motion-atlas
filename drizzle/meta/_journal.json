@@ -8,6 +8,13 @@
       "when": 1786426139073,
       "tag": "0000_yummy_abomination",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786437050965,
+      "tag": "0001_chilly_karen_page",
+      "breakpoints": true
     }
   ]
 }

@@ -8,7 +8,7 @@ export default async function AccountPage() {
   const user = await requireChatGPTUser("/account");
 
   return (
-    <main className="account-shell">
+    <main className="account-shell" id="main-content" tabIndex={-1}>
       <header className="account-header">
         <Link className="account-wordmark" href="/" aria-label="Motion Atlas home">
           <span className="wordmark-mark" aria-hidden="true">M</span>

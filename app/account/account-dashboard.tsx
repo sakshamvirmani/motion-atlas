@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { useCurrentTime } from "@/app/components/learning/use-current-time";
 
 type Progress = {
   current: number;
   completed: number[];
   quizAnswers: Record<string, number>;
+  learning: Record<string, {
+    bookmarked: boolean;
+    masteryStage: number;
+    reviewDueAt: number | null;
+  }>;
   revision: number;
   updatedAt: number | null;
 };
@@ -15,6 +22,7 @@ export default function AccountDashboard() {
   const [status, setStatus] = useState("Loading your progress…");
   const [confirmation, setConfirmation] = useState("");
   const [deleting, setDeleting] = useState(false);
+  const now = useCurrentTime();
 
   useEffect(() => {
     let cancelled = false;
@@ -42,6 +50,11 @@ export default function AccountDashboard() {
     [progress],
   );
   const percentage = Math.round((coreCompleted / 48) * 100);
+  const learningRecords = Object.values(progress?.learning ?? {});
+  const bookmarks = learningRecords.filter((record) => record.bookmarked).length;
+  const dueReviews = learningRecords.filter(
+    (record) => record.reviewDueAt !== null && now > 0 && record.reviewDueAt <= now,
+  ).length;
 
   async function deleteAllProgress() {
     if (confirmation !== "DELETE MY PROGRESS") return;
@@ -55,7 +68,7 @@ export default function AccountDashboard() {
       });
       const body = (await response.json()) as { error?: string };
       if (!response.ok) throw new Error(body.error || "Progress could not be deleted.");
-      setProgress({ current: 1, completed: [], quizAnswers: {}, revision: 0, updatedAt: null });
+      setProgress({ current: 1, completed: [], quizAnswers: {}, learning: {}, revision: 0, updatedAt: null });
       setConfirmation("");
       setStatus("Your account progress has been permanently deleted.");
     } catch (error) {
@@ -74,9 +87,9 @@ export default function AccountDashboard() {
         <div>
           <p className="account-kicker">COURSE PROGRESS</p>
           <h2 id="progress-heading">{coreCompleted} of 48 iOS lessons completed</h2>
-          <p>Current position: lesson {progress?.current ?? 1}. Quiz answers saved: {Object.keys(progress?.quizAnswers ?? {}).length}. Optional web lessons completed: {webCompleted} of 8.</p>
+          <p>Current position: lesson {progress?.current ?? 1}. Quiz answers saved: {Object.keys(progress?.quizAnswers ?? {}).length}. Bookmarks: {bookmarks}. Reviews due: {dueReviews}. Optional web lessons completed: {webCompleted} of 8.</p>
           <p className="sync-readout" role="status"><i aria-hidden="true" />{status}</p>
-          <a className="button button-primary" href="/motion-atlas-course.html">Continue learning</a>
+          <Link className="button button-primary" href="/learn">Continue learning</Link>
         </div>
       </section>
 
@@ -84,7 +97,7 @@ export default function AccountDashboard() {
         <article>
           <p className="account-kicker">YOUR COPY</p>
           <h2>Export progress</h2>
-          <p>Download a readable JSON file containing your course position, completions, and quiz selections.</p>
+          <p>Download a readable JSON file containing your course position, completions, quiz selections, bookmarks, mastery stages, review dates, and saved lab controls.</p>
           <a className="button button-secondary" href="/api/progress/export">Download my data</a>
         </article>
 

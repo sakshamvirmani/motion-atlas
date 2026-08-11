@@ -1,8 +1,10 @@
+import Link from "next/link";
 import {
   chatGPTSignOutPath,
   getChatGPTUser,
 } from "./chatgpt-auth";
 import MotionLabPreview from "./components/motion-lab-preview";
+import { iosLessons, lessons, webLessons } from "@/content/course";
 
 const curriculum = [
   ["00", "Begin from zero", "Apps, Xcode, Swift, and the animated-SVG myth"],
@@ -40,13 +42,13 @@ function CheckIcon() {
 
 export default async function Home() {
   const user = await getChatGPTUser();
-  const coursePath = "/motion-atlas-course.html";
+  const coursePath = "/learn";
 
   return (
-    <main className="landing-page" id="top">
+    <main className="landing-page" id="main-content" tabIndex={-1}>
       <span className="scroll-progress" aria-hidden="true" />
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Motion Atlas home">
+        <Link className="wordmark" href="/" aria-label="Motion Atlas home">
           <span className="wordmark-mark" aria-hidden="true">
             M
           </span>
@@ -55,7 +57,7 @@ export default async function Home() {
             <br />
             ATLAS
           </span>
-        </a>
+        </Link>
 
         <nav className="primary-nav" aria-label="Primary navigation">
           <a href="#curriculum">Curriculum</a>
@@ -74,7 +76,7 @@ export default async function Home() {
               </a>
             </>
           ) : (
-            <a className="header-link" href="/signin?return_to=%2Fmotion-atlas-course.html">
+            <a className="header-link" href="/signin?return_to=%2Flearn">
               Sign in to sync
             </a>
           )}
@@ -124,19 +126,19 @@ export default async function Home() {
 
       <section className="truth-strip" aria-label="Course facts">
         <div data-reveal="rise">
-          <strong>48</strong>
+          <strong>{iosLessons.length}</strong>
           <span>iOS and SwiftUI lessons available now</span>
         </div>
         <div data-reveal="rise">
-          <strong>56</strong>
+          <strong>{lessons.length}</strong>
           <span>knowledge checks with explanations</span>
         </div>
         <div data-reveal="rise">
-          <strong>08</strong>
+          <strong>{String(webLessons.length).padStart(2, "0")}</strong>
           <span>optional web-motion lessons, clearly separate</span>
         </div>
         <div data-reveal="rise">
-          <strong>£0</strong>
+          <strong>$0</strong>
           <span>no paywall, trial clock, or locked chapter</span>
         </div>
       </section>
@@ -203,18 +205,18 @@ export default async function Home() {
           <p className="section-index">02 / THE REQUIRED PATH</p>
           <h2 id="curriculum-title">Learn the system, not isolated tricks.</h2>
           <p>
-            The rebuilt path is organized as 60 short required lessons, with
-            deeper electives available when you need them. The current 48-lesson
-            iOS course remains fully open while that verified curriculum is built.
+            The full current library now has stable lesson URLs, search, saved
+            lessons, mastery levels, and a transparent review queue. The deeper
+            60-lesson rebuild remains a separately verified expansion.
           </p>
           <a className="text-link" href={coursePath}>
             Explore the current course <ArrowIcon />
           </a>
         </div>
 
-        <ol className="curriculum-list" data-reveal="rise">
+        <ol className="curriculum-list">
           {curriculum.map(([number, title, description]) => (
-            <li key={number} data-reveal="slide">
+            <li key={number}>
               <span className="curriculum-number">{number}</span>
               <div>
                 <h3>{title}</h3>
@@ -340,7 +342,9 @@ export default async function Home() {
         </nav>
         <p className="footer-credit">
           <span>Free to learn.</span>
-          <span>Made by Saksham Virmani.</span>
+          <a href="https://sakshamvirmani.com" target="_blank" rel="noreferrer">
+            Made by Saksham Virmani.
+          </a>
         </p>
       </footer>
     </main>

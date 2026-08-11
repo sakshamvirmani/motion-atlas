@@ -16,7 +16,7 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
   const returnTo = requestedReturn || "/motion-atlas-course.html";
 
   return (
-    <main className="account-shell auth-shell">
+    <main className="account-shell auth-shell" id="main-content" tabIndex={-1}>
       <Link className="account-wordmark" href="/" aria-label="Motion Atlas home">
         <span className="wordmark-mark" aria-hidden="true">M</span>
         <span>MOTION ATLAS</span>

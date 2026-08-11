@@ -2,7 +2,7 @@
 
 Except where a page, file, or source-ledger entry says otherwise, the original
 Motion Atlas course prose, diagrams, exercises, and non-code visual assets are
-original visual assets are copyright 2026 Saksham Virmani and licensed under
+copyright 2026 Saksham Virmani and licensed under
 the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
 
 You may share and adapt that original educational material, including for

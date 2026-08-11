@@ -30,7 +30,7 @@ const sourceFamilies = [
 
 export default function SourcesPage() {
   return (
-    <main className="account-shell document-shell sources-shell">
+    <main className="account-shell document-shell sources-shell" id="main-content" tabIndex={-1}>
       <Link className="account-wordmark" href="/" aria-label="Motion Atlas home">
         <span className="wordmark-mark" aria-hidden="true">M</span>
         <span>MOTION ATLAS</span>

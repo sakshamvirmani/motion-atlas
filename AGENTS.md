@@ -27,18 +27,25 @@ Update `docs/STATUS.md` whenever a milestone starts, completes, or changes. Reco
 
 ## Current architecture and migration rule
 
-The native root route is a server-rendered product landing page. The current
-course remains a standalone document at `public/motion-atlas-course.html` and
-contains 48 core iOS/SwiftUI lessons plus eight optional web-motion lessons,
-with a quiz and interactive lab type for each. The standalone document is the
-migration source, not the desired long-term architecture.
+The native root route is a server-rendered product landing page. The canonical
+course registry is `content/course.json`, validated and exported by
+`content/course.ts`. It drives landing counts, `/learn`, all 56 stable
+`/learn/[lesson]` routes, search, modules, quizzes, labs, sources, and review.
+The registry contains 48 core iOS/SwiftUI lessons plus eight optional web-motion
+lessons.
 
-Guest progress stays under `motion-atlas-v2`. Signed-in progress uses the Sites
-identity plus D1 and a per-account local cache. The current compatibility sync
-covers lesson position, completion, and quiz answers; do not imply that planned
-bookmarks, lab state, mastery, or spaced review are already stored.
+`public/motion-atlas-course.html` is a read-only compatibility and migration
+source while native lab and legacy-progress parity are verified. Never edit it
+as a second content source. `scripts/extract-legacy-course.mjs` exists for the
+recorded extraction workflow, not for routine two-way synchronization.
 
-Move the course to native app routes and typed content. Do not maintain two editable course sources. After migration, one canonical lesson dataset must drive landing-page counts, the curriculum, lesson routes, search, progress, and review scheduling.
+Native guest progress uses `motion-atlas-native-v1` and defensively reads the
+legacy `motion-atlas-v2` state. Signed-in progress uses Sites identity, a
+per-account local cache, and D1. Current sync includes lesson position,
+completion, quiz selections, bookmarks, self-assessed mastery stages,
+server-calculated review dates, and bounded lab controls. The public production
+account and two-context convergence proof remains open until the owner signs in
+through the real Sites flow.
 
 The original copy under `/Users/sakshamvirmani/Developer/html-doc/` is outside this repository and must not be edited without explicit scope and filesystem approval.
 

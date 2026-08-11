@@ -1,11 +1,18 @@
 import { asc, eq } from "drizzle-orm";
 import type { ChatGPTUser } from "@/app/chatgpt-auth";
 import { getD1, getDb } from "@/db";
-import { learnerProfiles, lessonProgress, quizProgress } from "@/db/schema";
+import {
+  learnerProfiles,
+  lessonLearningState,
+  lessonProgress,
+  quizProgress,
+} from "@/db/schema";
 import {
   emptyProgress,
   mergeProgress,
   PROGRESS_SCHEMA_VERSION,
+  type LabState,
+  type MasteryStage,
   type ProgressInput,
   type ProgressSnapshot,
 } from "./progress";
@@ -54,13 +61,25 @@ async function initializeProgressSchema() {
     )`),
     d1.prepare(`CREATE INDEX IF NOT EXISTS idx_quiz_progress_user_updated
       ON quiz_progress (user_id, updated_at)`),
+    d1.prepare(`CREATE TABLE IF NOT EXISTS lesson_learning_state (
+      user_id TEXT NOT NULL,
+      lesson_id INTEGER NOT NULL,
+      bookmarked INTEGER DEFAULT 0 NOT NULL,
+      mastery_stage INTEGER DEFAULT 0 NOT NULL,
+      review_due_at INTEGER,
+      lab_state TEXT DEFAULT '{}' NOT NULL,
+      updated_at INTEGER NOT NULL,
+      PRIMARY KEY (user_id, lesson_id)
+    )`),
+    d1.prepare(`CREATE INDEX IF NOT EXISTS idx_lesson_learning_user_review
+      ON lesson_learning_state (user_id, review_due_at)`),
   ]);
 }
 
 export async function readProgress(userId: string): Promise<ProgressSnapshot> {
   await ensureProgressSchema();
   const db = getDb();
-  const [profile, lessons, quizzes] = await Promise.all([
+  const [profile, lessons, quizzes, learningRows] = await Promise.all([
     db
       .select()
       .from(learnerProfiles)
@@ -79,6 +98,18 @@ export async function readProgress(userId: string): Promise<ProgressSnapshot> {
       .from(quizProgress)
       .where(eq(quizProgress.userId, userId))
       .orderBy(asc(quizProgress.lessonId)),
+    db
+      .select({
+        lessonId: lessonLearningState.lessonId,
+        bookmarked: lessonLearningState.bookmarked,
+        masteryStage: lessonLearningState.masteryStage,
+        reviewDueAt: lessonLearningState.reviewDueAt,
+        labState: lessonLearningState.labState,
+        updatedAt: lessonLearningState.updatedAt,
+      })
+      .from(lessonLearningState)
+      .where(eq(lessonLearningState.userId, userId))
+      .orderBy(asc(lessonLearningState.lessonId)),
   ]);
 
   const row = profile[0];
@@ -90,6 +121,18 @@ export async function readProgress(userId: string): Promise<ProgressSnapshot> {
     completed: lessons.map((lesson) => lesson.lessonId),
     quizAnswers: Object.fromEntries(
       quizzes.map((quiz) => [String(quiz.lessonId), quiz.selectedAnswer]),
+    ),
+    learning: Object.fromEntries(
+      learningRows.map((record) => [
+        String(record.lessonId),
+        {
+          bookmarked: record.bookmarked,
+          masteryStage: record.masteryStage as MasteryStage,
+          reviewDueAt: record.reviewDueAt,
+          labState: parseLabState(record.labState),
+          updatedAt: record.updatedAt,
+        },
+      ]),
     ),
     revision: row.revision,
     updatedAt: row.updatedAt,
@@ -135,6 +178,7 @@ export async function writeProgress(
       ),
     d1.prepare("DELETE FROM lesson_progress WHERE user_id = ?").bind(user.userId),
     d1.prepare("DELETE FROM quiz_progress WHERE user_id = ?").bind(user.userId),
+    d1.prepare("DELETE FROM lesson_learning_state WHERE user_id = ?").bind(user.userId),
   ];
 
   for (const lessonId of merged.completed) {
@@ -161,6 +205,26 @@ export async function writeProgress(
     );
   }
 
+  for (const [lessonId, record] of Object.entries(merged.learning)) {
+    statements.push(
+      d1
+        .prepare(
+          `INSERT INTO lesson_learning_state
+            (user_id, lesson_id, bookmarked, mastery_stage, review_due_at, lab_state, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .bind(
+          user.userId,
+          Number(lessonId),
+          record.bookmarked ? 1 : 0,
+          record.masteryStage,
+          record.reviewDueAt,
+          JSON.stringify(record.labState),
+          record.updatedAt,
+        ),
+    );
+  }
+
   await d1.batch(statements);
 
   return {
@@ -177,14 +241,26 @@ export async function deleteProgress(userId: string) {
   await ensureProgressSchema();
   const d1 = getD1();
   const results = await d1.batch([
+    d1.prepare("DELETE FROM lesson_learning_state WHERE user_id = ?").bind(userId),
     d1.prepare("DELETE FROM quiz_progress WHERE user_id = ?").bind(userId),
     d1.prepare("DELETE FROM lesson_progress WHERE user_id = ?").bind(userId),
     d1.prepare("DELETE FROM learner_profiles WHERE user_id = ?").bind(userId),
   ]);
 
   return {
-    quizAnswers: Number(results[0]?.meta?.changes ?? 0),
-    lessons: Number(results[1]?.meta?.changes ?? 0),
-    profiles: Number(results[2]?.meta?.changes ?? 0),
+    learning: Number(results[0]?.meta?.changes ?? 0),
+    quizAnswers: Number(results[1]?.meta?.changes ?? 0),
+    lessons: Number(results[2]?.meta?.changes ?? 0),
+    profiles: Number(results[3]?.meta?.changes ?? 0),
   };
+}
+
+function parseLabState(value: string): LabState {
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    return parsed as LabState;
+  } catch {
+    return {};
+  }
 }

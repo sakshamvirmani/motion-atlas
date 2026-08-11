@@ -6,7 +6,7 @@ export default function ErrorPage({ error, reset }: { error: Error & { digest?: 
   useEffect(() => { console.error(error); }, [error]);
 
   return (
-    <main className="account-shell empty-state-shell">
+    <main className="account-shell empty-state-shell" id="main-content" tabIndex={-1}>
       <p className="section-index">RECOVERY / SOMETHING INTERRUPTED</p>
       <h1>The page could not finish loading.</h1>
       <p>Your progress is not changed by this screen. Try the page again, or return to the course.</p>

@@ -1,16 +1,33 @@
 # Motion Atlas
 
-Motion Atlas is a free, beginner-first learning product for building purposeful,
-accessible iOS animation with SwiftUI. It combines short lessons, live motion
-instruments, prediction, retrieval practice, vibe-coding workflows, and
-production checks. An optional, visibly separate track covers web scroll motion,
-Motion for React, Framer concepts, and GSAP.
+Motion Atlas is a free, beginner-first course for learning purposeful,
+accessible iOS animation with SwiftUI. It starts before syntax, then combines
+plain-language lessons, live motion labs, retrieval practice, spaced review,
+and production checks.
 
-The public course is hosted with OpenAI Sites. Anyone can learn as a guest.
-Optional Sign in with ChatGPT ties progress to a Sites identity and persists it
-in Cloudflare D1.
+**[Open the live course](https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site)**
 
-## Start locally
+![Motion Atlas course preview](public/og.png)
+
+## What is included
+
+- 48 core iOS and SwiftUI lessons, from absolute beginner concepts to shipping.
+- Eight optional web-motion lessons kept separate from iOS completion.
+- Stable, shareable lesson URLs generated from one typed course registry.
+- Live labs with saved controls and an explicit Reduce Motion simulation.
+- Search, bookmarks, honest completion state, mastery stages, and spaced review.
+- Guest-first progress stored on the device.
+- Optional Sign in with ChatGPT and Cloudflare D1 account sync on OpenAI Sites.
+- Export and deletion controls for account-linked learning data.
+- An explicit source policy: external work is reference-only unless exact reuse
+  permission and attribution are recorded.
+
+The current 56 lessons form a real, usable foundation. The deeper lesson-by-
+lesson rebuild, Swift compile matrix, and real two-device account proof remain
+tracked work rather than hidden behind a “finished” claim. See
+[`docs/STATUS.md`](docs/STATUS.md).
+
+## Run locally
 
 Requires Node.js `>=22.13.0`.
 
@@ -21,7 +38,12 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Verification
+The public learning path works without an account. Sites identity headers and
+the production D1 binding are available only in the hosted environment; local
+requests therefore behave as a guest unless you deliberately provide a test
+environment.
+
+## Verify a change
 
 ```bash
 npm run lint
@@ -30,9 +52,9 @@ npm test
 npm audit --omit=dev
 ```
 
-`npm test` builds the production worker and checks rendered product content,
-auth states, course-script syntax, progress validation and merging, D1 schema,
-privacy, and licensing artifacts.
+`npm test` creates a production worker and checks product content, native
+routes, progress validation and merging, the D1 schema, privacy, and licensing
+artifacts.
 
 After changing `db/schema.ts`, generate and inspect a migration:
 
@@ -40,39 +62,50 @@ After changing `db/schema.ts`, generate and inspect a migration:
 npm run db:generate
 ```
 
-## Project map
+## Architecture
 
-- `app/`: landing, sign-in, account, privacy, sources, and API routes.
-- `public/motion-atlas-course.html`: current 56-lesson migration source.
-- `db/` and `drizzle/`: account-progress schema and migrations.
-- `docs/MASTER_PLAN.md`: durable execution plan.
-- `docs/STATUS.md`: current verified milestone and resume pointer.
-- `docs/CONTENT_STANDARD.md`: lesson publication gate.
-- `docs/SOURCE_POLICY.md` and `docs/SOURCE_LEDGER.md`: originality and reuse controls.
-- `docs/DATA_AUTH_ARCHITECTURE.md`: identity, import, sync, export, delete, and abuse-prevention design.
+- `content/course.json`: canonical structured course records.
+- `content/course.ts`: runtime validation and typed accessors.
+- `app/learn/`: searchable course library and stable lesson routes.
+- `app/review/`: transparent spaced-retrieval queue.
+- `app/components/learning/`: local-first guest and account sync client.
+- `db/`, `drizzle/`, and `lib/progress-store.ts`: D1 learning persistence.
+- `public/motion-atlas-course.html`: temporary compatibility and migration
+  source while native-route parity is verified.
+- `docs/MASTER_PLAN.md`: durable product plan.
+- `docs/CONTENT_STANDARD.md`: publication gate for every lesson.
+- `docs/SOURCE_POLICY.md` and `docs/SOURCE_LEDGER.md`: originality and reuse
+  controls.
 
-The standalone course remains the active learning surface while its content and
-labs move into typed native routes. It must not become a second editable source
-after that migration is complete.
+The standalone course is not a second editable source. New product work should
+flow through the typed registry and native routes.
 
-## Identity and data
+## Identity and learner data
 
-- Guest progress stays in versioned browser storage.
-- Sign in with ChatGPT is optional and handled by the Sites dispatcher.
-- Every server write derives ownership from trusted Sites identity headers.
-- Account progress uses a D1 `DB` binding.
-- Guest import merges completed work rather than replacing it.
-- Learners can export and permanently delete account progress.
-- No Motion Atlas password, advertising profile, or public learner profile exists.
+- No account is required to learn.
+- Sign in with ChatGPT is optional and handled by the Sites platform.
+- Server writes derive ownership from trusted Sites identity headers, never a
+  client-supplied user ID.
+- Account storage contains learning state, not passwords, payment data, public
+  profiles, or free-form private notes.
+- Guest import merges completed work instead of replacing it.
+- Learners can export or permanently delete their Motion Atlas progress.
 
-See `docs/DOMAIN_AUTH_DECISIONS.md` for why other identity providers and a
-shorter hostname are separate future decisions.
+The mastery labels are transparent self-assessment and practice signals, not a
+certificate or server-verified credential.
 
-## Licensing
+## Contributing
+
+Issues and focused pull requests are welcome. Read
+[`CONTRIBUTING.md`](CONTRIBUTING.md) before changing lessons, examples, or
+visuals. In particular, do not paste tutorial prose, code, screenshots, or
+animation assets from another source merely because they are publicly visible.
+
+## License
 
 - Original software and code samples: [MIT](LICENSE).
 - Original non-code course content: [CC BY 4.0](CONTENT_LICENSE.md).
-- Third-party material remains under its own terms and is excluded from both
-  grants unless an exact ledger entry says otherwise.
+- Third-party names, linked material, dependencies, and any ledgered external
+  work remain under their own terms and are excluded from those grants.
 
-Copyright 2026 Saksham Virmani.
+Made by [Saksham Virmani](https://sakshamvirmani.com).

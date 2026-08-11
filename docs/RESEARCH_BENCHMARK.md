@@ -123,20 +123,23 @@ The [Recent websites gallery](https://recent.design/websites) was inspected dire
 
 Motion Atlas should apply those principles to a course catalog and animation gallery while remaining original. The current editorial instrument-panel identity is more appropriate than copying Recent's monochrome gallery shell.
 
-## Confirmed gaps in the current Motion Atlas build
+The [Beautiful UI reference](https://beautiful-ui-five.vercel.app/) was also
+inspected on 2026-08-11. Its useful product-level ideas were compact navigation,
+fast access to working component examples, and treating the example itself as
+the evidence. Motion Atlas applies those abstract principles through its own
+course rail, live labs, and lesson hierarchy. No page composition, code, copy,
+or media was reused, and no reuse license was assumed.
+
+## Confirmed gaps after the native-route foundation
 
 | Gap | Evidence | Priority |
 | --- | --- | --- |
-| Sparse technical sourcing | 12 of 56 lesson declarations contain explicit source arrays. | Critical |
-| Weak information architecture | The entire course is one standalone HTML file in an iframe at the root URL. | Critical |
-| No cloud progress | Only `motion-atlas-v2` local storage is used; D1 is unbound. | Critical |
-| Tests do not test the product | Both tests still assert the deleted starter skeleton. | Critical |
-| No dedicated public landing path | Visitors enter directly into the lesson instrument without a clear promise, outcomes, curriculum preview, or account choice. | High |
-| No stable lesson URLs | Individual lessons are not first-class routes for sharing, search, metadata, or recovery. | High |
-| Content breadth is ahead of depth | Every lesson has a quiz and lab type, but advanced APIs, availability, failures, performance, and compile validation are uneven. | High |
-| Web bonus can blur the iOS promise | Web motion lessons sit in the same 56-lesson completion count. | High |
-| No spaced review engine | Review selects completed content but does not schedule concepts over time. | Medium |
-| Source duplication | The hosted HTML and the separate Developer copy can drift. | Medium |
+| Content breadth is still ahead of verified depth | The 56 native routes now expose the existing lesson records, but advanced explanations, worked-example fading, transfer tasks, API-specific failures, and per-snippet compile proof remain uneven. | Critical |
+| Swift compile matrix is not complete | Swift snippets are rendered from the canonical records, but the full stable-Xcode/iOS target matrix has not yet been run and published. | Critical |
+| Production account convergence is unproven | D1 storage and optional Sites identity are implemented; one real account in two independent browser or device contexts still requires owner authentication. | High |
+| Review model is lesson-level | Transparent mastery stages and due dates work, but the deeper concept graph, varied prompts, and wrong-answer near-term retry planner remain future learning-engine work. | High |
+| Compatibility source still exists | `public/motion-atlas-course.html` remains available until native route, lab, and legacy progress parity are fully verified. It is not a second editable source. | Medium |
+| Mobile and accessibility proof is partial | Semantic landmarks, labels, focus styling, skip navigation, reduced-motion CSS, and calibrated 390-pixel overflow checks exist; physical-device, screen-reader, large-text, and OS-level Reduce Motion passes remain open. | Medium |
 
 ## Competitive product standard
 

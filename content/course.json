@@ -1,0 +1,2859 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "public/motion-atlas-course.html",
+  "generatedAt": "2026-08-11",
+  "modules": [
+    {
+      "id": "start",
+      "title": "Start here",
+      "range": [
+        1,
+        4
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "apps",
+      "title": "iOS app foundations",
+      "range": [
+        5,
+        11
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "code",
+      "title": "How Swift thinks",
+      "range": [
+        12,
+        19
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "motion",
+      "title": "Motion foundations",
+      "range": [
+        20,
+        29
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "swiftui",
+      "title": "SwiftUI motion workshop",
+      "range": [
+        30,
+        37
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "vibe",
+      "title": "Vibe-code studio",
+      "range": [
+        38,
+        44
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "ship",
+      "title": "Ship with confidence",
+      "range": [
+        45,
+        48
+      ],
+      "track": "ios"
+    },
+    {
+      "id": "web",
+      "title": "Web motion bonus",
+      "range": [
+        49,
+        56
+      ],
+      "track": "web"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Animation",
+      "definition": "A visible change from one state or value to another over time."
+    },
+    {
+      "term": "API",
+      "definition": "A defined way for one piece of software to use capabilities provided by another."
+    },
+    {
+      "term": "App",
+      "definition": "A packaged program with code and resources that responds to events and manages state."
+    },
+    {
+      "term": "App lifecycle",
+      "definition": "The changing conditions of an app, such as active, inactive, and background."
+    },
+    {
+      "term": "Async",
+      "definition": "Work that can suspend while waiting so other work can continue."
+    },
+    {
+      "term": "Await",
+      "definition": "A marker showing where an async function may suspend until a result is ready."
+    },
+    {
+      "term": "Binding",
+      "definition": "A read-write connection to a value owned by another source of truth."
+    },
+    {
+      "term": "Boolean",
+      "definition": "A value that is either true or false."
+    },
+    {
+      "term": "Build",
+      "definition": "The process that compiles source and packages an app that can run."
+    },
+    {
+      "term": "Canvas",
+      "definition": "A SwiftUI drawing surface for custom immediate-mode 2D graphics."
+    },
+    {
+      "term": "Choreography",
+      "definition": "Coordination of several related movements in a purposeful sequence."
+    },
+    {
+      "term": "Compiler",
+      "definition": "Software that checks and translates source code into executable instructions."
+    },
+    {
+      "term": "Constant",
+      "definition": "A named value declared with let that cannot be reassigned."
+    },
+    {
+      "term": "Curve",
+      "definition": "A rule mapping elapsed time to visual progress."
+    },
+    {
+      "term": "Damping",
+      "definition": "The way a spring loses energy and stops oscillating."
+    },
+    {
+      "term": "Declarative UI",
+      "definition": "A style where code describes the UI for current state instead of issuing every drawing command."
+    },
+    {
+      "term": "Duration",
+      "definition": "The elapsed time between the start and finish of an animation."
+    },
+    {
+      "term": "Easing",
+      "definition": "Variation of speed over an animation’s duration."
+    },
+    {
+      "term": "Event",
+      "definition": "Something that happens, such as a tap, drag, lifecycle change, or server response."
+    },
+    {
+      "term": "Frame",
+      "definition": "One still image prepared for display as part of continuous motion."
+    },
+    {
+      "term": "FPS",
+      "definition": "Frames per second, a count of displayed frames over one second."
+    },
+    {
+      "term": "Function",
+      "definition": "A named block of work that can accept inputs and return an output."
+    },
+    {
+      "term": "Gesture",
+      "definition": "An interpreted sequence of input such as a tap, drag, press, or rotation."
+    },
+    {
+      "term": "GSAP",
+      "definition": "A JavaScript animation platform built around tweens, timelines, and optional plugins such as ScrollTrigger."
+    },
+    {
+      "term": "HIG",
+      "definition": "Apple’s Human Interface Guidelines for designing platform-appropriate experiences."
+    },
+    {
+      "term": "Identity",
+      "definition": "The stable fact that lets a framework track the same item or view through change."
+    },
+    {
+      "term": "Interpolation",
+      "definition": "Calculating intermediate values between known start and end values."
+    },
+    {
+      "term": "IntersectionObserver",
+      "definition": "A browser API that reports how an element intersects a viewport or ancestor."
+    },
+    {
+      "term": "Keyframe",
+      "definition": "A specified value at an important point within an animation timeline."
+    },
+    {
+      "term": "Lottie",
+      "definition": "A runtime that renders supported After Effects animation data exported as JSON."
+    },
+    {
+      "term": "Main actor",
+      "definition": "Swift’s isolation domain commonly used for UI state and UI work."
+    },
+    {
+      "term": "Model",
+      "definition": "A representation of product data and concepts independent of a particular drawing."
+    },
+    {
+      "term": "Motion",
+      "definition": "The current name of the library formerly commonly called Framer Motion."
+    },
+    {
+      "term": "Optional",
+      "definition": "A Swift value that either contains a wrapped value or is nil."
+    },
+    {
+      "term": "Phase",
+      "definition": "A named stage in a multi-step animation or state sequence."
+    },
+    {
+      "term": "Property",
+      "definition": "A named value belonging to a type or object, such as opacity or title."
+    },
+    {
+      "term": "Reduce Motion",
+      "definition": "A system accessibility preference requesting less potentially uncomfortable motion."
+    },
+    {
+      "term": "Rendering",
+      "definition": "Producing the visual output that matches current UI state."
+    },
+    {
+      "term": "Rive",
+      "definition": "A runtime and authoring format for vector animation and interactive state machines."
+    },
+    {
+      "term": "Scene",
+      "definition": "A SwiftUI-managed presentation instance, such as an app window."
+    },
+    {
+      "term": "Scroll-linked",
+      "definition": "Animation whose progress is continuously mapped to scroll progress."
+    },
+    {
+      "term": "Scroll-triggered",
+      "definition": "Animation that starts or changes when scroll crosses a boundary."
+    },
+    {
+      "term": "SF Symbols",
+      "definition": "Apple’s adaptable symbol library with supported rendering and animation effects."
+    },
+    {
+      "term": "Spring",
+      "definition": "A target-seeking physical animation model that may preserve velocity and overshoot."
+    },
+    {
+      "term": "State",
+      "definition": "Information that can change and determines current app behavior or appearance."
+    },
+    {
+      "term": "Struct",
+      "definition": "A Swift value type that groups related data and behavior."
+    },
+    {
+      "term": "SVG",
+      "definition": "Scalable Vector Graphics, an XML-based web vector format. It is not required for SwiftUI animation."
+    },
+    {
+      "term": "Swift",
+      "definition": "Apple’s programming language used for iOS and other Apple-platform development."
+    },
+    {
+      "term": "SwiftUI",
+      "definition": "Apple’s declarative framework for building interfaces from state and composed views."
+    },
+    {
+      "term": "TestFlight",
+      "definition": "Apple’s service for distributing prerelease app builds to testers."
+    },
+    {
+      "term": "Timeline",
+      "definition": "An ordered representation of animation progress and its events or keyframes."
+    },
+    {
+      "term": "Transform",
+      "definition": "A presentation change such as translation, scale, or rotation."
+    },
+    {
+      "term": "Transition",
+      "definition": "The visual rule for inserting or removing a view."
+    },
+    {
+      "term": "Variable",
+      "definition": "A named value declared with var that can be reassigned."
+    },
+    {
+      "term": "Vibe coding",
+      "definition": "An iterative workflow where natural-language intent guides generated code that is run and verified."
+    },
+    {
+      "term": "View",
+      "definition": "A SwiftUI description of a piece of interface for current state."
+    },
+    {
+      "term": "WAAPI",
+      "definition": "The Web Animations API, which exposes browser animation timing and playback to JavaScript."
+    },
+    {
+      "term": "Xcode",
+      "definition": "Apple’s development environment for editing, building, testing, profiling, and shipping apps."
+    }
+  ],
+  "lessons": [
+    {
+      "id": 1,
+      "slug": "welcome-to-motion-atlas",
+      "module": "start",
+      "track": "ios",
+      "title": "Welcome to Motion Atlas",
+      "summary": "Start from absolute zero and learn by predicting, touching, explaining, and building.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "learning",
+      "body": {
+        "mentalModel": "Understanding is not how familiar a page looks. It is whether you can predict what will happen, explain why, and change the result.",
+        "conceptHtml": "<p>You do not need to know coding vocabulary yet. An app is simply a set of screens and rules that respond to people. Animation is one kind of response: a visible change shown over time.</p><p>This course has <strong>48 core iOS and SwiftUI lessons</strong>, followed by an optional <strong>8-lesson web-motion track</strong>. Work in order through lesson 20, then revisit any workshop as you build.</p>",
+        "explanationHtml": "<p>Each lesson follows the same memory-friendly loop: first predict, then experiment, name what happened, see the code, retrieve the idea without looking, and use it in a tiny build. That turns passive recognition into usable knowledge.</p>",
+        "practiceHtml": "<p>Choose a learning promise in the instrument above. A realistic first rhythm is 20 to 35 minutes, four days per week. Stop while you can still explain the main idea in one sentence.</p>",
+        "teachBack": "Explain why touching an example teaches more than only watching a video."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which action builds the strongest usable memory?",
+        "answers": [
+          "Re-read five times",
+          "Predict, try, then explain",
+          "Copy code without changing it"
+        ],
+        "correctIndex": 1,
+        "explanation": "Prediction and retrieval force your brain to reconstruct the idea, which makes it easier to use later."
+      },
+      "sources": [
+        {
+          "label": "Karpicke & Blunt: Retrieval practice study",
+          "url": "https://www.science.org/doi/10.1126/science.1199327"
+        }
+      ],
+      "prerequisites": [],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 2,
+      "slug": "make-something-move-now",
+      "module": "start",
+      "track": "ios",
+      "title": "Make something move now",
+      "summary": "Touch the four ingredients of animation before learning any syntax.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "coreMotion",
+      "body": {
+        "mentalModel": "Animation equals a value changing from A to B over time, with a timing rule between them.",
+        "conceptHtml": "<p>Every animation needs a <strong>start value</strong>, an <strong>end value</strong>, an amount of <strong>time</strong>, and a rule for how speed changes called a <strong>curve</strong>. The object can move, resize, rotate, fade, recolor, or reshape because one or more values change.</p>",
+        "explanationHtml": "<p>The computer draws many still pictures quickly. In each picture, the value is a little closer to the end. Your eyes connect those pictures into motion. The curve decides how far the value advances in each picture.</p>",
+        "practiceHtml": "<p>Predict whether the orange disk will glide, snap, or bounce. Change duration and easing, then play again. Say all four ingredients aloud before moving on.</p>",
+        "teachBack": "Describe an animation without using the word animation. Name its changing value instead."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "A card changes opacity from 0 to 1 over 400 ms. Which ingredient is opacity?",
+        "answers": [
+          "The value",
+          "The frame rate",
+          "The device"
+        ],
+        "correctIndex": 0,
+        "explanation": "Opacity is the property whose value changes. Zero is invisible and one is fully visible."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animatable",
+          "url": "https://developer.apple.com/documentation/swiftui/animatable"
+        },
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        }
+      ],
+      "prerequisites": [
+        1
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 3,
+      "slug": "see-the-whole-journey",
+      "module": "start",
+      "track": "ios",
+      "title": "See the whole journey",
+      "summary": "Build a map from idea to shipped iPhone app so every new word has a home.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "roadmap",
+      "body": {
+        "mentalModel": "A shipped app is a chain of understandable systems, not one giant mysterious task.",
+        "conceptHtml": "<p>An app begins with a problem, becomes a flow of screens, then becomes data and rules written in Swift. SwiftUI turns those rules into views. Xcode builds the project, Simulator and devices run it, tests expose mistakes, and App Store Connect handles distribution.</p>",
+        "explanationHtml": "<p>Animation is not a separate island. It sits between state and the rendered view: something changes, SwiftUI computes a new view, and an animation describes the visible journey between old and new.</p>",
+        "practiceHtml": "<p>Open each map node. Then draw the chain on paper from memory: idea, structure, code, build, test, ship. Add motion between state and view.</p>",
+        "teachBack": "Where does motion sit in the path from a tap to a changed screen?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What should cause useful interface motion?",
+        "answers": [
+          "A meaningful state change",
+          "A random timer",
+          "Every visible object"
+        ],
+        "correctIndex": 0,
+        "explanation": "Purposeful motion explains feedback, status, hierarchy, or continuity after a meaningful change."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI concepts",
+          "url": "https://developer.apple.com/tutorials/swiftui-concepts"
+        }
+      ],
+      "prerequisites": [
+        2
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 4,
+      "slug": "your-beginner-toolbench",
+      "module": "start",
+      "track": "ios",
+      "title": "Your beginner toolbench",
+      "summary": "Know what Xcode, Simulator, Swift, SwiftUI, and an AI coding partner each do.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "setup",
+      "body": {
+        "mentalModel": "Swift is the language, SwiftUI is the UI toolkit, Xcode is the workshop, and Simulator is a test device made of software.",
+        "conceptHtml": "<p><strong>Xcode</strong> is Apple’s workshop. It stores files, edits code, builds the app, runs tests, and talks to Simulator or an iPhone. <strong>Swift</strong> is the programming language. <strong>SwiftUI</strong> is the framework used to describe the interface.</p>",
+        "explanationHtml": "<p>An AI coding partner can propose code, explain errors, and iterate quickly. It cannot see your intent unless you provide state, behavior, constraints, and acceptance checks. You remain the director and tester.</p>",
+        "practiceHtml": "<ol><li>Install the current stable Xcode from Apple.</li><li>Create an iOS App project with SwiftUI.</li><li>Run the untouched template in one iPhone Simulator.</li><li>Change one Text value and run again.</li></ol><div class=\"callout\"><p><strong>If you are reading only today:</strong> that is fine. The instrument gives you a no-install simulation of the workflow.</p></div>",
+        "teachBack": "Explain the difference between Swift and SwiftUI."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which tool compiles and runs a SwiftUI iOS project?",
+        "answers": [
+          "Xcode",
+          "SVG",
+          "Figma"
+        ],
+        "correctIndex": 0,
+        "explanation": "Xcode manages the project, invokes Apple’s build tools, and launches the app."
+      },
+      "sources": [
+        {
+          "label": "Apple Xcode",
+          "url": "https://developer.apple.com/xcode/"
+        },
+        {
+          "label": "Apple SwiftUI documentation",
+          "url": "https://developer.apple.com/documentation/swiftui"
+        }
+      ],
+      "prerequisites": [
+        3
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 5,
+      "slug": "what-an-ios-app-really-is",
+      "module": "apps",
+      "track": "ios",
+      "title": "What an iOS app really is",
+      "summary": "Replace the idea of one giant file with a small system of views, data, and services.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "architecture",
+      "body": {
+        "mentalModel": "Data is the truth. Views are a temporary picture of that truth. Events ask the truth to change.",
+        "conceptHtml": "<p>An app is a running program packaged with resources such as icons, colors, and images. While it runs, it holds <strong>state</strong>, draws views from that state, receives events like taps, and may read or write information.</p>",
+        "explanationHtml": "<p>A useful beginner split is: <strong>views</strong> present and collect input, <strong>models</strong> describe information, and <strong>services</strong> perform work such as storage or networking. Small apps can begin in one file, but the responsibilities still exist.</p>",
+        "practiceHtml": "<p>Imagine a habit app. Identify one view, one model value, one event, and one service. Example: Today screen, completion Boolean, checkmark tap, local storage.</p>",
+        "teachBack": "For a timer app, name one view, one state value, and one event."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Where should the truth that a task is complete live?",
+        "answers": [
+          "Only in a color",
+          "In app data or state",
+          "Inside the app icon"
+        ],
+        "correctIndex": 1,
+        "explanation": "A color can represent completion, but state stores the actual fact."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI App",
+          "url": "https://developer.apple.com/documentation/swiftui/app"
+        },
+        {
+          "label": "Apple SwiftUI concepts",
+          "url": "https://developer.apple.com/tutorials/swiftui-concepts"
+        }
+      ],
+      "prerequisites": [
+        4
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 6,
+      "slug": "views-and-the-view-tree",
+      "module": "apps",
+      "track": "ios",
+      "title": "Views and the view tree",
+      "summary": "Understand screens as small views nested inside other views.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "viewTree",
+      "body": {
+        "mentalModel": "A SwiftUI screen is a recipe made by combining smaller view recipes.",
+        "conceptHtml": "<p>SwiftUI builds interfaces by composing views. A screen might be a vertical stack containing a title, a progress ring, and a list. Each list row can be its own view. The nested structure is called a <strong>view tree</strong>.</p>",
+        "explanationHtml": "<p>Composition keeps reasoning local. The parent decides arrangement and passes information down. A child view focuses on one visual job. SwiftUI repeatedly evaluates view descriptions when state changes, so a view is a description, not a permanent drawing object.</p>",
+        "practiceHtml": "<p>Use the tree builder to assemble a tiny screen. Then say which node owns layout and which nodes show content.</p>",
+        "teachBack": "Why is a reusable TaskRow easier to reason about than repeating its code on every screen?"
+      },
+      "code": {
+        "title": "A tiny view tree",
+        "language": "swift",
+        "source": "struct TodayView: View {\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(\"Today\")\n            ProgressView(value: 0.7)\n            TaskRow(title: \"Walk for ten minutes\")\n        }\n        .padding()\n    }\n}"
+      },
+      "quiz": {
+        "prompt": "In a VStack, where are child views arranged?",
+        "answers": [
+          "Vertically",
+          "Behind each other",
+          "Randomly"
+        ],
+        "correctIndex": 0,
+        "explanation": "VStack places children from top to bottom. HStack places them left to right."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI concepts",
+          "url": "https://developer.apple.com/tutorials/swiftui-concepts"
+        },
+        {
+          "label": "Apple SwiftUI layout fundamentals",
+          "url": "https://developer.apple.com/documentation/swiftui/layout-fundamentals"
+        }
+      ],
+      "prerequisites": [
+        5
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 7,
+      "slug": "state-events-and-rendering",
+      "module": "apps",
+      "track": "ios",
+      "title": "State, events, and rendering",
+      "summary": "Learn the loop that powers almost every interactive screen and animation.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "state",
+      "body": {
+        "mentalModel": "Event changes state. State determines view. Animation visualizes the difference.",
+        "conceptHtml": "<p><strong>State</strong> is information that can change while the app runs. An <strong>event</strong> is something that happens, such as a tap or received response. <strong>Rendering</strong> is SwiftUI producing the view that matches current state.</p>",
+        "explanationHtml": "<p>The loop is: user taps, event handler changes state, SwiftUI reevaluates the view, and the screen updates. Add an animation transaction and SwiftUI interpolates animatable values between the two rendered states.</p>",
+        "practiceHtml": "<p>Toggle the card. Watch the state readout before watching the appearance. The Boolean has only two values, but it can control size, text, rotation, color, and accessibility labels together.</p>",
+        "teachBack": "Narrate the entire loop after pressing an Expand button."
+      },
+      "code": {
+        "title": "State drives the view",
+        "language": "swift",
+        "source": "@State private var isExpanded = false\n\nvar body: some View {\n    VStack {\n        Text(isExpanded ? \"Open\" : \"Closed\")\n        Button(\"Change state\") {\n            isExpanded.toggle()\n        }\n    }\n}"
+      },
+      "quiz": {
+        "prompt": "What happens directly after an event handler changes state?",
+        "answers": [
+          "SwiftUI updates the view description",
+          "The app is uploaded",
+          "Xcode closes"
+        ],
+        "correctIndex": 0,
+        "explanation": "SwiftUI observes relevant state and reevaluates the dependent view."
+      },
+      "sources": [
+        {
+          "label": "Apple managing SwiftUI state",
+          "url": "https://developer.apple.com/documentation/swiftui/managing-user-interface-state"
+        }
+      ],
+      "prerequisites": [
+        6
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 8,
+      "slug": "the-app-lifecycle",
+      "module": "apps",
+      "track": "ios",
+      "title": "The app lifecycle",
+      "summary": "See what changes when an app launches, becomes inactive, backgrounds, and returns.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "lifecycle",
+      "body": {
+        "mentalModel": "The system controls whether your app is active. Your app controls how gracefully it responds.",
+        "conceptHtml": "<p>An iOS app moves through conditions such as active, inactive, and background. The system can stop a background app later. You should save important state instead of assuming memory lasts forever.</p>",
+        "explanationHtml": "<p>SwiftUI exposes scene phase so a view can respond to lifecycle changes. Typical jobs include pausing timers, saving edits, refreshing stale information, and avoiding unnecessary work in the background.</p>",
+        "practiceHtml": "<p>Move the simulated app through each phase. Decide what a workout timer, draft editor, and video player should do in that phase.</p>",
+        "teachBack": "What should happen to an unsaved draft when an app enters the background?"
+      },
+      "code": {
+        "title": "Observe scene phase",
+        "language": "swift",
+        "source": "@Environment(\\.scenePhase) private var scenePhase\n\n.onChange(of: scenePhase) { _, newPhase in\n    if newPhase == .background {\n        saveDraft()\n    }\n}"
+      },
+      "quiz": {
+        "prompt": "Why save when moving to the background?",
+        "answers": [
+          "The app might later be terminated",
+          "Background always deletes code",
+          "It improves icon color"
+        ],
+        "correctIndex": 0,
+        "explanation": "iOS may reclaim resources, so durable data should not depend only on memory."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI App",
+          "url": "https://developer.apple.com/documentation/swiftui/app"
+        }
+      ],
+      "prerequisites": [
+        7
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 9,
+      "slug": "screens-sheets-and-navigation",
+      "module": "apps",
+      "track": "ios",
+      "title": "Screens, sheets, and navigation",
+      "summary": "Choose the right spatial relationship before animating between places.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "navigation",
+      "body": {
+        "mentalModel": "Navigation defines where a destination belongs. Transition motion helps people perceive that relationship.",
+        "conceptHtml": "<p>Navigation is the structure connecting destinations. A stack moves deeper into related detail and back again. A sheet presents a focused temporary task. Tabs switch between peer destinations.</p>",
+        "explanationHtml": "<p>Motion should agree with structure. A detail pushed in and popped back preserves hierarchy. A sheet rises and dismisses as a temporary layer. Inventing a contradictory direction can make people lose their mental map.</p>",
+        "practiceHtml": "<p>Classify three flows: open article details, compose a quick note, switch from Home to Profile. Then preview the expected movement.</p>",
+        "teachBack": "Why is a compose screen often a sheet instead of a new permanent tab?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which container usually represents moving deeper into detail?",
+        "answers": [
+          "Navigation stack",
+          "Tab bar",
+          "App icon"
+        ],
+        "correctIndex": 0,
+        "explanation": "A navigation stack models hierarchical movement into and back out of detail."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI NavigationStack",
+          "url": "https://developer.apple.com/documentation/swiftui/navigationstack"
+        }
+      ],
+      "prerequisites": [
+        8
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 10,
+      "slug": "do-ios-animations-need-svg",
+      "module": "apps",
+      "track": "ios",
+      "title": "Do iOS animations need SVG?",
+      "summary": "No. Choose code, symbols, vector assets, Lottie, Rive, or video based on the job.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "assetChooser",
+      "body": {
+        "mentalModel": "Choose an animation technology by behavior and control needs, not by the word vector.",
+        "conceptHtml": "<p><strong>You usually do not make SVG animations for a SwiftUI app.</strong> Most interface motion is native code that animates properties of SwiftUI views. Apple commonly uses SF Symbols and image assets; Xcode asset catalogs can preserve PDF vector data for supported workflows.</p>",
+        "explanationHtml": "<table class=\"comparison-table\"><thead><tr><th>Need</th><th>Good first choice</th></tr></thead><tbody><tr><td>Button, card, navigation, gesture</td><td>SwiftUI animation</td></tr><tr><td>Animated icon</td><td>SF Symbols effects or SwiftUI</td></tr><tr><td>Designer timeline illustration</td><td>Lottie JSON integration</td></tr><tr><td>Interactive character or state machine</td><td>Rive .riv integration</td></tr><tr><td>Cinematic texture</td><td>Video</td></tr><tr><td>Static scalable artwork</td><td>PDF vector asset or symbol</td></tr></tbody></table><div class=\"callout coral\"><p>Lottie JSON is not an animated SVG. Rive is a runtime with interactive state machines, not merely an image format.</p></div>",
+        "practiceHtml": "<p>Select a product need in the chooser. Start with native SwiftUI when motion belongs to interface state; add a third-party runtime only when its special capability earns the dependency.</p>",
+        "teachBack": "Explain when SwiftUI is a better choice than Lottie, and when Rive earns its place."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is the normal first choice for an expanding settings card?",
+        "answers": [
+          "Native SwiftUI",
+          "Animated SVG",
+          "A looping video"
+        ],
+        "correctIndex": 0,
+        "explanation": "The card is interface state, so native SwiftUI keeps it adaptive, interruptible, and accessible."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI documentation",
+          "url": "https://developer.apple.com/documentation/swiftui"
+        },
+        {
+          "label": "Apple SF Symbols",
+          "url": "https://developer.apple.com/sf-symbols/"
+        }
+      ],
+      "prerequisites": [
+        9
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 11,
+      "slug": "storage-networks-and-permissions",
+      "module": "apps",
+      "track": "ios",
+      "title": "Storage, networks, and permissions",
+      "summary": "Understand where data comes from and why a real app must handle waiting and failure.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "requestFlow",
+      "body": {
+        "mentalModel": "External work is uncertain. Model each meaningful state instead of pretending the answer is immediate.",
+        "conceptHtml": "<p>Data can live in memory, on the device, in iCloud, or on a server reached through a network request. Permissions protect sensitive capabilities such as camera, photos, location, and notifications.</p>",
+        "explanationHtml": "<p>Network work is asynchronous: the answer arrives later or fails. Good UI represents idle, loading, success, empty, and error states. Animation can clarify a transition, but it must never hide whether work succeeded.</p>",
+        "practiceHtml": "<p>Run the request simulator several times. Notice that a loading spinner is only one state. Write useful copy for the failure state and a Retry action.</p>",
+        "teachBack": "Why should an app have both an empty state and an error state?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "A server response has not arrived yet. Which state is truthful?",
+        "answers": [
+          "Loading",
+          "Success",
+          "Deleted"
+        ],
+        "correctIndex": 0,
+        "explanation": "Loading communicates that work is in progress without claiming an outcome."
+      },
+      "sources": [
+        {
+          "label": "Apple Foundation URLSession",
+          "url": "https://developer.apple.com/documentation/foundation/urlsession"
+        },
+        {
+          "label": "Apple: Protecting the user’s privacy",
+          "url": "https://developer.apple.com/documentation/uikit/protecting-the-user-s-privacy"
+        }
+      ],
+      "prerequisites": [
+        10
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 12,
+      "slug": "values-variables-and-types",
+      "module": "code",
+      "track": "ios",
+      "title": "Values, variables, and types",
+      "summary": "Give names to information and learn why Swift cares what kind it is.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "values",
+      "body": {
+        "mentalModel": "A variable is a labeled container. Its type defines what can safely go inside.",
+        "conceptHtml": "<p>A value is a piece of information. A constant declared with <strong>let</strong> cannot be reassigned. A variable declared with <strong>var</strong> can. A type describes the kind of value, such as String, Int, Double, or Bool.</p>",
+        "explanationHtml": "<p>Types let Swift catch impossible operations before the app runs. You can add two numbers, but adding the text “hello” to a Boolean has no clear meaning. Swift often infers a type from the initial value.</p>",
+        "practiceHtml": "<p>Change the value controls and watch the inferred types. For motion, common values include Double for opacity, Angle for rotation, CGFloat for geometry, and Bool for two-state UI.</p>",
+        "teachBack": "Name a suitable type for username, unread count, opacity, and isExpanded."
+      },
+      "code": {
+        "title": "Four common values",
+        "language": "swift",
+        "source": "let username: String = \"Mina\"\nvar unreadCount: Int = 3\nvar opacity: Double = 0.7\nvar isExpanded: Bool = false"
+      },
+      "quiz": {
+        "prompt": "Which declaration can be reassigned?",
+        "answers": [
+          "var score = 3",
+          "let score = 3",
+          "Text(\"3\")"
+        ],
+        "correctIndex": 0,
+        "explanation": "var creates a mutable variable. let creates a constant."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: The Basics",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics"
+        }
+      ],
+      "prerequisites": [
+        11
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 13,
+      "slug": "functions-named-actions",
+      "module": "code",
+      "track": "ios",
+      "title": "Functions: named actions",
+      "summary": "Package a job, give it inputs, and optionally return an answer.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "functions",
+      "body": {
+        "mentalModel": "Function equals a named transformation from inputs to effects or output.",
+        "conceptHtml": "<p>A function is a named recipe for work. Parameters are input labels. A return value is the output. Small functions make intention visible and let the same rule be reused.</p>",
+        "explanationHtml": "<p>Button actions often call functions. Keep rendering code focused on what appears and move substantial rules into named operations. A function should do one understandable job when practical.</p>",
+        "practiceHtml": "<p>Use the function machine: choose an input duration and curve, then run the function that builds a motion description. Change one parameter and compare the output.</p>",
+        "teachBack": "Describe the inputs and output of a function that calculates progress."
+      },
+      "code": {
+        "title": "A simple function",
+        "language": "swift",
+        "source": "func progress(completed: Int, total: Int) -> Double {\n    guard total > 0 else { return 0 }\n    return Double(completed) / Double(total)\n}"
+      },
+      "quiz": {
+        "prompt": "What is a parameter?",
+        "answers": [
+          "An input accepted by a function",
+          "A screen pixel",
+          "An App Store review"
+        ],
+        "correctIndex": 0,
+        "explanation": "Parameters let callers provide the values a function needs."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: Functions",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions"
+        }
+      ],
+      "prerequisites": [
+        12
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 14,
+      "slug": "conditions-and-branches",
+      "module": "code",
+      "track": "ios",
+      "title": "Conditions and branches",
+      "summary": "Make the app choose behavior based on current truth.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "branching",
+      "body": {
+        "mentalModel": "A branch chooses one valid path from current conditions.",
+        "conceptHtml": "<p>An <strong>if</strong> statement runs code only when a condition is true. An <strong>else</strong> provides another path. A switch handles several known cases clearly.</p>",
+        "explanationHtml": "<p>UI often branches: show onboarding if the user is new, progress if work is underway, content on success, or an error message after failure. Explicit states prevent contradictory combinations.</p>",
+        "practiceHtml": "<p>Change the simulated request state and predict which branch renders. Then add a reduced-motion branch that swaps a slide for a fade.</p>",
+        "teachBack": "What condition decides whether a Done button is enabled?"
+      },
+      "code": {
+        "title": "Branch on state",
+        "language": "swift",
+        "source": "if isLoading {\n    ProgressView()\n} else if let errorMessage {\n    ErrorView(message: errorMessage)\n} else {\n    ContentView()\n}"
+      },
+      "quiz": {
+        "prompt": "When does an else block run?",
+        "answers": [
+          "When earlier conditions are false",
+          "Before every if",
+          "Only during animation"
+        ],
+        "correctIndex": 0,
+        "explanation": "else is the fallback path when preceding conditions did not match."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: Control Flow",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/controlflow"
+        }
+      ],
+      "prerequisites": [
+        13
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 15,
+      "slug": "collections-and-loops",
+      "module": "code",
+      "track": "ios",
+      "title": "Collections and loops",
+      "summary": "Represent many similar values and turn them into repeated views.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "collections",
+      "body": {
+        "mentalModel": "A collection stores many values. Stable identity lets SwiftUI track each value through change.",
+        "conceptHtml": "<p>An Array stores an ordered collection. SwiftUI’s ForEach creates a view for each identifiable item. This is how lists, grids, timelines, and staggered groups begin.</p>",
+        "explanationHtml": "<p>Identity matters. SwiftUI uses stable IDs to understand which item moved, appeared, or disappeared. Using an array index as identity can produce surprising animations when items reorder.</p>",
+        "practiceHtml": "<p>Add, remove, and reorder items. Watch how stable identity lets the same visual item travel instead of being mistaken for a new one.</p>",
+        "teachBack": "Why does a reorder animation need to know that an item is still the same item?"
+      },
+      "code": {
+        "title": "Render an identifiable collection",
+        "language": "swift",
+        "source": "struct Task: Identifiable {\n    let id = UUID()\n    var title: String\n}\n\nForEach(tasks) { task in\n    Text(task.title)\n}"
+      },
+      "quiz": {
+        "prompt": "What helps SwiftUI track an item across reordering?",
+        "answers": [
+          "Stable identity",
+          "A longer duration",
+          "A PNG"
+        ],
+        "correctIndex": 0,
+        "explanation": "Stable IDs connect the before and after representation of each item."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: Collection Types",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/collectiontypes"
+        }
+      ],
+      "prerequisites": [
+        14
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 16,
+      "slug": "structs-and-models",
+      "module": "code",
+      "track": "ios",
+      "title": "Structs and models",
+      "summary": "Group related values into a clear model of one thing.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "model",
+      "body": {
+        "mentalModel": "A model gives one product concept a name and groups the facts that define it.",
+        "conceptHtml": "<p>A struct defines a new value type. A Task model can group title, completion, and due date so those values travel together. SwiftUI views are structs too: lightweight descriptions of UI.</p>",
+        "explanationHtml": "<p>Models should name product concepts, not visual accidents. “Habit” is a domain concept; “BlueRoundedCardData” mixes content with one presentation. Separating them makes redesign and animation safer.</p>",
+        "practiceHtml": "<p>Build a model by selecting fields for a tiny breathing session. Decide which fields belong to content and which should remain view styling.</p>",
+        "teachBack": "Which belongs in a Task model: title, isComplete, or shadow radius? Explain."
+      },
+      "code": {
+        "title": "A small product model",
+        "language": "swift",
+        "source": "struct BreathingSession: Identifiable {\n    let id: UUID\n    var title: String\n    var seconds: Int\n    var isFavorite: Bool\n}"
+      },
+      "quiz": {
+        "prompt": "Which field most likely belongs in a content model?",
+        "answers": [
+          "session duration",
+          "card shadow blur",
+          "button corner radius"
+        ],
+        "correctIndex": 0,
+        "explanation": "Duration describes the session itself. The others describe one presentation."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: Structures and Classes",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures"
+        }
+      ],
+      "prerequisites": [
+        15
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 17,
+      "slug": "optionals-and-missing-values",
+      "module": "code",
+      "track": "ios",
+      "title": "Optionals and missing values",
+      "summary": "Model the honest possibility that a value may not exist yet.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "optional",
+      "body": {
+        "mentalModel": "Optional means maybe a value. Safe code handles both present and absent paths.",
+        "conceptHtml": "<p>An Optional is either a value or nil. Missing data is normal: a profile may have no photo, a request may have no response yet, and a search may find nothing.</p>",
+        "explanationHtml": "<p>Swift requires you to unwrap an Optional before using its value. if let, guard let, defaults, and optional chaining are different ways to handle absence deliberately. Force unwrapping with ! promises a value exists and crashes if that promise is false.</p>",
+        "practiceHtml": "<p>Toggle the avatar value between present and nil. Choose a fallback that preserves layout and meaning without pretending a photo exists.</p>",
+        "teachBack": "Give one legitimate reason a network result is nil."
+      },
+      "code": {
+        "title": "Safely unwrap",
+        "language": "swift",
+        "source": "if let photoURL = profile.photoURL {\n    RemoteImage(url: photoURL)\n} else {\n    InitialsAvatar(name: profile.name)\n}"
+      },
+      "quiz": {
+        "prompt": "What does nil mean?",
+        "answers": [
+          "No value is present",
+          "The value is zero",
+          "The app is animated"
+        ],
+        "correctIndex": 0,
+        "explanation": "nil represents absence, which is different from zero, false, or an empty string."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: The Basics",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics"
+        }
+      ],
+      "prerequisites": [
+        16
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 18,
+      "slug": "swiftui-data-flow",
+      "module": "code",
+      "track": "ios",
+      "title": "SwiftUI data flow",
+      "summary": "Know when state is owned, passed down, or shared.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "stateFlow",
+      "body": {
+        "mentalModel": "Own state at the nearest sensible common ancestor. Pass values down and events or bindings back up.",
+        "conceptHtml": "<p><strong>@State</strong> gives a view ownership of small local mutable state. <strong>@Binding</strong> lets a child read and change state owned elsewhere. Observable model tools support shared reference state with a longer responsibility.</p>",
+        "explanationHtml": "<p>Keep one source of truth. Duplicating the same fact in several states causes drift and animation glitches. Derive values when possible, and pass only what a child needs.</p>",
+        "practiceHtml": "<p>Connect the source-of-truth diagram. Try giving both parent and child separate copies, then observe the contradiction. Repair it with a binding.</p>",
+        "teachBack": "Why should a toggle row usually receive a Binding instead of a copied Bool?"
+      },
+      "code": {
+        "title": "Pass a binding",
+        "language": "swift",
+        "source": "struct ParentView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        SettingRow(isOn: $isOn)\n    }\n}\n\nstruct SettingRow: View {\n    @Binding var isOn: Bool\n}"
+      },
+      "quiz": {
+        "prompt": "Who owns a @Binding value?",
+        "answers": [
+          "Another source of truth",
+          "The binding itself",
+          "The animation curve"
+        ],
+        "correctIndex": 0,
+        "explanation": "A binding is a read-write connection to state owned elsewhere."
+      },
+      "sources": [
+        {
+          "label": "Apple managing SwiftUI state",
+          "url": "https://developer.apple.com/documentation/swiftui/managing-user-interface-state"
+        }
+      ],
+      "prerequisites": [
+        17
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 19,
+      "slug": "async-work-errors-and-debugging",
+      "module": "code",
+      "track": "ios",
+      "title": "Async work, errors, and debugging",
+      "summary": "Learn why waiting work uses async and how to investigate instead of guessing.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "async",
+      "body": {
+        "mentalModel": "Async means the result comes later. Error handling says what happens when later does not go as planned.",
+        "conceptHtml": "<p><strong>async</strong> functions can pause without freezing the interface while work completes. <strong>await</strong> marks a potential suspension. Throwing functions report failures that callers must handle.</p>",
+        "explanationHtml": "<p>Debugging is a loop: reproduce, observe exact evidence, form one hypothesis, run a small test, and keep or reject it. Compiler messages, breakpoints, logs, and minimal examples are instruments, not punishments.</p>",
+        "practiceHtml": "<p>Run the failing loader. Inspect the exact state and error before choosing a repair. Do not add animation until loading, success, and error are correct without it.</p>",
+        "teachBack": "What evidence would you collect if a loading spinner never stops?"
+      },
+      "code": {
+        "title": "Represent async outcomes",
+        "language": "swift",
+        "source": "do {\n    state = .loading\n    let items = try await service.fetchItems()\n    state = items.isEmpty ? .empty : .loaded(items)\n} catch {\n    state = .failed(error.localizedDescription)\n}"
+      },
+      "quiz": {
+        "prompt": "What should you do first when a bug appears?",
+        "answers": [
+          "Reproduce it reliably",
+          "Change many files",
+          "Hide the error"
+        ],
+        "correctIndex": 0,
+        "explanation": "A reliable reproduction gives every later experiment a truthful comparison."
+      },
+      "sources": [
+        {
+          "label": "The Swift Programming Language: Concurrency",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency"
+        },
+        {
+          "label": "Apple Foundation URLSession",
+          "url": "https://developer.apple.com/documentation/foundation/urlsession"
+        }
+      ],
+      "prerequisites": [
+        18
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 20,
+      "slug": "motion-is-change-over-time",
+      "module": "motion",
+      "track": "ios",
+      "title": "Motion is change over time",
+      "summary": "Turn animation from magic into four adjustable ingredients.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "coreMotion",
+      "body": {
+        "mentalModel": "Name the property, start, end, timing, and trigger. You have described the animation.",
+        "conceptHtml": "<p>An animation interpolates one or more <strong>animatable values</strong>. Position might travel from 0 to 240 points. Opacity might change from 0 to 1. Scale might move from 0.92 to 1.</p>",
+        "explanationHtml": "<p>At normalized time 0, the value is at the start. At normalized time 1, it is at the end. An easing function maps clock progress to visual progress. Springs use a physical model instead of a fixed curve.</p>",
+        "practiceHtml": "<p>Use the main laboratory again with precise language. Say: “x-position changes from 0 to 240 points over 600 milliseconds using ease-out.” This sentence is already the skeleton of a strong implementation prompt.</p>",
+        "teachBack": "Describe a toast entering from below using five precise facts."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which statement is most implementable?",
+        "answers": [
+          "Make it cool",
+          "Move y from 24 to 0 while opacity goes 0 to 1 in 300 ms",
+          "Add animation"
+        ],
+        "correctIndex": 1,
+        "explanation": "It names properties, endpoints, and timing, so behavior can be built and checked."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animatable",
+          "url": "https://developer.apple.com/documentation/swiftui/animatable"
+        },
+        {
+          "label": "Apple SwiftUI Animations",
+          "url": "https://developer.apple.com/documentation/swiftui/animations"
+        }
+      ],
+      "prerequisites": [
+        19
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 21,
+      "slug": "duration-delay-and-repetition",
+      "module": "motion",
+      "track": "ios",
+      "title": "Duration, delay, and repetition",
+      "summary": "Control when motion starts, how long it lasts, and whether it should repeat.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "timing",
+      "body": {
+        "mentalModel": "Time is part of interaction cost. Longer is not automatically more premium.",
+        "conceptHtml": "<p>Duration is elapsed time from start to finish. Delay waits before beginning. Repetition plays again. These are simple controls, but they strongly affect responsiveness.</p>",
+        "explanationHtml": "<p>Frequently used controls should feel immediate. Delays are useful for deliberate sequencing, not for making people wait. Infinite loops belong to genuine ongoing activity or ambient media, not ordinary interface feedback.</p>",
+        "practiceHtml": "<p>Set a 200 ms, 600 ms, and 1400 ms duration for the same movement. Add delay. Decide which one feels like direct feedback and which feels like a presentation.</p>",
+        "teachBack": "When would repeating motion be truthful, and when would it be distracting?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which is a good reason for an infinite loop?",
+        "answers": [
+          "Representing ongoing loading",
+          "Every button tap",
+          "Making text harder to ignore"
+        ],
+        "correctIndex": 0,
+        "explanation": "A loop can honestly signal ongoing activity, provided it also respects reduced motion and does not imply false progress."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        },
+        {
+          "label": "Apple SwiftUI Transaction",
+          "url": "https://developer.apple.com/documentation/swiftui/transaction"
+        }
+      ],
+      "prerequisites": [
+        20
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 22,
+      "slug": "easing-the-personality-of-speed",
+      "module": "motion",
+      "track": "ios",
+      "title": "Easing: the personality of speed",
+      "summary": "See why equal distance and equal duration can still feel completely different.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "easing",
+      "body": {
+        "mentalModel": "Easing is a speed story: how quickly progress is spent from start to finish.",
+        "conceptHtml": "<p>Linear motion covers equal distance in equal time. Ease-in starts slowly and accelerates. Ease-out starts quickly and settles. Ease-in-out softens both ends.</p>",
+        "explanationHtml": "<p>Easing does not change the endpoints or total duration. It redistributes progress through time. For direct UI feedback, ease-out often responds quickly. Linear is useful for constant-rate progress or rotation, but often feels mechanical for objects entering or settling.</p>",
+        "practiceHtml": "<p>Play all lanes, hide the labels, and solve the easing detective. Focus on the first and last quarter rather than the midpoint.</p>",
+        "teachBack": "Why can ease-out feel responsive even when duration matches linear?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which curve starts fast and settles gently?",
+        "answers": [
+          "Ease-out",
+          "Ease-in",
+          "Linear"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ease-out spends more progress early and slows near the destination."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        },
+        {
+          "label": "WWDC23: Explore SwiftUI animation",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10156/"
+        }
+      ],
+      "prerequisites": [
+        21
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 23,
+      "slug": "springs-motion-with-memory",
+      "module": "motion",
+      "track": "ios",
+      "title": "Springs: motion with memory",
+      "summary": "Tune responsive motion using duration, bounce, stiffness, damping, and velocity ideas.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "spring",
+      "body": {
+        "mentalModel": "A spring is not just bounce. It is a target-seeking system that can preserve momentum.",
+        "conceptHtml": "<p>A spring heads toward a target using a physical model. It may overshoot and settle. Damping removes energy. More damping reduces oscillation. Initial velocity lets a gesture hand its momentum to the animation.</p>",
+        "explanationHtml": "<p>Modern SwiftUI offers perceptual spring controls such as duration and bounce, plus lower-level spring forms. Springs are valuable because a new target can preserve velocity, helping interrupted interactions remain continuous.</p>",
+        "practiceHtml": "<p>Tune three feelings: calm sheet, playful reaction, and tight settings toggle. Try to reach the target with the least bounce that still communicates the intended character.</p>",
+        "teachBack": "What happens when damping is too low? What happens when it is too high?"
+      },
+      "code": {
+        "title": "Perceptual SwiftUI spring",
+        "language": "swift",
+        "source": "withAnimation(.spring(duration: 0.5, bounce: 0.18)) {\n    isExpanded.toggle()\n}"
+      },
+      "quiz": {
+        "prompt": "Which change usually reduces repeated bouncing?",
+        "answers": [
+          "Increase damping",
+          "Add infinite repeat",
+          "Remove the target"
+        ],
+        "correctIndex": 0,
+        "explanation": "Damping removes energy from the spring, so oscillation settles sooner."
+      },
+      "sources": [
+        {
+          "label": "WWDC23: Animate with springs",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10158/"
+        },
+        {
+          "label": "Apple SwiftUI spring",
+          "url": "https://developer.apple.com/documentation/swiftui/animation/spring"
+        }
+      ],
+      "prerequisites": [
+        22
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 24,
+      "slug": "transitions-appearing-and-disappearing",
+      "module": "motion",
+      "track": "ios",
+      "title": "Transitions: appearing and disappearing",
+      "summary": "Distinguish animating a present view from inserting or removing a view.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "transition",
+      "body": {
+        "mentalModel": "Animation changes a view. Transition explains a view joining or leaving the tree.",
+        "conceptHtml": "<p>A transition describes how a view enters or exits the hierarchy. Fade, move, scale, and combinations are common. An ordinary animation changes properties of a view that remains present.</p>",
+        "explanationHtml": "<p>Insertion and removal can be asymmetric. A notification might move in from the top but fade out in place. The state change still needs an animation context for the transition to animate.</p>",
+        "practiceHtml": "<p>Switch among fade, scale, and move. Ask which version best explains where the panel came from and where it goes.</p>",
+        "teachBack": "Why is hiding with opacity not always equivalent to removing a view?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which concept controls how a conditional view is inserted?",
+        "answers": [
+          "Transition",
+          "Array type",
+          "App lifecycle"
+        ],
+        "correctIndex": 0,
+        "explanation": "Transitions define the appearance and disappearance of views in the hierarchy."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI transitions",
+          "url": "https://developer.apple.com/documentation/swiftui/transitions"
+        }
+      ],
+      "prerequisites": [
+        23
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 25,
+      "slug": "transforms-layout-and-perceived-continuity",
+      "module": "motion",
+      "track": "ios",
+      "title": "Transforms, layout, and perceived continuity",
+      "summary": "Understand movement, scale, rotation, and why layout changes can be more expensive.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "transforms",
+      "body": {
+        "mentalModel": "Transforms change presentation. Layout changes structure. Choose based on both meaning and cost.",
+        "conceptHtml": "<p>Transforms change how a rendered view appears without necessarily changing surrounding layout. Offset, scale, rotation, and opacity are often smooth and composable. Layout changes can require more measurement and redraw work.</p>",
+        "explanationHtml": "<p>Performance is not the only criterion. A transform that visually moves a control while its logical hit area stays elsewhere can be confusing. Prefer semantic layout when position must truly change, and use transforms carefully for effects and transitions.</p>",
+        "practiceHtml": "<p>Compare an offset preview with a layout-aligned preview. Test both by clicking near the visual destination and observe why geometry and interaction should agree.</p>",
+        "teachBack": "Why can a large visual offset be risky for an interactive button?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which property is commonly cheap to animate?",
+        "answers": [
+          "Opacity",
+          "A huge nested layout tree",
+          "Network data"
+        ],
+        "correctIndex": 0,
+        "explanation": "Opacity is often composited efficiently and does not require reflowing surrounding layout."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI layout fundamentals",
+          "url": "https://developer.apple.com/documentation/swiftui/layout-fundamentals"
+        },
+        {
+          "label": "Apple SwiftUI Animatable",
+          "url": "https://developer.apple.com/documentation/swiftui/animatable"
+        }
+      ],
+      "prerequisites": [
+        24
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 26,
+      "slug": "gestures-and-interruptible-motion",
+      "module": "motion",
+      "track": "ios",
+      "title": "Gestures and interruptible motion",
+      "summary": "Let movement follow a finger, then settle naturally when the gesture ends.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "drag",
+      "body": {
+        "mentalModel": "During a gesture, follow. After release, settle. If intent changes, respond immediately.",
+        "conceptHtml": "<p>Direct manipulation means the visual response tracks the person’s gesture. During a drag, position should generally follow the finger rather than play a canned animation. On release, predicted velocity can help choose and animate to a destination.</p>",
+        "explanationHtml": "<p>Interruptibility matters. If someone changes direction, the interface should react from its current position and velocity instead of completing an obsolete animation first.</p>",
+        "practiceHtml": "<p>Drag the object into the target and release at different speeds. Try interrupting it. Compare snap-to-start, snap-to-nearest, and projected-destination behavior.</p>",
+        "teachBack": "Why should a dismiss gesture be reversible before the threshold?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What should motion do while a card is actively dragged?",
+        "answers": [
+          "Track the gesture",
+          "Ignore the finger",
+          "Wait one second"
+        ],
+        "correctIndex": 0,
+        "explanation": "Direct tracking preserves the causal link between input and response."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI gestures",
+          "url": "https://developer.apple.com/documentation/swiftui/gestures"
+        },
+        {
+          "label": "WWDC23: Animate with springs",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10158/"
+        }
+      ],
+      "prerequisites": [
+        25
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 27,
+      "slug": "choreography-and-stagger",
+      "module": "motion",
+      "track": "ios",
+      "title": "Choreography and stagger",
+      "summary": "Sequence related changes so attention follows the information hierarchy.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "choreo",
+      "body": {
+        "mentalModel": "Choreography is attention order, not decoration order.",
+        "conceptHtml": "<p>Choreography coordinates several elements. A stagger offsets their start times. Good sequencing introduces cause, primary result, and supporting detail in an order people can follow.</p>",
+        "explanationHtml": "<p>Too much stagger turns reading into waiting. Related items can move as a group. Use the smallest timing difference that reveals hierarchy, and preserve immediate access to controls.</p>",
+        "practiceHtml": "<p>Play the three-item sequence at 0, 70, 180, and 400 ms stagger. Choose the minimum value that still makes order perceptible.</p>",
+        "teachBack": "Which should animate first after saving: confirmation, supporting copy, or unrelated decoration?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What does stagger change?",
+        "answers": [
+          "Relative start times",
+          "The programming language",
+          "The App Store icon"
+        ],
+        "correctIndex": 0,
+        "explanation": "Stagger delays each related item by a small offset to create sequence."
+      },
+      "sources": [
+        {
+          "label": "WWDC23: Explore SwiftUI animation",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10156/"
+        },
+        {
+          "label": "Apple: Controlling animation timing and movement",
+          "url": "https://developer.apple.com/documentation/swiftui/controlling-the-timing-and-movements-of-your-animations"
+        }
+      ],
+      "prerequisites": [
+        26
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 28,
+      "slug": "keyframes-and-phases",
+      "module": "motion",
+      "track": "ios",
+      "title": "Keyframes and phases",
+      "summary": "Control a multi-step journey when two endpoints are not enough.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "keyframes",
+      "body": {
+        "mentalModel": "Phases organize named stages. Keyframes organize exact values over a timeline.",
+        "conceptHtml": "<p>Keyframes specify values at important moments along a timeline. Phases name discrete stages such as idle, focus, and confirm. Both help express motion with more than one leg.</p>",
+        "explanationHtml": "<p>Use a normal animation for a simple A-to-B change. Use phases when named states are the clearest model. Use keyframes when exact timing and overlapping property tracks matter.</p>",
+        "practiceHtml": "<p>Edit the four frames, then scrub the playhead. Remove one unnecessary frame and see whether the meaning survives. Fewer keyframes are easier to tune.</p>",
+        "teachBack": "Would a three-step success pulse be clearer as a spring, phases, or keyframes? Defend your choice."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "When are keyframes most useful?",
+        "answers": [
+          "Several precisely timed stages",
+          "A static label",
+          "Choosing a bundle ID"
+        ],
+        "correctIndex": 0,
+        "explanation": "Keyframes provide explicit control at multiple moments in one animation."
+      },
+      "sources": [
+        {
+          "label": "Apple: Controlling animation timing and movement",
+          "url": "https://developer.apple.com/documentation/swiftui/controlling-the-timing-and-movements-of-your-animations"
+        }
+      ],
+      "prerequisites": [
+        27
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 29,
+      "slug": "frames-performance-and-comfort",
+      "module": "motion",
+      "track": "ios",
+      "title": "Frames, performance, and comfort",
+      "summary": "Recognize smoothness, dropped frames, energy cost, and reduced-motion responsibility.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "fps",
+      "body": {
+        "mentalModel": "Smooth motion needs timely frames. Accessible motion preserves information while reducing discomfort.",
+        "conceptHtml": "<p>A display refreshes many times per second. To look smooth, the app must prepare each frame before the next refresh. Expensive layout, drawing, image decoding, or main-thread work can miss that deadline and cause stutter.</p>",
+        "explanationHtml": "<p>Do not guess performance from code alone. Test realistic content on devices and profile. Respect Reduce Motion: replace large travel, parallax, zoom, and repeated motion with fades, highlights, or immediate state changes while preserving meaning.</p>",
+        "practiceHtml": "<p>Compare 60, 30, and 15 simulated updates. Turn reduced motion on. Write a calmer equivalent for one large slide-and-zoom transition.</p>",
+        "teachBack": "What would you remove first from a stuttering decorative animation?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is a good reduced-motion substitute for large spatial travel?",
+        "answers": [
+          "A brief fade or highlight",
+          "Faster spinning",
+          "More parallax"
+        ],
+        "correctIndex": 0,
+        "explanation": "A fade or highlight can preserve state feedback without simulating large movement or depth."
+      },
+      "sources": [
+        {
+          "label": "Apple HIG Motion",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/motion"
+        },
+        {
+          "label": "Apple accessibility guidance",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility"
+        }
+      ],
+      "prerequisites": [
+        28
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 30,
+      "slug": "your-first-swiftui-animation",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "Your first SwiftUI animation",
+      "summary": "Change state inside withAnimation and let SwiftUI draw the journey.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "state",
+      "body": {
+        "mentalModel": "State changes first in the model of the app. SwiftUI animates the rendered difference.",
+        "conceptHtml": "<p>SwiftUI is declarative: you describe how the view should look for current state. To animate a change, update that state inside <strong>withAnimation</strong>. SwiftUI compares before and after and interpolates animatable properties.</p>",
+        "explanationHtml": "<p>The animation does not continuously mutate your view code. Your code describes two truthful states. The animation transaction supplies the timing context for the state change.</p>",
+        "practiceHtml": "<p>Expand the card, change the spring, and interrupt it before it settles. Then remove withAnimation mentally: the final state remains correct, but the visible journey becomes immediate.</p>",
+        "teachBack": "What remains true if withAnimation is removed from correct code?"
+      },
+      "code": {
+        "title": "The smallest useful recipe",
+        "language": "swift",
+        "source": "struct ExpandableCard: View {\n    @State private var isExpanded = false\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(\"Details\")\n            if isExpanded {\n                Text(\"The longer explanation appears here.\")\n            }\n        }\n        .frame(height: isExpanded ? 180 : 80)\n        .onTapGesture {\n            withAnimation(.spring(duration: 0.5, bounce: 0.15)) {\n                isExpanded.toggle()\n            }\n        }\n    }\n}"
+      },
+      "quiz": {
+        "prompt": "What does withAnimation wrap?",
+        "answers": [
+          "The state change",
+          "The Xcode project",
+          "The image file"
+        ],
+        "correctIndex": 0,
+        "explanation": "It establishes an animation transaction for changes made inside its closure."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        },
+        {
+          "label": "Apple managing SwiftUI state",
+          "url": "https://developer.apple.com/documentation/swiftui/managing-user-interface-state"
+        }
+      ],
+      "prerequisites": [
+        29
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 31,
+      "slug": "explicit-and-value-driven-animation",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "Explicit and value-driven animation",
+      "summary": "Know exactly which state change an animation belongs to.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "state",
+      "body": {
+        "mentalModel": "Animation scope answers: which change, which subtree, and which timing rule?",
+        "conceptHtml": "<p><strong>Explicit animation</strong> uses withAnimation around a particular change. The <strong>.animation(_:value:)</strong> modifier animates changes caused when a specified value changes.</p>",
+        "explanationHtml": "<p>Always provide the value parameter. Broad, unscoped animation can accidentally animate unrelated changes. Place the modifier near the properties it should influence, and prefer explicit animation when a user action has a clear boundary.</p>",
+        "practiceHtml": "<p>Toggle size and color independently. Scope animation only to isExpanded, then verify that changing the theme does not unexpectedly animate the card.</p>",
+        "teachBack": "When would you choose withAnimation over .animation(_:value:)?"
+      },
+      "code": {
+        "title": "Two valid scopes",
+        "language": "swift",
+        "source": "Button(\"Expand\") {\n    withAnimation(.easeOut(duration: 0.25)) {\n        isExpanded.toggle()\n    }\n}\n\nCard()\n    .scaleEffect(isFavorite ? 1.04 : 1)\n    .animation(.spring, value: isFavorite)"
+      },
+      "quiz": {
+        "prompt": "Why pass value to .animation?",
+        "answers": [
+          "To scope what triggers it",
+          "To create a network request",
+          "To store an SVG"
+        ],
+        "correctIndex": 0,
+        "explanation": "The value parameter ties the modifier to a specific change and limits surprises."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animations",
+          "url": "https://developer.apple.com/documentation/swiftui/animations"
+        },
+        {
+          "label": "Apple SwiftUI Transaction",
+          "url": "https://developer.apple.com/documentation/swiftui/transaction"
+        }
+      ],
+      "prerequisites": [
+        30
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 32,
+      "slug": "swiftui-transitions",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "SwiftUI transitions",
+      "summary": "Animate conditional views as they enter and leave the view hierarchy.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "transition",
+      "body": {
+        "mentalModel": "The conditional controls existence. The transition controls the visual boundary of that existence.",
+        "conceptHtml": "<p>Attach .transition to the view inside a conditional. Then change the condition in an animation transaction. SwiftUI applies the insertion or removal transition.</p>",
+        "explanationHtml": "<p>Combine effects with .combined(with:). Use .asymmetric when entering and leaving should communicate different relationships. Keep nearby layout stable enough that people can track the change.</p>",
+        "practiceHtml": "<p>Build a compact notification: move from top plus fade on insertion, then fade on removal. Test rapid show and hide to confirm interruption remains coherent.</p>",
+        "teachBack": "Where must .transition be placed relative to the if statement?"
+      },
+      "code": {
+        "title": "An asymmetric notification",
+        "language": "swift",
+        "source": "if isVisible {\n    NotificationBanner()\n        .transition(\n            .asymmetric(\n                insertion: .move(edge: .top).combined(with: .opacity),\n                removal: .opacity\n            )\n        )\n}"
+      },
+      "quiz": {
+        "prompt": "What else is needed for a transition to animate?",
+        "answers": [
+          "An animation transaction",
+          "A video file",
+          "A second app target"
+        ],
+        "correctIndex": 0,
+        "explanation": "The insertion or removal state change must occur in an animation context."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI transitions",
+          "url": "https://developer.apple.com/documentation/swiftui/transitions"
+        }
+      ],
+      "prerequisites": [
+        31
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 33,
+      "slug": "matched-geometry-continuity",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "Matched geometry continuity",
+      "summary": "Make two view states feel like one object changing place and shape.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "matched",
+      "body": {
+        "mentalModel": "Matched geometry says: these are two representations of the same perceived object.",
+        "conceptHtml": "<p><strong>matchedGeometryEffect</strong> links views that represent the same visual element across two layouts. SwiftUI interpolates geometry so a small card can appear to become a larger detail surface.</p>",
+        "explanationHtml": "<p>Both representations use the same ID and Namespace. Identity and hierarchy matter. This technique creates continuity, but navigation boundaries and complex containers can require careful architecture and testing.</p>",
+        "practiceHtml": "<p>Toggle the tile into detail. Remove one shared identifier and notice that continuity becomes two unrelated transitions.</p>",
+        "teachBack": "What two pieces connect matched views?"
+      },
+      "code": {
+        "title": "Link two representations",
+        "language": "swift",
+        "source": "@Namespace private var motion\n\nif isDetail {\n    DetailCard()\n        .matchedGeometryEffect(id: \"card\", in: motion)\n} else {\n    CompactCard()\n        .matchedGeometryEffect(id: \"card\", in: motion)\n}"
+      },
+      "quiz": {
+        "prompt": "What does the shared ID communicate?",
+        "answers": [
+          "Perceptual identity",
+          "Network permission",
+          "Frame rate"
+        ],
+        "correctIndex": 0,
+        "explanation": "It tells SwiftUI which before and after views should share interpolated geometry."
+      },
+      "sources": [
+        {
+          "label": "WWDC23: Explore SwiftUI animation",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10156/"
+        }
+      ],
+      "prerequisites": [
+        32
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 34,
+      "slug": "phase-animator",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "PhaseAnimator",
+      "summary": "Express a sequence as meaningful named stages.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "phase",
+      "body": {
+        "mentalModel": "A phase is a named chapter. The animator supplies the journey between chapters.",
+        "conceptHtml": "<p>A PhaseAnimator cycles through a collection of phase values. Content reads the current phase and derives scale, rotation, opacity, or other properties. A separate animation closure chooses timing for transitions between phases.</p>",
+        "explanationHtml": "<p>Phases are clearest when the stages have product meaning, such as idle, attention, and confirmed. Triggered phases can replay in response to an event instead of looping forever.</p>",
+        "practiceHtml": "<p>Step through rest, focus, and confirm. Rename each phase according to what it communicates, not what its scale value happens to be.</p>",
+        "teachBack": "Why is confirmed a better phase name than scaleOnePointOne?"
+      },
+      "code": {
+        "title": "Three named phases",
+        "language": "swift",
+        "source": "enum FeedbackPhase: CaseIterable {\n    case rest, focus, confirmed\n}\n\nPhaseAnimator(FeedbackPhase.allCases, trigger: confirmationCount) {\n    content, phase in\n    content\n        .scaleEffect(phase == .focus ? 1.08 : 1)\n        .opacity(phase == .rest ? 0.7 : 1)\n} animation: { phase in\n    phase == .confirmed ? .spring(duration: 0.35) : .easeOut\n}"
+      },
+      "quiz": {
+        "prompt": "What is a strong use for PhaseAnimator?",
+        "answers": [
+          "A named multi-stage feedback sequence",
+          "Saving a database",
+          "Drawing an app icon"
+        ],
+        "correctIndex": 0,
+        "explanation": "Phases make a sequence of meaningful visual states explicit."
+      },
+      "sources": [
+        {
+          "label": "Apple phase and keyframe sample",
+          "url": "https://developer.apple.com/documentation/swiftui/controlling-the-timing-and-movements-of-your-animations"
+        },
+        {
+          "label": "WWDC23: Explore SwiftUI animation",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10156/"
+        }
+      ],
+      "prerequisites": [
+        33
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 35,
+      "slug": "keyframe-animator",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "KeyframeAnimator",
+      "summary": "Coordinate independent property tracks with precise timing.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "keyframes",
+      "body": {
+        "mentalModel": "Keyframe tracks are parallel timelines that produce one combined animation value.",
+        "conceptHtml": "<p>KeyframeAnimator computes an animation value over a series of keyframe tracks. Each track can control one property, and its keyframes describe destinations and durations.</p>",
+        "explanationHtml": "<p>Linear, cubic, spring, and move keyframes serve different needs. Track durations form a timeline. Use this when an animation has designed beats that a single curve or phase sequence cannot express cleanly.</p>",
+        "practiceHtml": "<p>Scrub the success motion. Let scale overshoot while vertical offset settles earlier. Then remove the overshoot and compare clarity with spectacle.</p>",
+        "teachBack": "Why might scale and offset need separate tracks?"
+      },
+      "code": {
+        "title": "A small keyframe value",
+        "language": "swift",
+        "source": "struct Values {\n    var scale = 1.0\n    var y = 0.0\n}\n\ncontent.keyframeAnimator(initialValue: Values(), trigger: count) {\n    view, value in\n    view.scaleEffect(value.scale).offset(y: value.y)\n} keyframes: { _ in\n    KeyframeTrack(\\.scale) {\n        SpringKeyframe(1.15, duration: 0.22)\n        CubicKeyframe(1.0, duration: 0.18)\n    }\n    KeyframeTrack(\\.y) {\n        CubicKeyframe(-12, duration: 0.18)\n        CubicKeyframe(0, duration: 0.22)\n    }\n}"
+      },
+      "quiz": {
+        "prompt": "Why use separate keyframe tracks?",
+        "answers": [
+          "Properties can follow different timing",
+          "Swift has no variables",
+          "Views cannot transition"
+        ],
+        "correctIndex": 0,
+        "explanation": "Independent tracks let scale, position, rotation, and other values coordinate without identical timing."
+      },
+      "sources": [
+        {
+          "label": "Apple keyframe guidance",
+          "url": "https://developer.apple.com/documentation/swiftui/controlling-the-timing-and-movements-of-your-animations"
+        },
+        {
+          "label": "WWDC23: Explore SwiftUI animation",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10156/"
+        }
+      ],
+      "prerequisites": [
+        34
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 36,
+      "slug": "drag-gestures-and-spring-settling",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "Drag gestures and spring settling",
+      "summary": "Connect gesture state, predicted motion, thresholds, and animation.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "drag",
+      "body": {
+        "mentalModel": "Gesture values describe the live interaction. Persistent state records the chosen result after the interaction.",
+        "conceptHtml": "<p>A DragGesture reports translation while the gesture changes and predicts an endpoint when it ends. @GestureState is useful for temporary gesture-owned state that resets automatically.</p>",
+        "explanationHtml": "<p>Choose a destination from distance, velocity, and product intent. Animate the model state after release. Provide a button alternative for any essential gesture, and keep hit targets comfortable.</p>",
+        "practiceHtml": "<p>Flick slowly and quickly. Adjust the threshold. Verify that a slow deliberate drag can succeed and an accidental short drag can return safely.</p>",
+        "teachBack": "What is the difference between temporary drag translation and the final selected page?"
+      },
+      "code": {
+        "title": "Track, decide, settle",
+        "language": "swift",
+        "source": "@GestureState private var dragX: CGFloat = 0\n@State private var page = 0\n\nDragGesture()\n    .updating($dragX) { value, state, _ in\n        state = value.translation.width\n    }\n    .onEnded { value in\n        let shouldAdvance = value.predictedEndTranslation.width < -120\n        withAnimation(.spring(duration: 0.45, bounce: 0.12)) {\n            if shouldAdvance { page += 1 }\n        }\n    }"
+      },
+      "quiz": {
+        "prompt": "Which value is useful for a flick decision?",
+        "answers": [
+          "Predicted end translation",
+          "App icon size",
+          "Bundle version"
+        ],
+        "correctIndex": 0,
+        "explanation": "The predicted endpoint incorporates gesture velocity and helps infer intent."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI gestures",
+          "url": "https://developer.apple.com/documentation/swiftui/gestures"
+        },
+        {
+          "label": "WWDC23: Animate with springs",
+          "url": "https://developer.apple.com/videos/play/wwdc2023/10158/"
+        }
+      ],
+      "prerequisites": [
+        35
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 37,
+      "slug": "symbols-canvas-lottie-and-rive",
+      "module": "swiftui",
+      "track": "ios",
+      "title": "Symbols, Canvas, Lottie, and Rive",
+      "summary": "Place each advanced visual tool at the correct layer of a SwiftUI app.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "assetChooser",
+      "body": {
+        "mentalModel": "Visual runtimes render. Your app still owns product truth, accessibility, and navigation.",
+        "conceptHtml": "<p>SF Symbols provide Apple-designed scalable symbols with built-in effects on supported systems. Canvas offers immediate-mode drawing for custom 2D visuals. TimelineView can drive time-based updates. Lottie and Rive require package integration and wrapper views.</p>",
+        "explanationHtml": "<p>Prefer the lightest tool that meets the behavior. Keep app state outside an animation asset when the state affects navigation, accessibility, or business rules. Treat third-party assets as renderers controlled by truthful app state.</p>",
+        "practiceHtml": "<p>Use the chooser for six scenarios. For each, name who owns state, whether interaction can interrupt motion, and what reduced-motion mode should show.</p>",
+        "teachBack": "Why should a Rive state machine not become the only source of truth for a purchase?"
+      },
+      "code": {
+        "title": "A native symbol effect",
+        "language": "swift",
+        "source": "Image(systemName: \"checkmark.circle.fill\")\n    .symbolEffect(.bounce, value: completionCount)\n    .accessibilityLabel(\"Completed\")"
+      },
+      "quiz": {
+        "prompt": "Which is a good first choice for an animated checkmark icon?",
+        "answers": [
+          "SF Symbols effect",
+          "A full-screen video",
+          "An animated SVG requirement"
+        ],
+        "correctIndex": 0,
+        "explanation": "A native symbol stays crisp, semantic, adaptive, and easy to drive from SwiftUI state."
+      },
+      "sources": [
+        {
+          "label": "Apple SF Symbols",
+          "url": "https://developer.apple.com/sf-symbols/"
+        },
+        {
+          "label": "Apple SwiftUI Canvas",
+          "url": "https://developer.apple.com/documentation/swiftui/canvas"
+        },
+        {
+          "label": "Airbnb Lottie documentation",
+          "url": "https://airbnb.io/lottie/"
+        },
+        {
+          "label": "Rive Apple runtime documentation",
+          "url": "https://rive.app/docs/runtimes/apple/apple"
+        }
+      ],
+      "prerequisites": [
+        36
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 38,
+      "slug": "what-vibe-coding-is",
+      "module": "vibe",
+      "track": "ios",
+      "title": "What vibe coding is",
+      "summary": "Use AI as a fast implementation partner while keeping intent and verification human-owned.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "vibeLoop",
+      "body": {
+        "mentalModel": "AI proposes. The compiler checks syntax. Runtime evidence checks behavior. You check intent.",
+        "conceptHtml": "<p>Vibe coding means describing a desired result in natural language, generating or editing code with AI, running it, and refining it through evidence. It is powerful when feedback loops are short and dangerous when output is accepted without understanding.</p>",
+        "explanationHtml": "<p>Your job is not to type every character. Your job is to define the product state, constraints, motion behavior, accessibility, and what counts as done. Ask for small changes you can run and inspect.</p>",
+        "practiceHtml": "<p>Move the loop through brief, generate, run, observe, revise, and verify. Try skipping run or observe and identify what knowledge disappears.</p>",
+        "teachBack": "Which parts of a motion feature should never be delegated blindly?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What makes an AI-generated animation trustworthy?",
+        "answers": [
+          "It passes defined behavior and accessibility checks",
+          "The code is long",
+          "The prompt says premium"
+        ],
+        "correctIndex": 0,
+        "explanation": "Trust comes from observable acceptance criteria and verification, not confident wording."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI concepts",
+          "url": "https://developer.apple.com/tutorials/swiftui-concepts"
+        }
+      ],
+      "prerequisites": [
+        37
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 39,
+      "slug": "the-anatomy-of-a-motion-prompt",
+      "module": "vibe",
+      "track": "ios",
+      "title": "The anatomy of a motion prompt",
+      "summary": "Turn an aesthetic wish into a precise, buildable SwiftUI brief.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "prompt",
+      "body": {
+        "mentalModel": "A useful prompt is a miniature specification, not a bag of style adjectives.",
+        "conceptHtml": "<p>A strong prompt names <strong>context, trigger, starting state, ending state, properties, timing, interruption, reduced motion, constraints, and acceptance tests</strong>. Reference files and existing code when available.</p>",
+        "explanationHtml": "<p>“Make it smooth” is subjective. “On tap, expand height from compact to content-fit, fade detail from 0 to 1, use a 0.45 second spring with low bounce, preserve velocity on interruption, and replace travel with a fade under Reduce Motion” is testable.</p>",
+        "practiceHtml": "<p>Use the prompt builder to generate a brief, then remove any adjective that cannot be verified. Keep product feeling as direction, but pair it with observable behavior.</p>",
+        "teachBack": "Name five fields that turn “make the card feel alive” into a buildable request."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which prompt detail prevents a major accessibility omission?",
+        "answers": [
+          "Reduced-motion behavior",
+          "The word delightful",
+          "A random color"
+        ],
+        "correctIndex": 0,
+        "explanation": "The prompt should explicitly define what changes when the system preference requests less motion."
+      },
+      "sources": [
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        },
+        {
+          "label": "Apple Human Interface Guidelines: Motion",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/motion"
+        }
+      ],
+      "prerequisites": [
+        38
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 40,
+      "slug": "translate-references-into-behavior",
+      "module": "vibe",
+      "track": "ios",
+      "title": "Translate references into behavior",
+      "summary": "Observe a design without copying its brand, then extract states, timing, and hierarchy.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "formatQuestions",
+      "body": {
+        "mentalModel": "Copy principles and relationships you understand. Do not copy another product’s distinctive expression.",
+        "conceptHtml": "<p>A visual reference is evidence, not a complete specification. Ask what changes, what triggers it, which element leads, where attention goes, and what remains fixed. Separate reusable motion principles from another product’s identity.</p>",
+        "explanationHtml": "<p>Describe geometry and timing before implementation: “headline remains pinned while three panels enter, overlap, and release as scroll progresses.” Then choose an original visual language and content.</p>",
+        "practiceHtml": "<p>Answer the reference-analysis questions. The tool turns your choices into a motion spec. Compare it with a vague copy request and note the difference in control.</p>",
+        "teachBack": "How can you learn from a sticky-scroll reference while making an original result?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What should you extract first from a motion reference?",
+        "answers": [
+          "States and relationships",
+          "The brand logo",
+          "Every exact pixel"
+        ],
+        "correctIndex": 0,
+        "explanation": "States, triggers, hierarchy, and timing explain the behavior you need to recreate originally."
+      },
+      "sources": [
+        {
+          "label": "Apple Human Interface Guidelines: Motion",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/motion"
+        },
+        {
+          "label": "Apple Human Interface Guidelines: Accessibility",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility"
+        }
+      ],
+      "prerequisites": [
+        39
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 41,
+      "slug": "generate-run-compare-revise",
+      "module": "vibe",
+      "track": "ios",
+      "title": "Generate, run, compare, revise",
+      "summary": "Make one controlled change per loop and turn taste into evidence.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "iteration",
+      "body": {
+        "mentalModel": "A controlled iteration changes one hypothesis and measures one result.",
+        "conceptHtml": "<p>Good iteration has a baseline and a comparison. Run the current behavior, capture what is wrong, change one dimension, and run again. If duration, bounce, layout, and copy all change together, you cannot learn which change helped.</p>",
+        "explanationHtml": "<p>Use concrete comparison language: “The response begins late because there is a 200 ms delay,” or “The overshoot changes the card’s alignment twice.” A screenshot helps geometry; a recording helps time and interruption.</p>",
+        "practiceHtml": "<p>Choose one defect in the simulated card, apply one revision, and compare. The lab tracks whether your change affected trigger, timing, geometry, or style.</p>",
+        "teachBack": "Why is “still feels off” less useful than identifying the late response?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is the cleanest tuning experiment?",
+        "answers": [
+          "Change only damping and replay",
+          "Rewrite everything",
+          "Add three libraries"
+        ],
+        "correctIndex": 0,
+        "explanation": "A single-variable change makes cause and effect visible."
+      },
+      "sources": [
+        {
+          "label": "Apple Xcode",
+          "url": "https://developer.apple.com/xcode/"
+        },
+        {
+          "label": "Apple SwiftUI documentation",
+          "url": "https://developer.apple.com/documentation/swiftui"
+        }
+      ],
+      "prerequisites": [
+        40
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 42,
+      "slug": "debug-ai-generated-motion",
+      "module": "vibe",
+      "track": "ios",
+      "title": "Debug AI-generated motion",
+      "summary": "Separate compile errors, state bugs, layout bugs, and animation bugs.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "debug",
+      "body": {
+        "mentalModel": "First prove state and endpoints. Then debug the path between them.",
+        "conceptHtml": "<p>If code does not compile, capture the first relevant compiler error. If the final UI state is wrong without animation, fix state or layout first. If endpoints are correct but the journey is wrong, investigate animation scope, identity, transition placement, or timing.</p>",
+        "explanationHtml": "<p>Reduce the feature to a minimal reproducible view. Print state changes, slow animation temporarily, and test rapid interaction. Do not cover a logic race with a longer duration.</p>",
+        "practiceHtml": "<p>Run the bug classifier. It presents symptoms such as “view never appears” or “unrelated color animates.” Choose the layer to inspect and reveal the evidence.</p>",
+        "teachBack": "A card ends expanded but flashes through the wrong color. Which layer is probably wrong?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "The final state is wrong even with animation disabled. What should you fix first?",
+        "answers": [
+          "State or layout logic",
+          "The easing curve",
+          "The frame rate label"
+        ],
+        "correctIndex": 0,
+        "explanation": "Animation cannot repair an incorrect destination. Establish truthful endpoints first."
+      },
+      "sources": [
+        {
+          "label": "Apple Xcode",
+          "url": "https://developer.apple.com/xcode/"
+        },
+        {
+          "label": "Apple SwiftUI Transaction",
+          "url": "https://developer.apple.com/documentation/swiftui/transaction"
+        }
+      ],
+      "prerequisites": [
+        41
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 43,
+      "slug": "build-a-motion-language",
+      "module": "vibe",
+      "track": "ios",
+      "title": "Build a motion language",
+      "summary": "Create reusable timing, spring, distance, and reduced-motion rules.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "tokens",
+      "body": {
+        "mentalModel": "A token names why motion exists, then stores a reusable default for how it behaves.",
+        "conceptHtml": "<p>A motion language creates consistency. Define roles such as instant feedback, standard transition, expressive celebration, and ambient activity. Each role can have duration, curve or spring, distance, and reduced-motion equivalent.</p>",
+        "explanationHtml": "<p>Tokens are starting points, not laws. Gesture velocity and content size may require contextual behavior. Name tokens by purpose instead of raw numbers so code expresses intent.</p>",
+        "practiceHtml": "<p>Tune three tokens and preview them on a toast, sheet, and completion response. Export a Swift MotionTokens enum for your next project.</p>",
+        "teachBack": "Why is feedbackQuick a better token name than animation250?"
+      },
+      "code": {
+        "title": "Purpose-named motion tokens",
+        "language": "swift",
+        "source": "enum MotionTokens {\n    static let feedbackQuick = Animation.easeOut(duration: 0.18)\n    static let transitionStandard = Animation.spring(duration: 0.45, bounce: 0.12)\n    static let celebration = Animation.spring(duration: 0.7, bounce: 0.28)\n}"
+      },
+      "quiz": {
+        "prompt": "What should a motion token name express?",
+        "answers": [
+          "Its purpose",
+          "A random file number",
+          "The developer’s initials"
+        ],
+        "correctIndex": 0,
+        "explanation": "Purpose names let a team choose behavior by interaction meaning."
+      },
+      "sources": [
+        {
+          "label": "Apple Human Interface Guidelines: Motion",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/motion"
+        },
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        }
+      ],
+      "prerequisites": [
+        42
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 44,
+      "slug": "ios-capstone-an-animated-focus-card",
+      "module": "vibe",
+      "track": "ios",
+      "title": "iOS capstone: an animated focus card",
+      "summary": "Specify, build, test, and refine one complete SwiftUI interaction.",
+      "minutes": 30,
+      "level": "Beginner",
+      "lab": "capstone",
+      "body": {
+        "mentalModel": "A capstone is complete when behavior, meaning, accessibility, and edge cases pass, not when one recording looks impressive.",
+        "conceptHtml": "<p>Your capstone is a focus-session card with compact and expanded states, a progress control, loading and success feedback, an interruptible spring, and a reduced-motion path. The interaction must remain understandable with animation disabled.</p>",
+        "explanationHtml": "<div class=\"recipe\"><div class=\"recipe-step\"><div><strong>Model</strong><p>Define idle, running, paused, and complete states.</p></div></div><div class=\"recipe-step\"><div><strong>Specify</strong><p>Name each trigger, property, endpoint, timing rule, and alternate motion.</p></div></div><div class=\"recipe-step\"><div><strong>Build small</strong><p>Implement state and static endpoints before animation.</p></div></div><div class=\"recipe-step\"><div><strong>Verify</strong><p>Test rapid taps, interruption, Dynamic Type, VoiceOver labels, and Reduce Motion.</p></div></div></div>",
+        "practiceHtml": "<p>Use the capstone instrument to pick behavior and generate a task brief. Paste that brief into your coding partner, request one self-contained SwiftUI view, run it, and revise from evidence.</p>",
+        "teachBack": "List the acceptance checks you will run before calling the focus card finished."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What should be implemented before motion polish?",
+        "answers": [
+          "Correct states and endpoints",
+          "Confetti",
+          "A third animation library"
+        ],
+        "correctIndex": 0,
+        "explanation": "Correct state and layout give motion a truthful foundation."
+      },
+      "sources": [
+        {
+          "label": "Apple managing SwiftUI state",
+          "url": "https://developer.apple.com/documentation/swiftui/managing-user-interface-state"
+        },
+        {
+          "label": "Apple SwiftUI Animation",
+          "url": "https://developer.apple.com/documentation/swiftui/animation"
+        },
+        {
+          "label": "Apple accessibilityReduceMotion",
+          "url": "https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion"
+        }
+      ],
+      "prerequisites": [
+        43
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 45,
+      "slug": "design-for-reduce-motion",
+      "module": "ship",
+      "track": "ios",
+      "title": "Design for Reduce Motion",
+      "summary": "Respond to the system setting and preserve meaning with calmer feedback.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "reduce",
+      "body": {
+        "mentalModel": "Reduce motion, not understanding.",
+        "conceptHtml": "<p>Read the system preference with the SwiftUI environment. Reduce or replace large translation, zoom, parallax, depth, repeated motion, and excessive spring oscillation. Do not remove information that motion carried.</p>",
+        "explanationHtml": "<p>A hierarchy transition can become a dissolve plus a persistent Back affordance. A cart action can become a highlight and updated count. A celebration can become a static badge with optional haptic feedback.</p>",
+        "practiceHtml": "<p>Toggle the preview between default and reduced. For each effect, write the meaning first, then select a calmer channel that communicates the same result.</p>",
+        "teachBack": "How would you adapt a full-screen zoom that explains opening detail?"
+      },
+      "code": {
+        "title": "Branch from the system preference",
+        "language": "swift",
+        "source": "@Environment(\\.accessibilityReduceMotion) private var reduceMotion\n\nwithAnimation(reduceMotion ? .easeOut(duration: 0.15) : .spring) {\n    isPresented = true\n}\n\nDetailView()\n    .transition(reduceMotion ? .opacity : .scale.combined(with: .opacity))"
+      },
+      "quiz": {
+        "prompt": "Should Reduce Motion remove status feedback?",
+        "answers": [
+          "No, preserve meaning through calmer feedback",
+          "Yes, hide all changes",
+          "Only on old iPhones"
+        ],
+        "correctIndex": 0,
+        "explanation": "Accessibility changes the presentation while important state information remains available."
+      },
+      "sources": [
+        {
+          "label": "Apple accessibilityReduceMotion",
+          "url": "https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion"
+        },
+        {
+          "label": "Apple Human Interface Guidelines: Accessibility",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility"
+        },
+        {
+          "label": "Apple Reduced Motion criteria",
+          "url": "https://developer.apple.com/help/app-store-connect/manage-app-accessibility/reduced-motion-evaluation-criteria"
+        }
+      ],
+      "prerequisites": [
+        44
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 46,
+      "slug": "profile-animation-performance",
+      "module": "ship",
+      "track": "ios",
+      "title": "Profile animation performance",
+      "summary": "Measure frame hitches, main-thread work, layout cost, drawing, and energy.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "fps",
+      "body": {
+        "mentalModel": "Performance work asks which operation consumed the frame budget, then removes or reschedules that work.",
+        "conceptHtml": "<p>Begin with a reproducible interaction and realistic data. Check whether stutter appears on a physical device. Use Xcode’s performance tools and Instruments to identify slow frames and their work.</p>",
+        "explanationHtml": "<p>Common improvements include reducing expensive layout churn, avoiding repeated image decoding, simplifying blur and shadow layers, moving non-UI work off the main actor when safe, and limiting simultaneous effects. Do not scatter will-change style guesses into SwiftUI.</p>",
+        "practiceHtml": "<p>The lab simulates frame budget. Add layout, blur, image, and computation costs until frames miss the deadline. Remove the highest-cost nonessential operation first.</p>",
+        "teachBack": "Why is testing only an empty Simulator screen weak performance evidence?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is the best first optimization target?",
+        "answers": [
+          "Measured work causing missed frames",
+          "Every line of code",
+          "The shortest variable name"
+        ],
+        "correctIndex": 0,
+        "explanation": "Profiling identifies the actual bottleneck and prevents speculative rewrites."
+      },
+      "sources": [
+        {
+          "label": "Apple: Understanding and improving SwiftUI performance",
+          "url": "https://developer.apple.com/documentation/xcode/understanding-and-improving-swiftui-performance"
+        }
+      ],
+      "prerequisites": [
+        45
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 47,
+      "slug": "test-motion-as-behavior",
+      "module": "ship",
+      "track": "ios",
+      "title": "Test motion as behavior",
+      "summary": "Verify endpoints, interruption, accessibility, devices, and adverse conditions.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "debug",
+      "body": {
+        "mentalModel": "Motion is correct only across state, time, input, accessibility, and interruption.",
+        "conceptHtml": "<p>Unit tests can verify state transitions and calculations. UI tests can verify that actions reach correct states. Human visual inspection remains important for timing, continuity, and comfort.</p>",
+        "explanationHtml": "<p>Test fast repeated taps, backgrounding, rotation where supported, large Dynamic Type, VoiceOver, Reduce Motion, slow networks, failed requests, and realistic data. Record the exact device, OS, and build when reporting results.</p>",
+        "practiceHtml": "<p>Create a five-line test matrix in the lab. Each row must include setup, action, expected state, expected motion, and reduced-motion result.</p>",
+        "teachBack": "What test catches an animation that blocks a second tap until it completes?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "Which result is stronger evidence?",
+        "answers": [
+          "Rapid taps still end in the correct state on device",
+          "It looked fine once",
+          "The code contains spring"
+        ],
+        "correctIndex": 0,
+        "explanation": "A repeatable adverse interaction on the target environment tests real behavior."
+      },
+      "sources": [
+        {
+          "label": "Apple XCTest user interface tests",
+          "url": "https://developer.apple.com/documentation/xctest/user-interface-tests"
+        },
+        {
+          "label": "Apple SwiftUI Transaction",
+          "url": "https://developer.apple.com/documentation/swiftui/transaction"
+        }
+      ],
+      "prerequisites": [
+        46
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 48,
+      "slug": "from-xcode-project-to-testflight",
+      "module": "ship",
+      "track": "ios",
+      "title": "From Xcode project to TestFlight",
+      "summary": "Understand the shipping gates and leave with a 14-day practice path.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "sprint",
+      "body": {
+        "mentalModel": "Build, archive, upload, TestFlight, device validation, App Review, and release are separate gates.",
+        "conceptHtml": "<p>Shipping involves app identity, signing, capabilities, archive creation, validation, upload, TestFlight processing, device testing, metadata, privacy details, review, and release choices. A local build is not the same as an uploaded or approved app.</p>",
+        "explanationHtml": "<p>For a first project, keep scope tiny. Use Git or another backup, increment versions deliberately, test the exact archived build, and separate facts: source compiles, archive validates, TestFlight build processes, device behavior passes, and App Review approves.</p>",
+        "practiceHtml": "<p>Open the 14-day sprint. Days 1 to 5 rebuild motion primitives, days 6 to 10 combine SwiftUI patterns, and days 11 to 14 finish the focus-card capstone and record evidence.</p>",
+        "teachBack": "Why does a successful Simulator run not prove the App Store build is ready?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What does a successful local build prove?",
+        "answers": [
+          "That source compiled in that environment",
+          "That App Review approved it",
+          "That every device is correct"
+        ],
+        "correctIndex": 0,
+        "explanation": "Compilation is one milestone. Distribution, signing, exact-build tests, and review remain separate."
+      },
+      "sources": [
+        {
+          "label": "Apple TestFlight overview",
+          "url": "https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview"
+        },
+        {
+          "label": "Apple Xcode",
+          "url": "https://developer.apple.com/xcode/"
+        }
+      ],
+      "prerequisites": [
+        47
+      ],
+      "minimumIOS": "17.0",
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 49,
+      "slug": "web-motion-begins-with-css",
+      "module": "web",
+      "track": "web",
+      "title": "Web motion begins with CSS",
+      "summary": "Use transitions and keyframes for simple, declarative website motion.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "css",
+      "body": {
+        "mentalModel": "CSS is the lowest-complexity choice when style state alone can describe the motion.",
+        "conceptHtml": "<p>A CSS transition animates a property when its computed value changes. A CSS animation applies named keyframes with duration, easing, delay, direction, fill, and repetition controls.</p>",
+        "explanationHtml": "<p>Start with CSS for hover, focus, reveal classes, simple loaders, and independent decorative sequences. Prefer transform and opacity for common smooth effects. Keep hover motion paired with keyboard focus behavior.</p>",
+        "practiceHtml": "<p>Edit duration, easing, and distance in the live CSS lab. Toggle reduced motion and verify the component still communicates its state.</p>",
+        "teachBack": "When would a transition be simpler than keyframes?"
+      },
+      "code": {
+        "title": "A purposeful reveal class",
+        "language": "javascript",
+        "source": ".reveal {\n  opacity: 0;\n  transform: translateY(16px);\n  transition: opacity 300ms ease-out, transform 300ms ease-out;\n}\n\n.reveal.is-visible {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .reveal { transform: none; transition-duration: 1ms; }\n}"
+      },
+      "quiz": {
+        "prompt": "Which is a good CSS transition use?",
+        "answers": [
+          "A button’s pressed or expanded style",
+          "A database migration",
+          "Native iOS navigation"
+        ],
+        "correctIndex": 0,
+        "explanation": "CSS transitions are ideal when a website element moves between style states."
+      },
+      "sources": [],
+      "prerequisites": [
+        20
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 50,
+      "slug": "web-animations-api",
+      "module": "web",
+      "track": "web",
+      "title": "Web Animations API",
+      "summary": "Control browser animations from JavaScript with playback objects and keyframes.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "waapi",
+      "body": {
+        "mentalModel": "WAAPI is CSS-shaped animation with a JavaScript control surface.",
+        "conceptHtml": "<p>The Web Animations API exposes the browser animation engine to JavaScript. <strong>element.animate()</strong> accepts keyframes and timing options and returns an Animation with play, pause, reverse, cancel, currentTime, and completion controls.</p>",
+        "explanationHtml": "<p>Use WAAPI when CSS-like animation needs dynamic JavaScript values or playback control without a framework library. Keep a reference to the Animation if the interaction must interrupt, reverse, or clean up.</p>",
+        "practiceHtml": "<p>Play, pause, reverse, and scrub the card. Inspect currentTime. Start a second run and decide whether to cancel or continue the previous animation.</p>",
+        "teachBack": "What capability does the returned Animation object add over a one-off CSS class?"
+      },
+      "code": {
+        "title": "Animate and keep control",
+        "language": "javascript",
+        "source": "const animation = card.animate(\n  [\n    { opacity: 0, transform: \"translateY(16px)\" },\n    { opacity: 1, transform: \"translateY(0)\" }\n  ],\n  { duration: 320, easing: \"cubic-bezier(.2,.8,.2,1)\", fill: \"both\" }\n);\n\npauseButton.onclick = () => animation.pause();"
+      },
+      "quiz": {
+        "prompt": "What does element.animate() return?",
+        "answers": [
+          "An Animation object",
+          "A SwiftUI View",
+          "An SVG requirement"
+        ],
+        "correctIndex": 0,
+        "explanation": "The returned object exposes playback state and controls."
+      },
+      "sources": [
+        {
+          "label": "MDN Web Animations API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API"
+        }
+      ],
+      "prerequisites": [
+        49
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 51,
+      "slug": "scroll-triggered-reveals",
+      "module": "web",
+      "track": "web",
+      "title": "Scroll-triggered reveals",
+      "summary": "Use IntersectionObserver to react when an element enters or leaves a viewport.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "intersection",
+      "body": {
+        "mentalModel": "IntersectionObserver answers whether and how much a target intersects. It does not provide continuous animation progress by itself.",
+        "conceptHtml": "<p>IntersectionObserver asynchronously reports how a target intersects a viewport or ancestor. It is a strong primitive for lazy work, section awareness, and triggering a class when content becomes visible.</p>",
+        "explanationHtml": "<p>Threshold specifies visible ratios that trigger callbacks. rootMargin moves the effective boundary. For one-time reveals, unobserve after the first entrance. Content should remain readable if JavaScript fails.</p>",
+        "practiceHtml": "<p>Move the viewport window and adjust threshold. Predict exactly when the panel will become visible. Then test once-only and replaying behavior.</p>",
+        "teachBack": "Why is IntersectionObserver good for a reveal but insufficient for frame-by-frame scrubbing?"
+      },
+      "code": {
+        "title": "Reveal once",
+        "language": "javascript",
+        "source": "const observer = new IntersectionObserver(entries => {\n  for (const entry of entries) {\n    if (entry.isIntersecting) {\n      entry.target.classList.add(\"is-visible\");\n      observer.unobserve(entry.target);\n    }\n  }\n}, { threshold: 0.25 });\n\ndocument.querySelectorAll(\".reveal\").forEach(el => observer.observe(el));"
+      },
+      "quiz": {
+        "prompt": "What does threshold 0.25 represent?",
+        "answers": [
+          "A callback boundary around 25 percent visibility",
+          "A 25 second duration",
+          "25 frames per app"
+        ],
+        "correctIndex": 0,
+        "explanation": "Threshold values are target intersection ratios from 0 to 1."
+      },
+      "sources": [
+        {
+          "label": "MDN IntersectionObserver",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver"
+        }
+      ],
+      "prerequisites": [
+        50
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 52,
+      "slug": "native-scroll-driven-animations",
+      "module": "web",
+      "track": "web",
+      "title": "Native scroll-driven animations",
+      "summary": "Bind animation progress to scrolling with CSS timelines and progressive enhancement.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "scroll",
+      "body": {
+        "mentalModel": "Triggered motion starts at a boundary. Scroll-linked motion maps a continuous scroll range to continuous progress.",
+        "conceptHtml": "<p>CSS scroll-driven animations replace the default time timeline with scroll progress. A scroll progress timeline follows a scroller. A view progress timeline follows an element moving through a scrollport.</p>",
+        "explanationHtml": "<p>This differs from a trigger: progress can move forward and backward with scroll. Browser support and exact behavior should be checked for your audience, so provide a readable static baseline and add the effect as enhancement.</p>",
+        "practiceHtml": "<p>Scrub the studio. Compare reveal-on-entry with scroll-linked progress. Use sticky positioning for pinning and let the scroll timeline control only the properties that tell the story.</p>",
+        "teachBack": "Why should a page remain understandable when scroll timelines are unavailable?"
+      },
+      "code": {
+        "title": "A reading progress timeline",
+        "language": "javascript",
+        "source": "@keyframes grow-progress {\n  from { transform: scaleX(0); }\n  to { transform: scaleX(1); }\n}\n\n.progress-bar {\n  transform-origin: left;\n  animation: grow-progress linear;\n  animation-timeline: scroll(root block);\n}"
+      },
+      "quiz": {
+        "prompt": "What controls a scroll-linked animation’s progress?",
+        "answers": [
+          "Scroll position",
+          "Only elapsed clock time",
+          "The iOS scene phase"
+        ],
+        "correctIndex": 0,
+        "explanation": "A scroll timeline maps a scroll range to animation progress."
+      },
+      "sources": [
+        {
+          "label": "MDN scroll-driven animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations"
+        }
+      ],
+      "prerequisites": [
+        51
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 53,
+      "slug": "motion-formerly-framer-motion",
+      "module": "web",
+      "track": "web",
+      "title": "Motion, formerly Framer Motion",
+      "summary": "Use Motion for React for state, layout, gesture, presence, and scroll animation.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "motionWeb",
+      "body": {
+        "mentalModel": "Motion is a React-oriented interaction layer, not a requirement for every animated website.",
+        "conceptHtml": "<p>The library many tutorials call <strong>Framer Motion</strong> is now named <strong>Motion</strong>. Motion for React offers motion components, variants, layout animation, AnimatePresence, gesture props, useInView, and useScroll.</p>",
+        "explanationHtml": "<p>Use Motion when your site already uses React and animation belongs to component state, layout, gestures, or coordinated variants. It can use native browser capabilities where possible and adds spring and interaction behavior when needed.</p>",
+        "practiceHtml": "<p>Switch the lab between whileInView trigger and useScroll linkage. Tune a spring, then enable useReducedMotion and replace travel with opacity.</p>",
+        "teachBack": "Why would a plain HTML disclosure not automatically need Motion?"
+      },
+      "code": {
+        "title": "A reduced-motion-aware React reveal",
+        "language": "javascript",
+        "source": "import { motion, useReducedMotion } from \"motion/react\";\n\nfunction Reveal({ children }) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: reduce ? 0 : 20 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, amount: 0.3 }}\n    >\n      {children}\n    </motion.div>\n  );\n}"
+      },
+      "quiz": {
+        "prompt": "What is Framer Motion currently called?",
+        "answers": [
+          "Motion",
+          "SwiftUI",
+          "ScrollView"
+        ],
+        "correctIndex": 0,
+        "explanation": "Framer Motion became independent and is now documented as Motion, including Motion for React."
+      },
+      "sources": [
+        {
+          "label": "Motion for React",
+          "url": "https://motion.dev/docs/react"
+        },
+        {
+          "label": "Motion scroll animations",
+          "url": "https://motion.dev/docs/react-scroll-animations"
+        }
+      ],
+      "prerequisites": [
+        52
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 54,
+      "slug": "gsap-and-scroll-trigger",
+      "module": "web",
+      "track": "web",
+      "title": "GSAP and ScrollTrigger",
+      "summary": "Reach for timeline-level control when choreography, pinning, and scrub logic become complex.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "gsap",
+      "body": {
+        "mentalModel": "GSAP is a timeline and orchestration tool. ScrollTrigger maps viewport relationships to that timeline.",
+        "conceptHtml": "<p>GSAP is an animation system centered on tweens and timelines. ScrollTrigger connects those animations to scroll positions with triggers, scrub, pin, snap, markers, and lifecycle callbacks.</p>",
+        "explanationHtml": "<p>It earns its complexity for highly choreographed storytelling, overlapping sequences, advanced SVG work, or precise scroll orchestration. Register the plugin, create effects in document order, use markers while debugging, and clean up integrations in component frameworks.</p>",
+        "practiceHtml": "<p>Use the timeline lab to set start, end, scrub, and pin. Turn on markers. Then simplify the effect until each pinned moment communicates new information.</p>",
+        "teachBack": "When is GSAP more appropriate than one CSS transition?"
+      },
+      "code": {
+        "title": "A pinned scrubbed timeline",
+        "language": "javascript",
+        "source": "gsap.registerPlugin(ScrollTrigger);\n\nconst timeline = gsap.timeline({\n  scrollTrigger: {\n    trigger: \".story\",\n    start: \"top top\",\n    end: \"+=1800\",\n    scrub: true,\n    pin: true,\n    markers: true\n  }\n});\n\ntimeline\n  .from(\".chapter-one\", { opacity: 0, y: 40 })\n  .to(\".chapter-one\", { opacity: 0 })\n  .from(\".chapter-two\", { opacity: 0, y: 40 });"
+      },
+      "quiz": {
+        "prompt": "Which GSAP option helps debug start and end positions?",
+        "answers": [
+          "markers",
+          "bundleID",
+          "@State"
+        ],
+        "correctIndex": 0,
+        "explanation": "ScrollTrigger markers visualize trigger boundaries during development."
+      },
+      "sources": [
+        {
+          "label": "GSAP ScrollTrigger docs",
+          "url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
+        }
+      ],
+      "prerequisites": [
+        53
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 55,
+      "slug": "choose-the-smallest-right-web-tool",
+      "module": "web",
+      "track": "web",
+      "title": "Choose the smallest right web tool",
+      "summary": "Compare CSS, WAAPI, IntersectionObserver, scroll timelines, Motion, and GSAP by need.",
+      "minutes": 12,
+      "level": "Beginner",
+      "lab": "chooser",
+      "body": {
+        "mentalModel": "Tool choice follows interaction complexity and environment, not popularity.",
+        "conceptHtml": "<table class=\"comparison-table\"><thead><tr><th>Need</th><th>Start with</th></tr></thead><tbody><tr><td>Simple style change</td><td>CSS transition</td></tr><tr><td>Declarative multi-step loop</td><td>CSS keyframes</td></tr><tr><td>Dynamic playback control</td><td>WAAPI</td></tr><tr><td>Enter or leave viewport</td><td>IntersectionObserver</td></tr><tr><td>Native continuous scroll link</td><td>CSS scroll timeline</td></tr><tr><td>React layout, gesture, presence</td><td>Motion</td></tr><tr><td>Complex timeline and scroll choreography</td><td>GSAP</td></tr></tbody></table>",
+        "explanationHtml": "<p>Evaluate bundle weight, framework fit, browser support, cleanup, team knowledge, performance, and accessibility. More powerful libraries create more responsibility. Native CSS and browser APIs are often enough.</p>",
+        "practiceHtml": "<p>Solve six scenarios in the chooser. You receive more points for the simplest tool that covers the requirement than for selecting the most powerful tool.</p>",
+        "teachBack": "Which facts would make you upgrade a scroll reveal from CSS plus IntersectionObserver to GSAP?"
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is the best default for a simple hover transition?",
+        "answers": [
+          "CSS",
+          "GSAP ScrollTrigger",
+          "Rive"
+        ],
+        "correctIndex": 0,
+        "explanation": "CSS already expresses a simple visual state transition with minimal complexity."
+      },
+      "sources": [],
+      "prerequisites": [
+        54
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    },
+    {
+      "id": 56,
+      "slug": "web-capstone-scroll-tells-the-story",
+      "module": "web",
+      "track": "web",
+      "title": "Web capstone: scroll tells the story",
+      "summary": "Build a purposeful reveal, sticky chapter, progress link, and reduced-motion version.",
+      "minutes": 30,
+      "level": "Beginner",
+      "lab": "webcapstone",
+      "body": {
+        "mentalModel": "Excellent scroll motion lets the story remain in control while the person remains in control of scrolling.",
+        "conceptHtml": "<p>Create a short product explainer with three chapters: reveal the premise, pin the key comparison, and release into a clear action. Scroll must control attention without trapping the person or delaying access to content.</p>",
+        "explanationHtml": "<div class=\"recipe\"><div class=\"recipe-step\"><div><strong>Static first</strong><p>Write a complete readable document with correct hierarchy.</p></div></div><div class=\"recipe-step\"><div><strong>Choose one motion role</strong><p>Use CSS or IntersectionObserver for reveals, sticky for pinning, and add a scroll timeline only where continuous progress matters.</p></div></div><div class=\"recipe-step\"><div><strong>Escalate deliberately</strong><p>Use Motion for React interaction or GSAP for genuinely complex choreography.</p></div></div><div class=\"recipe-step\"><div><strong>Verify</strong><p>Test keyboard navigation, small screens, reduced motion, fast scrolling, refresh positions, and lower-power devices.</p></div></div></div>",
+        "practiceHtml": "<p>Use the studio to choose chapters, technology, and fallback. Generate a capstone brief and build one vertical section. The success metric is clearer understanding, not animation count.</p>",
+        "teachBack": "Explain why sticky positioning can be structural while scroll-linked transforms are enhancement."
+      },
+      "code": null,
+      "quiz": {
+        "prompt": "What is the capstone’s main success metric?",
+        "answers": [
+          "The story becomes easier to understand",
+          "The most animations possible",
+          "Scroll cannot be interrupted"
+        ],
+        "correctIndex": 0,
+        "explanation": "Motion should clarify sequence, relationship, and focus while preserving user control."
+      },
+      "sources": [
+        {
+          "label": "Motion scroll reference",
+          "url": "https://motion.dev/docs/scroll"
+        },
+        {
+          "label": "GSAP ScrollTrigger",
+          "url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
+        },
+        {
+          "label": "MDN scroll-driven animation",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations"
+        }
+      ],
+      "prerequisites": [
+        55
+      ],
+      "minimumIOS": null,
+      "lastReviewed": "2026-08-11",
+      "published": true
+    }
+  ]
+}

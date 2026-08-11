@@ -45,3 +45,23 @@ export const quizProgress = sqliteTable(
     ),
   ],
 );
+
+export const lessonLearningState = sqliteTable(
+  "lesson_learning_state",
+  {
+    userId: text("user_id").notNull(),
+    lessonId: integer("lesson_id").notNull(),
+    bookmarked: integer("bookmarked", { mode: "boolean" }).notNull().default(false),
+    masteryStage: integer("mastery_stage").notNull().default(0),
+    reviewDueAt: integer("review_due_at"),
+    labState: text("lab_state").notNull().default("{}"),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.userId, table.lessonId] }),
+    index("idx_lesson_learning_user_review").on(
+      table.userId,
+      table.reviewDueAt,
+    ),
+  ],
+);

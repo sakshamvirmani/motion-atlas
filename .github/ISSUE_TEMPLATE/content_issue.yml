@@ -1,0 +1,32 @@
+name: Content correction
+description: Suggest a sourced correction or a clearer beginner explanation.
+title: "[Content]: "
+labels: [content]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson URL or slug
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What should change?
+      description: Quote only the small Motion Atlas fragment needed to identify the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Primary source or reproducible evidence
+      description: Prefer a current Apple documentation or WWDC URL for technical corrections.
+    validations:
+      required: true
+  - type: checkboxes
+    id: originality
+    attributes:
+      label: Originality check
+      options:
+        - label: I have not pasted third-party course prose, code, screenshots, or media into this report.
+          required: true

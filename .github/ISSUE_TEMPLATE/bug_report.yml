@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible product, accessibility, or content defect.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Please do not include credentials or private learner data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observable behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: "1. Open…\n2. Choose…\n3. Observe…"
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Page or lesson URL
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, operating system, device size, and Reduce Motion setting when relevant.
+    validations:
+      required: true

@@ -17,6 +17,7 @@ illustration, screenshot, or downloadable asset is copied into the course.
 | objc.io and SwiftUI Field Guide | Respective authors | Technical and competitive research | All rights assumed unless an exact artifact states otherwise | Build independent explanations and examples; no diagrams or wording copied. |
 | MotionScape, Open SwiftUI Animations, GetStream examples, Canopas examples, Airbnb Lottie, Rive runtimes | Respective maintainers | Ecosystem and capability research | License varies by repository and version | Link to original repositories. Any future code reuse requires a per-file license entry and retained notices. |
 | recent.design gallery | Recent | Visual market research only | No copying permission assumed | Use broad principles such as restraint, hierarchy, and content density; do not reproduce showcased sites or gallery assets. |
+| beautiful-ui-five.vercel.app | Beautiful UI site publisher | Visual product research only | No reuse license was identified on the inspected public page; no copying permission assumed | Observed compact navigation and live-component clarity. No code, copy, screenshot, illustration, or layout was copied. Motion Atlas retains its own editorial instrument-panel identity. |
 | Retrieval practice, spacing, worked-example, self-explanation, and interleaving research | Respective researchers and publishers | Learning-design evidence | Reference only | Apply findings as methods, cite the paper, and write all learning activities originally. |
 
 ## Current reuse inventory
@@ -25,6 +26,7 @@ illustration, screenshot, or downloadable asset is copied into the course.
 - Third-party screenshots or illustrations embedded in the course: none identified.
 - Third-party animation files embedded in the course: none identified.
 - Third-party tutorial code pasted into lesson examples: none identified.
+- Third-party website code or visual assets copied into the product: none identified.
 - Third-party packages: installed through the package manager and governed by
   their own package licenses; they are not relicensed by Motion Atlas.
 

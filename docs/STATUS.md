@@ -4,107 +4,128 @@ Last updated: 2026-08-11
 
 ## Current milestone
 
-Milestone 11: publish and verify the validated compatibility release.
+Milestones 2, 3, and 5: canonical content, native learning routes, and the first
+learning-engine slice.
 
-Status: the motion-enabled compatibility release is live. Public guest behavior
-and the real Sign in with ChatGPT entry point are verified. Completing a real
-account session, production D1 persistence, and two-context convergence remain
-open owner/session-dependent checks.
+Status: complete locally; public-repository and Sites release in progress.
 
-This release is a strong compatibility step, not the end of the master plan.
-The standalone course remains the lesson renderer while typed content and native
-lesson routes are built in Milestones 2 and 3.
+The existing public URL is intentionally preserved. The standalone course stays
+available as a compatibility surface until native lab and legacy-progress parity
+are verified, but it is no longer an editable source of truth.
 
-## Confirmed local state
+## Confirmed local product state
 
-- The root route is a native, server-rendered Motion Atlas landing page with no
-  iframe.
-- The standalone course remains reachable at `/motion-atlas-course.html` and
-  retains the existing `motion-atlas-v2` guest storage key.
-- The current library has 48 core iOS/SwiftUI lessons and eight clearly marked
-  optional web-motion lessons, each with a quiz and interactive lab type.
-- All 48 core iOS lessons have an explicit evidence-map entry; technical
-  references prefer Apple documentation, WWDC, and runtime-author sources.
-- Core completion is calculated from 48 iOS lessons; the web track cannot
-  inflate iOS completion.
-- Guests can learn without an account. Optional Sign in with ChatGPT uses the
-  Sites identity headers and platform routes rather than fake credentials.
-- Authenticated progress uses a D1 `DB` binding with bounded IDs and payloads,
-  revision conflicts, guest import, export, and exact-confirmation deletion.
-- Local authenticated API probes verified write, read, conflict, merge, export,
-  rejected deletion, successful deletion, and empty state after deletion.
-- Account-specific browser storage is namespaced by a hashed account key so one
-  signed-in learner's cached state is not shown to another.
-- Software and code examples are MIT licensed. Original non-code course content
-  is CC BY 4.0. Third-party material remains excluded and reference-only unless
-  an exact permission is recorded.
-- Product naming and authentication decisions are recorded in
-  `docs/DOMAIN_AUTH_DECISIONS.md`.
+- `content/course.json` is the canonical 56-lesson registry, validated and
+  exported by `content/course.ts`.
+- The registry contains 48 required iOS/SwiftUI lessons and eight visibly
+  separate optional web-motion lessons.
+- `/learn` is a native searchable course home with track filters, saved-only
+  filtering, module navigation, current lesson, honest completion, bookmarks,
+  and review count.
+- Every lesson has a stable `/learn/[lesson]` route with server-rendered lesson
+  content, mental model, exercise, live lab, retrieval check, explanation,
+  teach-back prompt, source links, and previous/next navigation.
+- `/review` provides transparent due and upcoming intervals without streak
+  punishment.
+- Guest state covers current lesson, completion, quiz selection, bookmark,
+  mastery stage, review date, and bounded lab controls.
+- Optional account state uses Sites identity, an account-scoped browser cache,
+  and D1. The same learning fields are included in export and deletion.
+- Guest-to-account import is explicit and completion-preserving.
+- Landing typography now uses one coherent Apple/system sans family. Display
+  scale, line height, and tracking are calibrated without the previous narrow
+  Arial/Georgia mixture.
+- The price fact is `$0`, and the creator credit links to
+  `https://sakshamvirmani.com`.
+- The awkward curriculum path animation is removed. Remaining scroll reveals
+  are restrained, do not draw over curriculum rows, and do not create
+  horizontal overflow.
+- Sitemap and robots metadata expose public learning routes while excluding
+  account and API surfaces from indexing.
+- The project includes public contribution, conduct, security, issue-template,
+  source-policy, and dual-license documentation.
 
-## Completed work
+## Local browser evidence
 
-- [x] Evidence-backed course and documentation benchmark
-- [x] Durable master plan, curriculum map, content standard, and data design
-- [x] Premium native landing page and responsive/reduced-motion styling
-- [x] Purposeful landing motion: sequenced hero entry, one-time live-lab
-  demonstration, scroll progress, view-linked reveals, curriculum path drawing,
-  and tactile child-level hover feedback
-- [x] Real guest and authenticated landing states
-- [x] Real sign-in explanation, account, privacy, sources, not-found, and error routes
-- [x] D1 schema, generated migration, and runtime schema safety initializer
-- [x] Validated progress read/write/merge/conflict/export/delete endpoints
-- [x] Guest-to-account import and truthful save/sync/offline status labels
-- [x] Separate 48-lesson iOS completion from the eight-lesson web track
-- [x] Evidence links for every current core iOS lesson
-- [x] MIT/CC BY licensing, originality policy, and source/reuse ledger
-- [x] Browser verification of landing, sign-in explanation, course navigation,
-  and guest progress across reload
-- [x] Authenticated local API and account-page verification with test identity
-- [x] Production dependency audit reported zero known production vulnerabilities
+Verified on 2026-08-11:
 
-## Published release record
+- Desktop landing at 1910 CSS pixels: no horizontal overflow, coherent system
+  typography, `$0`, correct portfolio link, and no curriculum pseudo-path.
+- Course search for `spring` returns the three relevant registered lessons.
+- Bookmark state survives reload and updates the course overview.
+- Lesson 2 lab switches to the Spring timing rule and visibly changes state.
+- The lab's Reduce Motion simulation removes spatial transition time while
+  preserving the endpoint.
+- Correct retrieval feedback appears, completion and mastery persist across
+  reload, and the lesson enters the upcoming review queue.
+- Calibrated 389 CSS-pixel checks pass with zero horizontal overflow on landing,
+  course, and lesson routes; the lab is 350 pixels wide inside the mobile
+  lesson layout.
+- Mobile course navigation retains Course, Review, and Account access; Sources
+  remains reachable from the landing/footer and desktop rail.
+- Semantic main landmarks, labeled controls, a global visible focus treatment,
+  and a skip-to-content link are present.
+
+The in-app browser's raw screenshot output has a device-scale rendering artifact
+when its physical viewport is reduced, so overflow conclusions use calibrated
+CSS viewport and DOM geometry in addition to the visual image.
+
+## Automated verification
+
+Final local pre-release run on 2026-08-11:
+
+- `npm run typecheck`: passed
+- `npm run lint`: passed
+- `npm test`: passed with a successful production worker build and 7/7
+  product tests
+- `npm audit --omit=dev`: passed with zero reported vulnerabilities
+
+## Existing published rollback baseline
 
 - Sites version: 3
 - Commit: `9a399cfad4fbad6d69436903d7742776183007da`
 - Deployment: `appgdep_6a7abaea77688191a2dc602c360c1c07`
 - Public URL:
   `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
-- Deployed landing, redirected course route, privacy, sources, and guest
-  `/api/me` smoke checks passed on 2026-08-11.
-- The public SIWC action reached OpenAI's real login screen with email, Google,
-  Apple, Microsoft, and phone choices. No credentials were entered.
+- The public Sign in with ChatGPT action reaches OpenAI's real login screen,
+  which offers OpenAI's current account choices. No credentials were entered by
+  the development agent.
 
-## Current verification gates
+## Release gates
 
-- [x] Final lint, TypeScript, production build, and product test run after the
-  evidence-map and licensing additions
-- [x] Package and deploy the exact validated commit to the existing Sites project
-- [x] Verify the deployed landing, course, privacy, sources, and guest API state
-- [x] Verify the public Sign in with ChatGPT action reaches real OpenAI authentication
+- [x] Canonical registry, native course route, stable lesson routes, and review queue
+- [x] Bookmarks, mastery, review dates, and lab-state persistence
+- [x] Typography, price, portfolio-credit, and curriculum-motion repairs
+- [x] Calibrated desktop/mobile overflow and complete guest lesson-flow QA
+- [x] Sitemap, robots, skip navigation, public contribution/security documentation
+- [x] Final lint, TypeScript, production build, tests, and production dependency audit
+- [ ] Publish and verify the public GitHub repository
+- [ ] Package and deploy the exact validated commit to the existing Sites project
+- [ ] Smoke-check landing, course, lesson, review, sitemap, privacy, sources, and guest API publicly
 - [ ] Complete a real account session and verify production D1 persistence
 - [ ] Verify same-account convergence in two independent browser/device contexts
-- [x] Record the deployment ID, commit, and remaining device-only proof
 
-## Known limits—not hidden as “done”
+## Known limits—not hidden as done
 
-- True two-browser or two-device convergence with one real account is not proven
-  until the public deployment is exercised in two independent contexts.
-- The browser viewport override available in the current QA environment did not
-  produce a calibrated narrow viewport. Responsive CSS and static checks pass,
-  but a real narrow browser/device visual pass remains open.
-- Current cloud sync covers lesson position, completion, and quiz answers. The
-  planned mastery engine, bookmarks, lab-state outbox, and spaced-review model
-  are later milestones.
-- The course still lives in a large standalone HTML document. Canonical typed
-  content and native lesson routes remain Milestones 2 and 3.
-- The repository has open licenses but has not yet been announced or verified as
-  a public source-code repository.
+- True account persistence and two-context convergence require the owner to
+  complete real OpenAI authentication. The agent will not enter or handle those
+  credentials.
+- The 56 current lesson routes are usable, but the deeper curriculum rebuild,
+  concept graph, varied review prompts, and full worked-example fading remain
+  future milestones.
+- Swift snippets are not yet covered by a complete published stable-Xcode and
+  deployment-target compile matrix.
+- Physical-device, VoiceOver, large-text, OS-level Reduce Motion, and real
+  offline/reconnect QA remain distinct from browser semantic and responsive
+  proof.
+- `public/motion-atlas-course.html` remains a compatibility route until parity is
+  proven. New content must not be edited there.
 - The research benchmark is broad and dated, not a literally exhaustive claim
   about every private, regional, unpublished, or newly released course.
 
 ## Resume pointer
 
-Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. If deployment completed,
-start Milestone 2 by freezing the 56 legacy IDs and extracting typed content.
-Do not expand cloud-progress claims until the real deployed SIWC and cross-device
-matrix are recorded here.
+Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. Finish the public
+repository and Sites release, record exact commit/deployment IDs, then perform
+the owner-authenticated production matrix. After that, continue the depth and
+Swift compile campaign rather than adding more surface-level lesson count.

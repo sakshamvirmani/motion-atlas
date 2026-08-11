@@ -50,18 +50,18 @@ Motion Atlas reaches its first industry-level release when all of the following 
 The initial audit on 2026-08-11 confirmed:
 
 - Existing public Sites deployment is active.
-- Existing standalone course contains 56 lessons, 56 quizzes, and a lab type per lesson.
+- Existing standalone course contains 56 lessons, 56 quizzes, and a lab type per lesson; its content has now been extracted into one canonical typed registry.
 - Existing design is visually stronger than a generic starter and already includes useful interactive laboratories.
 - Guest completion and current lesson survive reload in local storage.
 - The root page was only a full-screen iframe wrapper around a large HTML document; Milestone 1 replaced it with a native landing page.
-- Individual lessons have no first-class application routes.
-- Only 12 lesson declarations originally had explicit source arrays; a centralized evidence map now covers all 48 core iOS lessons as a compatibility step.
+- All 56 lessons now have stable first-class application routes.
+- Only 12 lesson declarations originally had explicit source arrays; the canonical registry now carries the centralized evidence map for all 48 core iOS lessons.
 - The web bonus originally contributed to the same completion count; current completion is based on the 48 core iOS lessons.
-- D1 and account progress were absent; a local D1 implementation now covers lesson position, completion, and quiz answers, pending deployed SIWC and cross-device proof.
+- D1 and account progress were absent; the local D1 implementation now covers lesson position, completion, quiz selections, bookmarks, mastery stages, review dates, and bounded lab controls, pending owner-authenticated production and cross-device proof.
 - Auth helper code existed but had no user-facing account flow; the current local release includes sign-in explanation, account, export, and deletion flows.
 - Both original product tests were stale starter tests; the replacement suite tests the actual product.
 - Lint and production build pass.
-- The iframe creates poor integration boundaries for auth, metadata, responsive QA, routing, and likely contributes to browser instrumentation noise.
+- The root iframe is gone. The standalone document is a compatibility route only while native lab and legacy-progress parity are verified.
 
 ## Milestone overview
 
@@ -69,14 +69,14 @@ The initial audit on 2026-08-11 confirmed:
 | --- | --- | --- |
 | 0. Evidence and durable plan | Audit, benchmark, content standard, curriculum, auth architecture, status file | Complete |
 | 1. Stabilize and establish landing | Real landing page, actual tests, no iframe at root, legacy course still reachable | Complete locally |
-| 2. Canonical content foundation | Typed schemas, source registry, stable slugs, redirects, content checks | Pending |
-| 3. Native learning experience | Lesson routes, course home, navigation, search, glossary, responsive lab shell | Pending |
-| 4. Real identity and cloud progress | SIWC, D1 migrations, guest import, cross-device sync, export, delete | Local compatibility slice; deployed proof pending |
-| 5. Learning engine | Mastery signals, review queue, concept graph, session planner, honest progress | Pending |
+| 2. Canonical content foundation | Typed schemas, source registry, stable slugs, redirects, content checks | Core foundation complete; deeper field validation and link maintenance remain |
+| 3. Native learning experience | Lesson routes, course home, navigation, search, glossary, responsive lab shell | Core course, lesson, search, navigation, and lab routes complete; glossary/lab indexes and parity remain |
+| 4. Real identity and cloud progress | SIWC, D1 migrations, guest import, cross-device sync, export, delete | Implemented locally; owner-authenticated production matrix pending |
+| 5. Learning engine | Mastery signals, review queue, concept graph, session planner, honest progress | First lesson-level mastery and transparent review slice complete |
 | 6. Required curriculum rebuild | Complete 60-lesson required path and module projects | Pending |
 | 7. Mastery electives and pattern library | 36 deeper lessons, failure atlas, API reference, technology chooser | Pending |
 | 8. Vibe-code studio and capstones | Prompt director, diagnosis tools, three original capstones, verification workflow | Pending |
-| 9. Trust, discovery, and polish | Source dashboard, SEO, sharing, social image system, privacy and accessibility pages | Partial: privacy, sources, licensing |
+| 9. Trust, discovery, and polish | Source dashboard, SEO, sharing, social image system, privacy and accessibility pages | Partial: privacy, sources, licensing, metadata, sitemap, robots, open-source docs |
 | 10. Full quality campaign | Automated and browser QA, Swift compile matrix, performance and accessibility evidence | Pending |
 | 11. Publish and verify | Production migrations, Sites publish, deployed smoke, rollback record | In progress |
 | 12. Operate and improve | Feedback, analytics with consent and restraint, quarterly research, annual WWDC audit | Pending |
@@ -221,7 +221,7 @@ Implement `docs/DATA_AUTH_ARCHITECTURE.md` exactly unless the document is delibe
 - Import is idempotent and never loses a completed lesson.
 - Offline mutation syncs after reconnection.
 - Export is complete and deletion removes every learner-owned row.
-- Unknown IDs, forged correctness, oversized payloads, and cross-user access are rejected.
+- Unknown IDs, malformed learning state, oversized payloads, and cross-user access are rejected. Current mastery is transparently self-assessed and is not presented as a secure credential.
 - Public deployment passes the complete auth and progress browser matrix.
 
 ## Milestone 5: Learning engine
