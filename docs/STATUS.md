@@ -7,9 +7,9 @@ Last updated: 2026-08-11
 Milestones 2, 3, and 5: canonical content, native learning routes, and the first
 learning-engine slice.
 
-Status: Sites version 4 remains the public baseline. A navigation, account
-transparency, abuse-resistance, and motion repair has passed local acceptance
-and is being prepared for the next public version.
+Status: released publicly. Sites version 7 contains the navigation, account
+transparency, abuse-resistance, responsive-source-navigation, branded-favicon,
+and motion repair described below.
 
 The existing public URL is intentionally preserved. The standalone course stays
 available as a compatibility surface until native lab and legacy-progress parity
@@ -71,8 +71,8 @@ Verified on 2026-08-11:
 - Calibrated 389 CSS-pixel checks pass with zero horizontal overflow on landing,
   course, and lesson routes; the lab is 350 pixels wide inside the mobile
   lesson layout.
-- Mobile course navigation retains Course, Review, and Account access; Sources
-  remains reachable from the landing/footer and desktop rail.
+- Mobile course navigation retains Course, Review, Account, and Sources access.
+  The landing footer also keeps Sources and Privacy visible below desktop width.
 - Semantic main landmarks, labeled controls, a global visible focus treatment,
   and a skip-to-content link are present.
 - The landing hero loops continuously, pauses on focus, and resumes; its
@@ -106,33 +106,41 @@ Verified on 2026-08-11:
 - Public GitHub repository:
   `https://github.com/sakshamvirmani/motion-atlas`
 - GitHub default branch: `main`; repository visibility: public
-- Sites version: 4
+- Draft review pull request for this release:
+  `https://github.com/sakshamvirmani/motion-atlas/pull/1`
+- Sites version: 7
 - Validated and deployed commit:
-  `ac2c3c80bf0ca954cd57361e09ab6c65518d0f0a`
+  `8ada4f75a1f47738100199fb7e2baa4db2eb70ae`
 - Sites deployment:
-  `appgdep_6a7ae71bb4288191a3c12c8b6290384c`
+  `appgdep_6a7b063c6f5481919223a864329e3fe7`
 - Public URL:
   `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
 - Public smoke checks passed for landing, course, lesson, review, privacy,
-  sources, sign-in, sitemap, robots, and the guest identity API.
+  sources, account, sign-in, sitemap, robots, and the identity/progress path.
 - The landing page exposes `$0`, the portfolio link, and the native learning
   route; the sitemap exposes all 56 lesson URLs.
-- Server-rendered route smoke checks passed, but the owner-authenticated browser
-  later exposed a client-only production failure that those checks missed:
-  `next/link` throws during hydration and prevents Link-driven navigation. The
-  current repair removes that dependency and adds an interaction-level route
-  regression test.
+- Wordmark, account, review, sources, privacy, course, and lesson navigation all
+  completed real production route changes at the calibrated browser width.
+- The owner-authenticated D1 round trip is proven. A temporary lesson 2 bookmark
+  reached `Saved with your account`, survived reload, and appeared in the
+  account page's direct progress JSON with revision 4 and bookmarked IDs 1 and
+  2. The test bookmark was removed, resynced, and the account returned to its
+  original one-bookmark state.
+- Version 7 produced no fresh browser console warnings or errors during the
+  final signed-in route and persistence smoke, and the final worker error query
+  returned zero events. `/favicon.ico` redirects to the branded SVG instead of
+  returning the previous 404.
 
 ## Previous published rollback baseline
 
-- Sites version: 3
-- Commit: `9a399cfad4fbad6d69436903d7742776183007da`
-- Deployment: `appgdep_6a7abaea77688191a2dc602c360c1c07`
+- Sites version: 6
+- Commit: `14b9e243131f85d027b8d8aa8fdf30f88b478a91`
+- Deployment: `appgdep_6a7b050a2d6c81919733d59c4915f997`
 - Public URL:
   `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
-- The public Sign in with ChatGPT action reaches OpenAI's real login screen,
-  which offers OpenAI's current account choices. No credentials were entered by
-  the development agent.
+- This version contains the navigation, account, motion, bot-resistance, and
+  responsive-source repairs. Version 7 adds the branded favicon and
+  `/favicon.ico` compatibility response.
 
 ## Release gates
 
@@ -145,14 +153,15 @@ Verified on 2026-08-11:
 - [x] Publish and verify the public GitHub repository
 - [x] Package and deploy the exact validated commit to the existing Sites project
 - [x] Smoke-check landing, course, lesson, review, sitemap, privacy, sources, and guest API publicly
-- [ ] Complete a real account session and verify production D1 persistence
+- [x] Complete a real account session and verify production D1 persistence
 - [ ] Verify same-account convergence in two independent browser/device contexts
 
 ## Known limits—not hidden as done
 
-- The owner has completed real OpenAI authentication. Production D1 persistence
-  and two-context convergence still require separate recorded proof; the agent
-  will not enter, expose, or handle account credentials.
+- The owner has completed real OpenAI authentication and same-context D1
+  persistence is proven. Same-account convergence in a genuinely independent
+  browser or device context remains open; the agent will not enter, expose, or
+  handle account credentials.
 - The 56 current lesson routes are usable, but the deeper curriculum rebuild,
   concept graph, varied review prompts, and full worked-example fading remain
   future milestones.
@@ -168,6 +177,6 @@ Verified on 2026-08-11:
 
 ## Resume pointer
 
-Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. Perform the
-owner-authenticated production matrix next. After that, continue the depth and
-Swift compile campaign rather than adding more surface-level lesson count.
+Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. Perform the independent
+same-account convergence check next. After that, continue the depth and Swift
+compile campaign rather than adding more surface-level lesson count.

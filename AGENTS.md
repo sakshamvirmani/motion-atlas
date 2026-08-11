@@ -44,9 +44,9 @@ legacy `motion-atlas-v2` state. Signed-in progress uses Sites identity, a
 per-account local cache, and D1. Current sync includes lesson position,
 completion, quiz selections, bookmarks, self-assessed mastery stages,
 server-calculated review dates, and bounded lab controls. The owner has completed
-the real Sites sign-in flow. Production D1 persistence and an independent
-two-context convergence check must still be recorded before cross-device sync is
-called proven.
+the real Sites sign-in flow, and a write/reload/direct-account-read matrix proves
+same-context production D1 persistence. An independent two-context convergence
+check must still be recorded before cross-device sync is called proven.
 
 The current Sites/vinext production runtime has a confirmed `next/link` client
 compatibility failure: its Link chunk throws during hydration and leaves real

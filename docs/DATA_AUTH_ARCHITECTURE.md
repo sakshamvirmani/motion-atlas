@@ -255,13 +255,14 @@ Locally verified:
 - account-scoped browser-cache keying; and
 - real Sites sign-in routing reaching OpenAI authentication.
 
-The owner has completed the real production sign-in flow. Still required:
+The owner has completed the real production sign-in flow. A write, reload, and
+direct account-page JSON read have proven same-context D1 persistence. Still
+required:
 
-1. Save a learning change to production D1.
-2. Open the same account in a genuinely independent browser or device context.
-3. Verify the change converges there.
-4. Exercise guest import, export, sign-out isolation, and deletion publicly.
-5. Confirm no client or server error appears during that matrix.
+1. Open the same account in a genuinely independent browser or device context.
+2. Verify a learning change converges there.
+3. Exercise guest import, export, sign-out isolation, and deletion publicly.
+4. Confirm no client or server error appears during that matrix.
 
-Do not describe cross-device sync as production-proven until those five steps
+Do not describe cross-device sync as production-proven until those four steps
 are recorded in `docs/STATUS.md`.
