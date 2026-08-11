@@ -43,9 +43,16 @@ Native guest progress uses `motion-atlas-native-v1` and defensively reads the
 legacy `motion-atlas-v2` state. Signed-in progress uses Sites identity, a
 per-account local cache, and D1. Current sync includes lesson position,
 completion, quiz selections, bookmarks, self-assessed mastery stages,
-server-calculated review dates, and bounded lab controls. The public production
-account and two-context convergence proof remains open until the owner signs in
-through the real Sites flow.
+server-calculated review dates, and bounded lab controls. The owner has completed
+the real Sites sign-in flow. Production D1 persistence and an independent
+two-context convergence check must still be recorded before cross-device sync is
+called proven.
+
+The current Sites/vinext production runtime has a confirmed `next/link` client
+compatibility failure: its Link chunk throws during hydration and leaves real
+routes visibly unresponsive. Use ordinary semantic `<a href>` navigation for
+this project until the runtime is upgraded and the production Link path is
+explicitly re-verified.
 
 The original copy under `/Users/sakshamvirmani/Developer/html-doc/` is outside this repository and must not be edited without explicit scope and filesystem approval.
 
@@ -103,7 +110,9 @@ The design benchmark includes the current Recent website gallery. Borrow princip
 - Support large text without clipping or hidden controls.
 - Respect `prefers-reduced-motion` on the web and teach `accessibilityReduceMotion` in SwiftUI.
 - Do not use color or motion as the only carrier of meaning.
-- Avoid mandatory autoplay. Give learners play, pause, reset, and replay controls.
+- Ambient autoplay may be used for a short landing-page demonstration when it
+  pauses on pointer hover and keyboard focus, exposes a replay control, and
+  becomes static under Reduced Motion. Lesson labs remain learner-controlled.
 - Target WCAG 2.2 AA for the website.
 - Keep primary lesson content readable before client JavaScript hydrates.
 - Avoid full-page scroll hijacking and long main-thread animation work.
@@ -125,6 +134,7 @@ Run from the repository root:
 
 ```sh
 npm run dev
+npm run typecheck
 npm run lint
 npm test
 ```

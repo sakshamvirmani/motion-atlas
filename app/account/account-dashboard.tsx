@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import { useCurrentTime } from "@/app/components/learning/use-current-time";
 
 type Progress = {
@@ -89,8 +88,23 @@ export default function AccountDashboard() {
           <h2 id="progress-heading">{coreCompleted} of 48 iOS lessons completed</h2>
           <p>Current position: lesson {progress?.current ?? 1}. Quiz answers saved: {Object.keys(progress?.quizAnswers ?? {}).length}. Bookmarks: {bookmarks}. Reviews due: {dueReviews}. Optional web lessons completed: {webCompleted} of 8.</p>
           <p className="sync-readout" role="status"><i aria-hidden="true" />{status}</p>
-          <Link className="button button-primary" href="/learn">Continue learning</Link>
+          <a className="button button-primary" href="/learn">Continue learning</a>
         </div>
+      </section>
+
+      <section className="account-data-inspector" aria-labelledby="saved-record-heading">
+        <div>
+          <p className="account-kicker">YOUR SAVED RECORD</p>
+          <h2 id="saved-record-heading">See the exact learning data.</h2>
+          <p>
+            This is the progress snapshot returned from Motion Atlas storage for
+            your signed-in account. It contains no password or payment data.
+          </p>
+        </div>
+        <details>
+          <summary>{progress ? "View saved progress JSON" : "Loading saved progress"}</summary>
+          <pre>{progress ? JSON.stringify(progress, null, 2) : status}</pre>
+        </details>
       </section>
 
       <section className="account-data-grid" aria-label="Progress controls">

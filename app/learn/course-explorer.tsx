@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { MASTERY_LEVELS } from "@/lib/progress";
 import { useLearning } from "@/app/components/learning/learning-provider";
 import { useCurrentTime } from "@/app/components/learning/use-current-time";
@@ -68,15 +67,15 @@ export default function CourseExplorer({
   return (
     <main className="learn-shell" id="main-content" tabIndex={-1}>
       <aside className="learn-rail" aria-label="Course navigation">
-        <Link className="learn-wordmark" href="/">
+        <a className="learn-wordmark" href="/">
           <span aria-hidden="true">M</span>
           <strong>Motion Atlas</strong>
-        </Link>
+        </a>
         <nav>
-          <Link className="is-active" href="/learn">Course</Link>
-          <Link href="/review">Review queue</Link>
-          <Link href="/account">Account</Link>
-          <Link href="/sources">Sources</Link>
+          <a className="is-active" href="/learn">Course</a>
+          <a href="/review">Review queue</a>
+          <a href="/account">Account</a>
+          <a href="/sources">Sources</a>
         </nav>
         <div className="learn-module-nav">
           <p>{track === "ios" ? "iOS modules" : "Web bonus"}</p>
@@ -94,11 +93,11 @@ export default function CourseExplorer({
         <header className="learn-topbar">
           <span>{authenticated ? `Welcome, ${displayName}` : "No account required"}</span>
           <div>
-            <Link href="/review">{dueCount} reviews due</Link>
+            <a href="/review">{dueCount} reviews due</a>
             {authenticated ? (
-              <Link href="/account">Account</Link>
+              <a href="/account">Account</a>
             ) : (
-              <Link href="/signin?return_to=%2Flearn">Sign in to sync</Link>
+              <a href="/signin?return_to=%2Flearn">Sign in to sync</a>
             )}
           </div>
         </header>
@@ -110,13 +109,13 @@ export default function CourseExplorer({
             <p className="learn-hero-copy">
               Read the mental model, predict the result, change a live lab, answer from memory, then use the idea in your own SwiftUI build.
             </p>
-            <Link className="learn-primary-action" href={`/learn/${currentLesson.slug}`}>
+            <a className="learn-primary-action" href={`/learn/${currentLesson.slug}`}>
               Continue lesson {currentLesson.id}: {currentLesson.title}
-            </Link>
+            </a>
           </div>
           <dl className="learn-overview" aria-label="Your learning overview">
             <div><dt>iOS path</dt><dd>{coreCompleted}<span>/ 48 complete</span></dd></div>
-            <div><dt>Saved lessons</dt><dd>{bookmarkCount}<span>bookmarks</span></dd></div>
+            <div><dt>Bookmarked</dt><dd>{bookmarkCount}<span>lessons for later</span></dd></div>
             <div><dt>Review now</dt><dd>{dueCount}<span>ideas due</span></dd></div>
           </dl>
         </section>
@@ -175,9 +174,13 @@ export default function CourseExplorer({
               aria-pressed={bookmarksOnly}
               onClick={() => setBookmarksOnly((value) => !value)}
             >
-              Saved only
+              Bookmarked only
             </button>
           </div>
+          <p className="bookmark-help">
+            Bookmark keeps a lesson in your saved list. It does not mark the
+            lesson complete or change your mastery level.
+          </p>
 
           <div className="lesson-groups">
             {activeModules.map((module) => {
@@ -197,21 +200,21 @@ export default function CourseExplorer({
                       return (
                         <article className="lesson-row" key={lesson.id}>
                           <span className="lesson-row-number">{String(lesson.id).padStart(2, "0")}</span>
-                          <Link href={`/learn/${lesson.slug}`}>
+                          <a href={`/learn/${lesson.slug}`}>
                             <strong>{lesson.title}</strong>
                             <span>{lesson.summary}</span>
-                          </Link>
+                          </a>
                           <div className="lesson-row-meta">
                             <span>{lesson.minutes} min</span>
                             <span>{completed ? "Complete" : mastery.label}</span>
                           </div>
                           <button
                             type="button"
-                            aria-label={`${record?.bookmarked ? "Remove" : "Save"} ${lesson.title}`}
+                            aria-label={`${record?.bookmarked ? "Remove bookmark from" : "Bookmark"} ${lesson.title}`}
                             aria-pressed={record?.bookmarked ?? false}
                             onClick={() => toggleBookmark(lesson.id)}
                           >
-                            {record?.bookmarked ? "Saved" : "Save"}
+                            {record?.bookmarked ? "Bookmarked" : "Bookmark"}
                           </button>
                         </article>
                       );

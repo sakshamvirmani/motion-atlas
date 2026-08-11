@@ -7,8 +7,9 @@ Last updated: 2026-08-11
 Milestones 2, 3, and 5: canonical content, native learning routes, and the first
 learning-engine slice.
 
-Status: released publicly. The GitHub repository and Sites version 4 are live
-from the exact validated product commit recorded below.
+Status: Sites version 4 remains the public baseline. A navigation, account
+transparency, abuse-resistance, and motion repair has passed local acceptance
+and is being prepared for the next public version.
 
 The existing public URL is intentionally preserved. The standalone course stays
 available as a compatibility surface until native lab and legacy-progress parity
@@ -32,6 +33,14 @@ are verified, but it is no longer an editable source of truth.
   mastery stage, review date, and bounded lab controls.
 - Optional account state uses Sites identity, an account-scoped browser cache,
   and D1. The same learning fields are included in export and deletion.
+- The private account page identifies the exact Sites identity fields the app
+  reads and exposes the saved learning snapshot as readable JSON. D1 does not
+  store the account email.
+- Primary application routes use resilient semantic anchors because the current
+  production vinext `next/link` client chunk throws during hydration.
+- Signed-in mutations have bounded payload validation and D1-backed per-account
+  rate limits. These reduce application abuse without claiming to prevent every
+  denial-of-service attack.
 - Guest-to-account import is explicit and completion-preserving.
 - Landing typography now uses one coherent Apple/system sans family. Display
   scale, line height, and tracking are calibrated without the previous narrow
@@ -66,6 +75,15 @@ Verified on 2026-08-11:
   remains reachable from the landing/footer and desktop rail.
 - Semantic main landmarks, labeled controls, a global visible focus treatment,
   and a skip-to-content link are present.
+- The landing hero loops continuously, pauses on focus, and resumes; its
+  Reduced Motion path is static. A separate scroll-linked motion instrument
+  visibly changes position, scale, shape, and rotation with page progress.
+- Landing to course, course to review, course to sources, wordmark to home, and
+  course to lesson all complete real document navigation.
+- The new bookmark label explains that it saves a lesson for later without
+  marking completion or mastery, and the bookmarked state survives reload.
+- The local browser console remained free of warnings and errors across the
+  repaired route matrix.
 
 The in-app browser's raw screenshot output has a device-scale rendering artifact
 when its physical viewport is reduced, so overflow conclusions use calibrated
@@ -77,7 +95,7 @@ Final local pre-release run on 2026-08-11:
 
 - `npm run typecheck`: passed
 - `npm run lint`: passed
-- `npm test`: passed with a successful production worker build and 7/7
+- `npm test`: passed with a successful production worker build and 8/8
   product tests
 - `npm audit --omit=dev`: passed with zero reported vulnerabilities
 
@@ -99,9 +117,11 @@ Verified on 2026-08-11:
   sources, sign-in, sitemap, robots, and the guest identity API.
 - The landing page exposes `$0`, the portfolio link, and the native learning
   route; the sitemap exposes all 56 lesson URLs.
-- Production worker inspection found no runtime crash. Two JavaScript asset
-  paths appeared as transient 404 probes in recent logs, and direct production
-  checks immediately afterward returned `200 text/javascript` for both paths.
+- Server-rendered route smoke checks passed, but the owner-authenticated browser
+  later exposed a client-only production failure that those checks missed:
+  `next/link` throws during hydration and prevents Link-driven navigation. The
+  current repair removes that dependency and adds an interaction-level route
+  regression test.
 
 ## Previous published rollback baseline
 
@@ -130,9 +150,9 @@ Verified on 2026-08-11:
 
 ## Known limits—not hidden as done
 
-- True account persistence and two-context convergence require the owner to
-  complete real OpenAI authentication. The agent will not enter or handle those
-  credentials.
+- The owner has completed real OpenAI authentication. Production D1 persistence
+  and two-context convergence still require separate recorded proof; the agent
+  will not enter, expose, or handle account credentials.
 - The 56 current lesson routes are usable, but the deeper curriculum rebuild,
   concept graph, varied review prompts, and full worked-example fading remain
   future milestones.

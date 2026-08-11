@@ -27,7 +27,10 @@ export default function MotionLabPreview() {
   const [curve, setCurve] = useState<CurveName>("calm");
   const [duration, setDuration] = useState(650);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const manuallyControlled = useRef(false);
+  const [paused, setPaused] = useState(false);
+  const [replaying, setReplaying] = useState(false);
+  const travelTimer = useRef<number | null>(null);
+  const resumeTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -38,28 +41,42 @@ export default function MotionLabPreview() {
   }, []);
 
   useEffect(() => {
-    if (reduceMotion) return;
-
-    const travelTimer = window.setTimeout(() => {
-      if (!manuallyControlled.current) setAtEnd(true);
-    }, 850);
-    const returnTimer = window.setTimeout(() => {
-      if (!manuallyControlled.current) setAtEnd(false);
-    }, 2350);
-
     return () => {
-      window.clearTimeout(travelTimer);
-      window.clearTimeout(returnTimer);
+      if (travelTimer.current !== null) window.clearTimeout(travelTimer.current);
+      if (resumeTimer.current !== null) window.clearTimeout(resumeTimer.current);
     };
-  }, [reduceMotion]);
+  }, []);
+
+  function replayOnce() {
+    if (travelTimer.current !== null) window.clearTimeout(travelTimer.current);
+    if (resumeTimer.current !== null) window.clearTimeout(resumeTimer.current);
+    setReplaying(true);
+    setAtEnd(false);
+    travelTimer.current = window.setTimeout(() => setAtEnd(true), 40);
+    resumeTimer.current = window.setTimeout(() => {
+      setAtEnd(false);
+      setReplaying(false);
+    }, reduceMotion ? 180 : duration + 520);
+  }
 
   const style = {
     "--preview-duration": `${reduceMotion ? 1 : duration}ms`,
+    "--preview-cycle": `${Math.max(1900, duration * 4 + 700)}ms`,
     "--preview-curve": curves[curve].css,
   } as CSSProperties;
 
   return (
-    <aside className="hero-lab" aria-labelledby="hero-lab-title">
+    <aside
+      className="hero-lab"
+      aria-labelledby="hero-lab-title"
+      data-paused={paused ? "true" : "false"}
+      onPointerEnter={() => setPaused(true)}
+      onPointerLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+      }}
+    >
       <div className="lab-titlebar">
         <div>
           <span className="lab-kicker">LIVE INSTRUMENT / 001</span>
@@ -67,7 +84,7 @@ export default function MotionLabPreview() {
         </div>
         <span className="lab-status" aria-live="polite">
           <i aria-hidden="true" />
-          {reduceMotion ? "Reduced" : atEnd ? "At end" : "Ready"}
+          {reduceMotion ? "Reduced" : paused ? "Paused" : replaying ? "Replaying" : "Running"}
         </span>
       </div>
 
@@ -78,7 +95,7 @@ export default function MotionLabPreview() {
         </div>
         <div className="stage-track">
           <span
-            className={`stage-orb${atEnd ? " is-at-end" : ""}${
+            className={`stage-orb${!replaying && !reduceMotion ? " is-auto" : ""}${atEnd ? " is-at-end" : ""}${
               reduceMotion ? " is-reduced" : ""
             }`}
             aria-hidden="true"
@@ -125,13 +142,10 @@ export default function MotionLabPreview() {
 
         <button
           type="button"
-          onClick={() => {
-            manuallyControlled.current = true;
-            setAtEnd((value) => !value);
-          }}
+          onClick={replayOnce}
         >
-          <span aria-hidden="true">{atEnd ? "↶" : "▶"}</span>
-          {atEnd ? "Reset" : "Play"}
+          <span aria-hidden="true">↻</span>
+          Replay once
         </button>
       </div>
 
@@ -145,7 +159,7 @@ export default function MotionLabPreview() {
       <p className="lab-caption">
         {reduceMotion
           ? "Reduced Motion detected: the state changes without spatial travel."
-          : "Change the feel, predict the result, then play it again."}
+          : "The loop keeps moving while you read. Hover or focus the instrument to pause it, then change the feel."}
       </p>
     </aside>
   );

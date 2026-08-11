@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const sourceFamilies = [
   {
     source: "Apple documentation, Human Interface Guidelines, and WWDC",
@@ -31,10 +29,10 @@ const sourceFamilies = [
 export default function SourcesPage() {
   return (
     <main className="account-shell document-shell sources-shell" id="main-content" tabIndex={-1}>
-      <Link className="account-wordmark" href="/" aria-label="Motion Atlas home">
+      <a className="account-wordmark" href="/" aria-label="Motion Atlas home">
         <span className="wordmark-mark" aria-hidden="true">M</span>
         <span>MOTION ATLAS</span>
-      </Link>
+      </a>
 
       <article>
         <p className="section-index">SOURCES / ORIGINALITY / LICENSES</p>
@@ -49,16 +47,26 @@ export default function SourcesPage() {
           <section>
             <p className="account-kicker">SOFTWARE</p>
             <h2>MIT License</h2>
-            <p>Original site software and lesson code samples can be used, modified, and redistributed with the copyright and license notice preserved.</p>
+            <p>Original site software and lesson code samples can be used, modified, redistributed, and sold with the copyright and license notice preserved.</p>
             <a href="https://opensource.org/license/mit" target="_blank" rel="noreferrer">Read the standard license</a>
           </section>
           <section>
             <p className="account-kicker">ORIGINAL COURSE CONTENT</p>
             <h2>CC BY 4.0</h2>
-            <p>Original non-code educational material can be shared and adapted with credit, a license link, and a note describing changes.</p>
+            <p>Original non-code educational material can be shared and adapted, including commercially, with credit, a license link, and a note describing changes.</p>
             <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">Read the license deed</a>
           </section>
         </div>
+
+        <h2>Can someone charge for a copy?</h2>
+        <p>
+          Yes. The current MIT and CC BY 4.0 licenses both allow commercial
+          reuse when their conditions are followed. A person may not remove the
+          required notices or omit the attribution required for course content.
+          If Motion Atlas should prohibit commercial reuse in the future, the
+          content license must be changed deliberately; grants already made for
+          earlier copies cannot simply be withdrawn.
+        </p>
 
         <h2>How external work is used</h2>
         <div className="source-ledger-public">
@@ -84,7 +92,7 @@ export default function SourcesPage() {
         </p>
 
         <p className="document-updated">Policy and ledger last reviewed 11 August 2026.</p>
-        <Link className="button button-primary" href="/">Return home</Link>
+        <a className="button button-primary" href="/">Return home</a>
       </article>
     </main>
   );

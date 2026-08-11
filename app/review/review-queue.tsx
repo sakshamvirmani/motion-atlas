@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { MASTERY_LEVELS } from "@/lib/progress";
 import { useLearning } from "@/app/components/learning/learning-provider";
 import { useCurrentTime } from "@/app/components/learning/use-current-time";
@@ -33,10 +32,10 @@ export default function ReviewQueue({ lessons }: { lessons: ReviewLesson[] }) {
   return (
     <main className="review-shell" id="main-content" tabIndex={-1}>
       <header className="review-header">
-        <Link href="/">Motion Atlas</Link>
+        <a href="/">Motion Atlas</a>
         <nav aria-label="Review navigation">
-          <Link href="/learn">Course library</Link>
-          <Link href="/account">Account</Link>
+          <a href="/learn">Course library</a>
+          <a href="/account">Account</a>
         </nav>
       </header>
 
@@ -64,7 +63,7 @@ export default function ReviewQueue({ lessons }: { lessons: ReviewLesson[] }) {
           <div className="review-empty">
             <h3>Your queue is clear.</h3>
             <p>Practice a lesson or answer a retrieval check. Motion Atlas will schedule the next useful return.</p>
-            <Link href="/learn">Choose a lesson</Link>
+            <a href="/learn">Choose a lesson</a>
           </div>
         ) : null}
         {due.map(({ lesson, record }) => {
@@ -79,7 +78,7 @@ export default function ReviewQueue({ lessons }: { lessons: ReviewLesson[] }) {
                   <div className="review-answer">
                     <strong>{lesson.title}</strong>
                     <p>{lesson.summary}</p>
-                    <Link href={`/learn/${lesson.slug}`}>Open the full lesson</Link>
+                    <a href={`/learn/${lesson.slug}`}>Open the full lesson</a>
                   </div>
                 ) : null}
               </div>
@@ -113,7 +112,7 @@ export default function ReviewQueue({ lessons }: { lessons: ReviewLesson[] }) {
           <ol>
             {upcoming.map(({ lesson, record }) => (
               <li key={lesson.id}>
-                <Link href={`/learn/${lesson.slug}`}>{lesson.title}</Link>
+                <a href={`/learn/${lesson.slug}`}>{lesson.title}</a>
                 <time dateTime={new Date(record.reviewDueAt ?? 0).toISOString()}>
                   {formatUpcoming(record.reviewDueAt ?? 0)}
                 </time>

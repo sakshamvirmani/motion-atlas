@@ -59,6 +59,15 @@ doubt, link to the original and create a new explanation.
 
 ## Pull requests
 
+The repository is public, but public access does not grant write or merge
+permission. People without write access contribute through a fork and pull
+request. Only a maintainer with repository write access can merge the change.
+
+Every pull request runs the repository quality workflow: TypeScript, lint, the
+production build, and product tests. Passing automation is necessary but not
+sufficient. The code owner reviews the learner experience, source evidence,
+accessibility, privacy impact, and visual behavior before accepting a change.
+
 Keep the title concrete. In the description, include:
 
 - the learner or product problem;

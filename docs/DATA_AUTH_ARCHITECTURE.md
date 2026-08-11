@@ -22,6 +22,25 @@ This is a real platform-authentication design, not an email/password mockup.
 Motion Atlas does not collect passwords, issue its own session cookies, or run
 an auth directory.
 
+## Identity fields and storage boundary
+
+On an authenticated request, Sites supplies a stable site-specific user ID, an
+email address, and an optional percent-encoded full name. Motion Atlas reads
+those fields in `app/chatgpt-auth.ts`. It does not request or read a separate
+username, avatar, ChatGPT password, or OpenAI session credential.
+
+- The site-specific ID authorizes and owns the learner's rows in D1.
+- The optional name is saved as a display-name snapshot in `learner_profiles`.
+- The email is used to identify the active account on private signed-in pages
+  and is included in an export only when the learner requests one.
+- The email is not written to D1 and is no longer returned by `/api/me`.
+- `/account` shows the identity fields the app reads and the exact progress
+  snapshot returned for the current account.
+
+The consent screen describes what the platform may provide. The application
+source and the private account page describe what Motion Atlas actually reads
+and persists.
+
 ## Current user states
 
 ### Guest
@@ -72,7 +91,7 @@ Current routes:
 | `/api/me` | Public response | Minimal auth state and non-identifying account cache key. |
 | `/api/progress` | Authenticated | Reads or writes the bounded progress snapshot. |
 | `/api/progress/export` | Authenticated | Downloads the current learner snapshot. |
-| `/api/progress/delete` | Authenticated | Deletes every Motion Atlas row after exact confirmation. |
+| `/api/progress/delete` | Authenticated | Deletes every learning-progress row after exact confirmation. |
 
 Every authenticated handler derives the owner from trusted request headers. No
 client-supplied user ID participates in authorization.
@@ -143,6 +162,14 @@ One row per user and lesson ID containing bookmark state, mastery stage,
 server-calculated due time, bounded lab JSON, and update time. It is indexed by
 user and due time for the review queue.
 
+### `mutation_rate_limits`
+
+One short fixed-window counter per user and mutation class. It stores the
+site-specific ID, action label, request count, window start, and update time. It
+does not store email, name, request bodies, IP addresses, or lesson content.
+Counters are overwritten as their next window starts and exist only to reduce
+automated write pressure.
+
 Free-form notes are intentionally absent. They would introduce sensitive-text
 storage, moderation, export, and deletion concerns without being necessary for
 the current learning loop.
@@ -194,6 +221,8 @@ the most useful controls for this product:
 - no more than 16 lab fields per lesson;
 - strict lab field names and primitive-only values;
 - string and numeric limits;
+- account-scoped fixed-window limits of 180 progress writes per five minutes
+  and 10 deletion attempts per hour;
 - monotonic revision conflict handling; and
 - escaped React rendering instead of saved HTML.
 
@@ -208,7 +237,9 @@ friction.
 - Do not sell progress or build an advertising profile.
 - Do not create a public learner profile.
 - Do not store raw IP addresses in learner tables.
-- Export returns the complete current snapshot.
+- D1 does not store the account email.
+- Export returns the complete current learning snapshot plus the active
+  account name and email supplied for that request.
 - Deletion removes learning, quiz, completion, and profile rows in that order.
 - Deleting Motion Atlas progress is distinct from deleting a ChatGPT account.
 
@@ -224,7 +255,7 @@ Locally verified:
 - account-scoped browser-cache keying; and
 - real Sites sign-in routing reaching OpenAI authentication.
 
-Still requires the owner to authenticate on the public deployment:
+The owner has completed the real production sign-in flow. Still required:
 
 1. Save a learning change to production D1.
 2. Open the same account in a genuinely independent browser or device context.

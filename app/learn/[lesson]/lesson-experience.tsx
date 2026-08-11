@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import { MASTERY_LEVELS, type LabState } from "@/lib/progress";
 import { useLearning } from "@/app/components/learning/learning-provider";
 import { useCurrentTime } from "@/app/components/learning/use-current-time";
@@ -274,7 +273,7 @@ export default function LessonExperience({
             aria-pressed={record?.bookmarked ?? false}
             onClick={() => toggleBookmark(lessonId)}
           >
-            {record?.bookmarked ? "Saved for later" : "Save this lesson"}
+            {record?.bookmarked ? "Bookmarked for later" : "Bookmark for later"}
           </button>
         </div>
       </section>
@@ -290,7 +289,7 @@ export default function LessonExperience({
           <button type="button" onClick={() => markComplete(lessonId)}>
             {completed ? "Completed" : "Mark lesson complete"}
           </button>
-          {nextPath ? <Link href={nextPath}>Next lesson</Link> : <Link href="/review">Open review queue</Link>}
+          {nextPath ? <a href={nextPath}>Next lesson</a> : <a href="/review">Open review queue</a>}
         </div>
       </section>
     </>

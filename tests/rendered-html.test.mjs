@@ -119,6 +119,10 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(css, /animation-timeline: scroll\(root block\)/);
   assert.match(css, /animation-timeline: view\(block\)/);
   assert.match(css, /@keyframes hero-enter/);
+  assert.match(css, /@keyframes preview-loop/);
+  assert.match(css, /@keyframes scroll-lab-object/);
+  assert.match(css, /\.hero-lab:hover \.stage-orb\.is-auto/);
+  assert.match(css, /\.hero-lab:focus-within \.stage-orb\.is-auto/);
   assert.doesNotMatch(css, /@keyframes curriculum-progress/);
   assert.doesNotMatch(css, /\.curriculum-list::after/);
   assert.doesNotMatch(css, /@keyframes reveal-slide[\s\S]{0,220}translateX/);
@@ -128,6 +132,7 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(page, /getChatGPTUser/);
   assert.match(page, /MotionLabPreview/);
   assert.match(page, /className="scroll-progress"/);
+  assert.match(page, /Scroll through the anatomy of one change/);
   assert.match(page, /Made by Saksham Virmani\./);
   assert.match(page, /https:\/\/sakshamvirmani\.com/);
   assert.match(page, /<strong>\$0<\/strong>/);
@@ -138,6 +143,31 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(layout, /href="#main-content"/);
   assert.doesNotMatch(page, /<iframe\b/i);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+});
+
+test("uses resilient native navigation for every primary learning surface", async () => {
+  const sourcePaths = [
+    "../app/page.tsx",
+    "../app/learn/course-explorer.tsx",
+    "../app/learn/[lesson]/page.tsx",
+    "../app/learn/[lesson]/lesson-experience.tsx",
+    "../app/review/review-queue.tsx",
+    "../app/account/page.tsx",
+    "../app/account/account-dashboard.tsx",
+    "../app/sources/page.tsx",
+  ];
+  const sources = await Promise.all(
+    sourcePaths.map((path) => readFile(new URL(path, import.meta.url), "utf8")),
+  );
+  const navigation = sources.join("\n");
+
+  assert.doesNotMatch(navigation, /next\/link|<Link\b|<\/Link>/);
+  assert.match(navigation, /href="\/"/);
+  assert.match(navigation, /href="\/learn"/);
+  assert.match(navigation, /href="\/review"/);
+  assert.match(navigation, /href="\/account"/);
+  assert.match(navigation, /href="\/sources"/);
+  assert.match(navigation, /href={`\/learn\/\$\{lesson\.slug\}`}/);
 });
 
 test("validates bounded progress and preserves completion when importing", () => {
@@ -200,7 +230,11 @@ test("ships real persistence, privacy, and open-license artifacts", async () => 
     schema,
     migration,
     learningMigration,
+    rateLimitMigration,
     privacy,
+    accountPage,
+    meRoute,
+    rateLimit,
     sourcesPage,
     sourcePolicy,
     sourceLedger,
@@ -211,12 +245,18 @@ test("ships real persistence, privacy, and open-license artifacts", async () => 
     securityPolicy,
     conduct,
     thirdPartyNotices,
+    qualityWorkflow,
+    codeowners,
   ] = await Promise.all([
     readFile(new URL("../.openai/hosting.json", import.meta.url), "utf8"),
     readFile(new URL("../db/schema.ts", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_yummy_abomination.sql", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0001_chilly_karen_page.sql", import.meta.url), "utf8"),
+    readFile(new URL("../drizzle/0002_thankful_true_believers.sql", import.meta.url), "utf8"),
     readFile(new URL("../app/privacy/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/account/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/me/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../lib/rate-limit.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/sources/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../docs/SOURCE_POLICY.md", import.meta.url), "utf8"),
     readFile(new URL("../docs/SOURCE_LEDGER.md", import.meta.url), "utf8"),
@@ -227,6 +267,8 @@ test("ships real persistence, privacy, and open-license artifacts", async () => 
     readFile(new URL("../SECURITY.md", import.meta.url), "utf8"),
     readFile(new URL("../CODE_OF_CONDUCT.md", import.meta.url), "utf8"),
     readFile(new URL("../THIRD_PARTY_NOTICES.md", import.meta.url), "utf8"),
+    readFile(new URL("../.github/workflows/quality.yml", import.meta.url), "utf8"),
+    readFile(new URL("../.github/CODEOWNERS", import.meta.url), "utf8"),
   ]);
 
   assert.match(hosting, /"d1":\s*"DB"/);
@@ -234,9 +276,16 @@ test("ships real persistence, privacy, and open-license artifacts", async () => 
   assert.match(schema, /lessonProgress/);
   assert.match(schema, /quizProgress/);
   assert.match(schema, /lessonLearningState/);
+  assert.match(schema, /mutationRateLimits/);
   assert.match(migration, /CREATE TABLE `learner_profiles`/);
   assert.match(learningMigration, /CREATE TABLE `lesson_learning_state`/);
+  assert.match(rateLimitMigration, /CREATE TABLE `mutation_rate_limits`/);
   assert.match(privacy, /permanently delete all account-tied Motion Atlas progress/);
+  assert.match(privacy, /does not store your email/);
+  assert.match(accountPage, /Exactly what this site can see/);
+  assert.match(accountPage, /Separate username/);
+  assert.doesNotMatch(meRoute, /email:/);
+  assert.match(rateLimit, /Too many account requests/);
   assert.match(sourcesPage, /credit by\s*itself is never treated as permission/);
   assert.match(sourcePolicy, /Learn from sources; do not reproduce their expression/);
   assert.match(sourceLedger, /Third-party tutorial code pasted into lesson examples: none identified/);
@@ -248,6 +297,9 @@ test("ships real persistence, privacy, and open-license artifacts", async () => 
   assert.match(securityPolicy, /Report a vulnerability/);
   assert.match(conduct, /beginner questions/);
   assert.match(thirdPartyNotices, /No third-party tutorial prose/);
+  assert.match(qualityWorkflow, /npm run typecheck/);
+  assert.match(qualityWorkflow, /npm test/);
+  assert.match(codeowners, /@sakshamvirmani/);
 });
 
 test("ships one typed registry with stable native lesson routes", async () => {

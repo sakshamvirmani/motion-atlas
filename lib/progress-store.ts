@@ -73,6 +73,14 @@ async function initializeProgressSchema() {
     )`),
     d1.prepare(`CREATE INDEX IF NOT EXISTS idx_lesson_learning_user_review
       ON lesson_learning_state (user_id, review_due_at)`),
+    d1.prepare(`CREATE TABLE IF NOT EXISTS mutation_rate_limits (
+      user_id TEXT NOT NULL,
+      action TEXT NOT NULL,
+      window_started_at INTEGER NOT NULL,
+      request_count INTEGER DEFAULT 1 NOT NULL,
+      updated_at INTEGER NOT NULL,
+      PRIMARY KEY (user_id, action)
+    )`),
   ]);
 }
 
