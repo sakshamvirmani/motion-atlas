@@ -47,6 +47,12 @@ test("server-renders a meaningful guest landing page", async () => {
   assert.match(html, /href="\/learn"/);
   assert.match(html, /href="\/sources"/);
   assert.match(html, /href="\/privacy"/);
+  assert.equal(
+    (html.match(/href="https:\/\/github\.com\/sakshamvirmani\/motion-atlas"/g) ?? []).length,
+    2,
+    "the public repository is linked from the header and footer",
+  );
+  assert.match(html, /aria-label="View Motion Atlas source code on GitHub"/);
   assert.match(html, /\$0/);
   assert.match(html, /href="https:\/\/sakshamvirmani\.com"/);
   assert.match(html, /No account is required/);
@@ -139,6 +145,10 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(page, /Scroll through the anatomy of one change/);
   assert.match(page, /Made by Saksham Virmani\./);
   assert.match(page, /https:\/\/sakshamvirmani\.com/);
+  assert.match(page, /https:\/\/github\.com\/sakshamvirmani\/motion-atlas/);
+  assert.match(page, /className="header-source-link"/);
+  assert.match(page, /className="footer-source-link"/);
+  assert.match(css, /\.header-source-link/);
   assert.match(page, /<strong>\$0<\/strong>/);
   assert.doesNotMatch(page, /Made by Saksham Virmani in India/);
   assert.match(page, /Apple documentation and WWDC sources/);
@@ -147,6 +157,26 @@ test("ships product-specific responsive and reduced-motion styling", async () =>
   assert.match(layout, /href="#main-content"/);
   assert.doesNotMatch(page, /<iframe\b/i);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+});
+
+test("ships an X-ready Open Graph preview card", async () => {
+  const [response, layout, image] = await Promise.all([
+    render(),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/og.png", import.meta.url)),
+  ]);
+  const html = await response.text();
+
+  assert.match(layout, /name="twitter:card" content="summary_large_image"/);
+  assert.match(layout, /property="og:image:width" content="1200"/);
+  assert.match(layout, /property="og:image:height" content="630"/);
+  assert.match(layout, /property="og:image:type" content="image\/png"/);
+  assert.match(html, /<meta property="og:image" content="http:\/\/localhost(?::3000)?\/og\.png"/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image"/);
+  assert.match(html, /<meta name="twitter:image" content="http:\/\/localhost(?::3000)?\/og\.png"/);
+  assert.equal(image.toString("ascii", 1, 4), "PNG");
+  assert.equal(image.readUInt32BE(16), 1200);
+  assert.equal(image.readUInt32BE(20), 630);
 });
 
 test("uses resilient native navigation for every primary learning surface", async () => {

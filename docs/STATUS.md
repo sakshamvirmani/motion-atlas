@@ -54,6 +54,8 @@ are verified, but it is no longer an editable source of truth.
   account and API surfaces from indexing.
 - The project includes public contribution, conduct, security, issue-template,
   source-policy, and dual-license documentation.
+- The landing header and footer expose the public GitHub source repository, and
+  the site publishes a dedicated 1200x630 Open Graph/X large-image card.
 
 ## Local browser evidence
 

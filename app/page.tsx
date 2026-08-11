@@ -23,6 +23,8 @@ const learningLoop = [
   ["Retrieve", "Meet the idea again later in a different context."],
 ];
 
+const sourceRepository = "https://github.com/sakshamvirmani/motion-atlas";
+
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -79,6 +81,13 @@ export default async function Home() {
               Sign in to sync
             </a>
           )}
+          <a
+            className="header-source-link"
+            href={sourceRepository}
+            aria-label="View Motion Atlas source code on GitHub"
+          >
+            GitHub
+          </a>
           <a className="header-course-link" href={coursePath}>
             Open course
             <ArrowIcon />
@@ -381,6 +390,12 @@ export default async function Home() {
           <a href="#method">Learning method</a>
           <a href="#standards">Quality standard</a>
           <a href={coursePath}>Current course</a>
+          <a
+            className="footer-source-link"
+            href={sourceRepository}
+          >
+            GitHub source
+          </a>
           <a href="/sources">Sources &amp; licenses</a>
           <a href="/privacy">Privacy</a>
         </nav>

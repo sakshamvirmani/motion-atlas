@@ -12,6 +12,16 @@ The public site is hosted with OpenAI Sites:
 - Public URL: `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
 - Access mode: public
 
+The public source repository is `https://github.com/sakshamvirmani/motion-atlas`.
+Keep a visible source link in both the landing header and footer. The social
+preview asset is `public/og.png` at 1200x630 and must remain paired with the
+Open Graph and `summary_large_image` metadata in `app/layout.tsx`. The pinned
+vinext runtime does not currently emit its Metadata API output in rendered HTML,
+so the root layout owns explicit server-rendered social tags and keeps an empty
+Metadata API hook to satisfy the runtime's metadata route slots without duplicate
+tags or browser warnings. Recheck both paths before replacing this compatibility
+layer during a vinext upgrade.
+
 Never put credentials, auth client secrets, or private user data in source files or public output.
 
 ## Resume order
