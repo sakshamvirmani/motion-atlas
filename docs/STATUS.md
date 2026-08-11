@@ -7,7 +7,8 @@ Last updated: 2026-08-11
 Milestones 2, 3, and 5: canonical content, native learning routes, and the first
 learning-engine slice.
 
-Status: complete locally; public-repository and Sites release in progress.
+Status: released publicly. The GitHub repository and Sites version 4 are live
+from the exact validated product commit recorded below.
 
 The existing public URL is intentionally preserved. The standalone course stays
 available as a compatibility surface until native lab and legacy-progress parity
@@ -80,7 +81,29 @@ Final local pre-release run on 2026-08-11:
   product tests
 - `npm audit --omit=dev`: passed with zero reported vulnerabilities
 
-## Existing published rollback baseline
+## Public release evidence
+
+Verified on 2026-08-11:
+
+- Public GitHub repository:
+  `https://github.com/sakshamvirmani/motion-atlas`
+- GitHub default branch: `main`; repository visibility: public
+- Sites version: 4
+- Validated and deployed commit:
+  `ac2c3c80bf0ca954cd57361e09ab6c65518d0f0a`
+- Sites deployment:
+  `appgdep_6a7ae71bb4288191a3c12c8b6290384c`
+- Public URL:
+  `https://motion-atlas-swiftui-course.saksham-virmani.chatgpt.site`
+- Public smoke checks passed for landing, course, lesson, review, privacy,
+  sources, sign-in, sitemap, robots, and the guest identity API.
+- The landing page exposes `$0`, the portfolio link, and the native learning
+  route; the sitemap exposes all 56 lesson URLs.
+- Production worker inspection found no runtime crash. Two JavaScript asset
+  paths appeared as transient 404 probes in recent logs, and direct production
+  checks immediately afterward returned `200 text/javascript` for both paths.
+
+## Previous published rollback baseline
 
 - Sites version: 3
 - Commit: `9a399cfad4fbad6d69436903d7742776183007da`
@@ -99,9 +122,9 @@ Final local pre-release run on 2026-08-11:
 - [x] Calibrated desktop/mobile overflow and complete guest lesson-flow QA
 - [x] Sitemap, robots, skip navigation, public contribution/security documentation
 - [x] Final lint, TypeScript, production build, tests, and production dependency audit
-- [ ] Publish and verify the public GitHub repository
-- [ ] Package and deploy the exact validated commit to the existing Sites project
-- [ ] Smoke-check landing, course, lesson, review, sitemap, privacy, sources, and guest API publicly
+- [x] Publish and verify the public GitHub repository
+- [x] Package and deploy the exact validated commit to the existing Sites project
+- [x] Smoke-check landing, course, lesson, review, sitemap, privacy, sources, and guest API publicly
 - [ ] Complete a real account session and verify production D1 persistence
 - [ ] Verify same-account convergence in two independent browser/device contexts
 
@@ -125,7 +148,6 @@ Final local pre-release run on 2026-08-11:
 
 ## Resume pointer
 
-Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. Finish the public
-repository and Sites release, record exact commit/deployment IDs, then perform
-the owner-authenticated production matrix. After that, continue the depth and
+Read `AGENTS.md`, this file, and `docs/MASTER_PLAN.md`. Perform the
+owner-authenticated production matrix next. After that, continue the depth and
 Swift compile campaign rather than adding more surface-level lesson count.
